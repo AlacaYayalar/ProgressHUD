@@ -188,12 +188,12 @@ public struct Gap: Codable {
     let title: String
     let titleTwo: String
     let objecs: [Objec]
-    let lvl_1: LevelOne
+    let lvl_one: LevelOne
 
     enum CodingKeys: String, CodingKey {
         case titleTwo = "title_two"
         case orderIndex = "order_index"
-        case title, objecs, lvl_1
+        case title, objecs, lvl_one
     }
 }
 
