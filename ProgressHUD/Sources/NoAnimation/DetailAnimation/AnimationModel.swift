@@ -188,12 +188,53 @@ public struct Gap: Codable {
     let title: String
     let titleTwo: String
     let objecs: [Objec]
+    let lvl_1: LevelOne
 
     enum CodingKeys: String, CodingKey {
         case titleTwo = "title_two"
         case orderIndex = "order_index"
-        case title, objecs
+        case title, objecs, lvl_1
     }
+}
+
+struct LevelOne: Codable {
+    let scr_first: ScreenFirst
+    let scr_second: ScreenSecond
+    let scr_third: ScreenThird
+}
+
+struct ScreenFirst: Codable {
+    let title: String
+    let description: String
+    let item: String
+    let scr_btn: String
+    let anim_lot: String
+    let item_icon: String
+}
+
+struct ScreenSecond: Codable {
+    let titles: [String]
+    let anim_lot: String
+}
+
+struct ScreenThird: Codable {
+    let title_icon: String
+    let title: String
+    let description: String
+    let cart: Cart
+}
+
+struct Cart: Codable {
+    let title_icon: String
+    let title: String
+    let subtitle: String
+    let items: [CartItem]
+    let btn: String
+}
+
+struct CartItem: Codable {
+    let icon: String
+    let text: String
 }
 
 struct Objec: Codable {

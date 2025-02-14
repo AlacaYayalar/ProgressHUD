@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WifiLevelOneTwo" customModule="ProgressHUD">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CyX-Ct-Od4" customClass="LottieAnimationView" customModule="Lottie">
+                    <rect key="frame" x="66.666666666666686" y="313.66666666666669" width="260" height="225.00000000000006"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZB2-f4-elg">
+                            <rect key="frame" x="10" y="99.333333333333314" width="240" height="26.333333333333329"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ZB2-f4-elg" secondAttribute="trailing" constant="10" id="03c-ZD-CeS"/>
+                        <constraint firstAttribute="width" constant="260" id="Tnh-8a-v4D"/>
+                        <constraint firstItem="ZB2-f4-elg" firstAttribute="leading" secondItem="CyX-Ct-Od4" secondAttribute="leading" constant="10" id="mbp-hU-fJU"/>
+                        <constraint firstItem="ZB2-f4-elg" firstAttribute="centerY" secondItem="CyX-Ct-Od4" secondAttribute="centerY" id="vas-pC-f24"/>
+                        <constraint firstAttribute="height" constant="225" id="yGH-9j-DdR"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.96947616339999998" green="0.96947616339999998" blue="0.96947616339999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="CyX-Ct-Od4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QMJ-hz-4hB"/>
+                <constraint firstItem="CyX-Ct-Od4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kUw-SQ-Lr9"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="animationView" destination="CyX-Ct-Od4" id="dok-48-sMK"/>
+                <outlet property="titleLabel" destination="ZB2-f4-elg" id="hwa-FI-mDw"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
