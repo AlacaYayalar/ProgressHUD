@@ -106,6 +106,8 @@ extension ProgressHUD {
             vc = NewAnimationFourViewController(model: gap.objecs[3], title: gap.titleTwo, delegate: delegate)
         case 5:
             vc = WifiLevelOneViewController(gap.lvl_one, delegate: delegate)
+        case 6:
+            vc = WifiLevelTwoViewController(gap.lvl_two, delegate: delegate)
         default:
             return nil
         }

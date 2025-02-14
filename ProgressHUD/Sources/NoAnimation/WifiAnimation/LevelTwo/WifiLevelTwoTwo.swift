@@ -12,14 +12,27 @@ final class WifiLevelTwoTwo: UIView, InstanceFromNibProtocol {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     
+    var continueButtonTapped: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        containerView.layer.cornerRadius = 15
+    }
+    
+    func setup(with model: ScreenSecondLevel) {
+        titleLabel.text = model.title
+        infoLabel.text = model.description
+        nextButton.setTitle(model.scr_btn, for: .normal)
+        progressLabel.text = model.scn_items.first
         
+        guard let url = URL(string: model.scr_img) else { return }
+        
+        imageView.kf.setImage(with: url, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
     }
     
     @IBAction func nextTapped(_ sender: Any) {
-        
+        continueButtonTapped?()
     }
 }
 
