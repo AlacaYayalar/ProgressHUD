@@ -1,9 +1,8 @@
 
-
 import UIKit
 
-final class WifiLevelTwoTwoViewController: UIViewController {
-    private let wifiLevelOne = WifiLevelTwoTwo.instanceFromNib()
+final class WifiLevelTwoViewController: UIViewController {
+    private let wifiLevelOne = WifiLevelTwo.instanceFromNib()
     
     public var model: LevelTwo?
     weak var delegate: SpecialAnimationDelegate?
@@ -29,10 +28,12 @@ final class WifiLevelTwoTwoViewController: UIViewController {
         guard let model else { return }
         
         navigationController?.isNavigationBarHidden = true
-        wifiLevelOne.setup(with: model.scr_second)
+        wifiLevelOne.setup(with: model.scr_first)
         
         wifiLevelOne.continueButtonTapped = { [weak self] in
-            self?.delegate?.buttonTapped(isResult: false)
+            let vc = WifiLevelTwoTwoViewController(model, delegate: self?.delegate)
+            
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
