@@ -27,6 +27,7 @@ final class WifiLevelOneViewController: UIViewController {
         
         guard let model else { return }
         
+        navigationController?.isNavigationBarHidden = true
         wifiLevelOne.setup(with: model.scr_first)
         
         wifiLevelOne.continueButtonTapped = { [weak self] in
