@@ -19,6 +19,7 @@ final class WifiLevelOne: UIView, InstanceFromNibProtocol {
         super.awakeFromNib()
         
         containerView.layer.cornerRadius = 20
+        animationButton.layer.cornerRadius = 15
     }
     
     func setup(with model: ScreenFirst) {
@@ -33,6 +34,7 @@ final class WifiLevelOne: UIView, InstanceFromNibProtocol {
         animationView.isHidden = false
         LottieAnimation.loadedFrom(url: url, closure: { [weak self] animation in
             self?.animationView.animation = animation
+            self?.animationView.loopMode = .loop
             self?.animationView.play()
         }, animationCache: DefaultAnimationCache.sharedCache)
         

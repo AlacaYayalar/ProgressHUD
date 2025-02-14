@@ -20,7 +20,8 @@ final class WifiLevelOneThree: UIView, InstanceFromNibProtocol {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
+        containerView.layer.cornerRadius = 15
+        nextButton.layer.cornerRadius = 15
     }
     
     func setup(with model: ScreenThird) {

@@ -22,6 +22,7 @@ final class WifiLevelOneTwo: UIView, InstanceFromNibProtocol {
         animationView.isHidden = false
         LottieAnimation.loadedFrom(url: url, closure: { [weak self] animation in
             self?.animationView.animation = animation
+            self?.animationView.loopMode = .loop
             self?.animationView.play()
         }, animationCache: DefaultAnimationCache.sharedCache)
     }
