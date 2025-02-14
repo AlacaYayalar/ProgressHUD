@@ -42,6 +42,6 @@ final class WifiLevelOne: UIView, InstanceFromNibProtocol {
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
-        
+        continueButtonTapped?()
     }
 }
