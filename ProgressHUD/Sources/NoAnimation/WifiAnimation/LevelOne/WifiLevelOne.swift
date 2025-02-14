@@ -13,6 +13,8 @@ final class WifiLevelOne: UIView, InstanceFromNibProtocol {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var animationButton: UIButton!
     
+    var continueButtonTapped: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

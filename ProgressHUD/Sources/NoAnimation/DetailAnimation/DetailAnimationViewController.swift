@@ -73,6 +73,8 @@ class DetailAnimationViewController: UIViewController {
                     vc = NewAnimationThreeViewController(model: gap.objecs[2], title: gap.title, delegate: self?.delegate)
                 case 4:
                     vc = NewAnimationFourViewController(model: gap.objecs[3], title: gap.titleTwo, delegate: self?.delegate)
+                case 5:
+                    vc = WifiLevelOneViewController(gap.lvl_one, delegate: self?.delegate)
                 default:
                     vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, delegate: self?.delegate)
                 }

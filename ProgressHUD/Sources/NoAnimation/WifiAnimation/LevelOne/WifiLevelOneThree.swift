@@ -15,6 +15,8 @@ final class WifiLevelOneThree: UIView, InstanceFromNibProtocol {
     @IBOutlet var contLabel: [UILabel]!
     @IBOutlet weak var nextButton: UIButton!
     
+    var continueButtonTapped: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
