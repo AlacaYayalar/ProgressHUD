@@ -28,5 +28,9 @@ final class WifiLevelOneTwo: UIView, InstanceFromNibProtocol {
             self.animationView.play()
             self.bringSubviewToFront(self.titleLabel)
         }, animationCache: DefaultAnimationCache.sharedCache)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.titleLabel.text = model.titles.last
+        }
     }
 }

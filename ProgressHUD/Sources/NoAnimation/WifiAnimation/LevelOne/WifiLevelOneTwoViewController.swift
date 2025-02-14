@@ -29,5 +29,11 @@ final class WifiLevelOneTwoViewController: UIViewController {
         guard let model else { return }
         
         wifiLevelOne.setup(with: model.scr_second)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+            let vc = WifiLevelOneThreeViewController(model, delegate: self?.delegate)
+            
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
