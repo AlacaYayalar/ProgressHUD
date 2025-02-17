@@ -19,6 +19,7 @@ final class WifiLevelOneThree: UIView, InstanceFromNibProtocol {
     @IBOutlet weak var buttonTopCons: NSLayoutConstraint!
     
     private let isVerySmallDevice = UIScreen.main.nativeBounds.height <= 1136
+    private let isSmallDevice = UIScreen.main.nativeBounds.height <= 1334
     var continueButtonTapped: (() -> Void)?
     
     override func awakeFromNib() {
@@ -38,6 +39,8 @@ final class WifiLevelOneThree: UIView, InstanceFromNibProtocol {
             contLabel.forEach { label in
                 label.font = .systemFont(ofSize: 10, weight: .medium)
             }
+        } else if isSmallDevice {
+            iconTopCons.constant = 20
         }
     }
     
