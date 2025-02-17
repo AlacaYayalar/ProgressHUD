@@ -11,7 +11,9 @@ final class WifiLevelTwoTwo: UIView, InstanceFromNibProtocol {
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var imagetopCons: NSLayoutConstraint!
     
+    private let isVerySmallDevice = UIScreen.main.nativeBounds.height <= 1136
     var continueButtonTapped: (() -> Void)?
     
     override func awakeFromNib() {
@@ -19,6 +21,12 @@ final class WifiLevelTwoTwo: UIView, InstanceFromNibProtocol {
         
         containerView.layer.cornerRadius = 15
         nextButton.layer.cornerRadius = 15
+        
+        if isVerySmallDevice {
+            imagetopCons.constant = 20
+            titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
+            infoLabel.font = .systemFont(ofSize: 10, weight: .regular)
+        }
     }
     
     func setup(with model: ScreenSecondLevel) {
@@ -33,12 +41,12 @@ final class WifiLevelTwoTwo: UIView, InstanceFromNibProtocol {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             self?.progressLabel.text = model.scn_items[1]
-            self?.progressView.progress = 0.33
+            self?.progressView.progress = 0.44
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
             self?.progressLabel.text = model.scn_items.last
-            self?.progressView.progress = 0.66
+            self?.progressView.progress = 0.7
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 9) { [weak self] in

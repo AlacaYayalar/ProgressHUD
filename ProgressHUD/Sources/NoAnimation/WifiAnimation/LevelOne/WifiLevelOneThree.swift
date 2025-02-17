@@ -14,7 +14,9 @@ final class WifiLevelOneThree: UIView, InstanceFromNibProtocol {
     @IBOutlet var contImage: [UIImageView]!
     @IBOutlet var contLabel: [UILabel]!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var iconTopCons: NSLayoutConstraint!
     
+    private let isVerySmallDevice = UIScreen.main.nativeBounds.height <= 1136
     var continueButtonTapped: (() -> Void)?
     
     override func awakeFromNib() {
@@ -22,6 +24,17 @@ final class WifiLevelOneThree: UIView, InstanceFromNibProtocol {
         
         containerView.layer.cornerRadius = 15
         nextButton.layer.cornerRadius = 15
+        
+        if isVerySmallDevice {
+            iconTopCons.constant = 20
+            mainTitle.font = .systemFont(ofSize: 16, weight: .bold)
+            mainSub.font = .systemFont(ofSize: 10, weight: .regular)
+            contTitle.font = .systemFont(ofSize: 14, weight: .bold)
+            contSub.font = .systemFont(ofSize: 10, weight: .regular)
+            contLabel.forEach { label in
+                label.font = .systemFont(ofSize: 10, weight: .medium)
+            }
+        }
     }
     
     func setup(with model: ScreenThird) {

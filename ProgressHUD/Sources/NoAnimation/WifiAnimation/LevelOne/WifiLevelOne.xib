@@ -99,7 +99,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="animationButton" destination="IE6-zr-Kug" id="eTO-qC-8Rz"/>
+                <outlet property="animationTopCons" destination="Ibx-L0-r2e" id="XEE-nO-TUm"/>
                 <outlet property="animationView" destination="7If-r5-IRr" id="5Zv-iv-Z57"/>
+                <outlet property="buttonBottomCons" destination="KUI-0P-1WH" id="eJ5-YE-EM9"/>
                 <outlet property="containerView" destination="K6F-TG-Ttp" id="zbU-oJ-oKp"/>
                 <outlet property="iconImageView" destination="hCV-BZ-bcu" id="o7X-GP-qGw"/>
                 <outlet property="infoLabel" destination="UxC-g9-pu7" id="Vst-aN-fA8"/>

@@ -219,6 +219,7 @@
                 <outlet property="contSub" destination="58Q-9h-XAO" id="ZzN-h1-wfN"/>
                 <outlet property="contTitle" destination="XHP-rR-itM" id="Jhk-s4-Jtm"/>
                 <outlet property="containerView" destination="vZe-ph-W7t" id="qTR-Iy-0xw"/>
+                <outlet property="iconTopCons" destination="Xvv-vm-2zX" id="dei-af-Sau"/>
                 <outlet property="mainIcon" destination="43g-ph-A9J" id="vZh-vI-Qnm"/>
                 <outlet property="mainSub" destination="NlR-aJ-FeI" id="iHH-6s-2f1"/>
                 <outlet property="mainTitle" destination="UJ4-6f-aBE" id="oUw-Zj-sCO"/>

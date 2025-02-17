@@ -12,7 +12,10 @@ final class WifiLevelOne: UIView, InstanceFromNibProtocol {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var animationButton: UIButton!
+    @IBOutlet weak var animationTopCons: NSLayoutConstraint!
+    @IBOutlet weak var buttonBottomCons: NSLayoutConstraint!
     
+    private let isVerySmallDevice = UIScreen.main.nativeBounds.height <= 1136
     var continueButtonTapped: (() -> Void)?
     
     override func awakeFromNib() {
@@ -20,6 +23,14 @@ final class WifiLevelOne: UIView, InstanceFromNibProtocol {
         
         containerView.layer.cornerRadius = 20
         animationButton.layer.cornerRadius = 15
+        
+        if isVerySmallDevice {
+            animationTopCons.constant = 50
+            buttonBottomCons.constant = 20
+            titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
+            subtitleLabel.font = .systemFont(ofSize: 12, weight: .regular)
+            infoLabel.font = .systemFont(ofSize: 12, weight: .medium)
+        }
     }
     
     func setup(with model: ScreenFirst) {
