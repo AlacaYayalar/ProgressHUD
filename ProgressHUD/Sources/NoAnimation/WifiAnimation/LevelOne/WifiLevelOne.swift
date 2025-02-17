@@ -27,8 +27,8 @@ final class WifiLevelOne: UIView, InstanceFromNibProtocol {
         if isVerySmallDevice {
             animationTopCons.constant = 50
             buttonBottomCons.constant = 20
-            titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
-            subtitleLabel.font = .systemFont(ofSize: 12, weight: .regular)
+            titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
+            subtitleLabel.font = .systemFont(ofSize: 14, weight: .regular)
             infoLabel.font = .systemFont(ofSize: 12, weight: .medium)
         }
     }

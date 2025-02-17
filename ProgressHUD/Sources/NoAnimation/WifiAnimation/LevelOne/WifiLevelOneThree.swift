@@ -15,6 +15,8 @@ final class WifiLevelOneThree: UIView, InstanceFromNibProtocol {
     @IBOutlet var contLabel: [UILabel]!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var iconTopCons: NSLayoutConstraint!
+    @IBOutlet weak var cintainerTopCons: NSLayoutConstraint!
+    @IBOutlet weak var buttonTopCons: NSLayoutConstraint!
     
     private let isVerySmallDevice = UIScreen.main.nativeBounds.height <= 1136
     var continueButtonTapped: (() -> Void)?
@@ -27,6 +29,8 @@ final class WifiLevelOneThree: UIView, InstanceFromNibProtocol {
         
         if isVerySmallDevice {
             iconTopCons.constant = 20
+            cintainerTopCons.constant = 10
+            buttonTopCons.constant = 10
             mainTitle.font = .systemFont(ofSize: 16, weight: .bold)
             mainSub.font = .systemFont(ofSize: 10, weight: .regular)
             contTitle.font = .systemFont(ofSize: 14, weight: .bold)

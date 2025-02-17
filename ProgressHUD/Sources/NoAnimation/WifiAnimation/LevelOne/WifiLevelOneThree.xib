@@ -215,6 +215,8 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="buttonTopCons" destination="xvz-ve-ZgD" id="DQl-S6-Yud"/>
+                <outlet property="cintainerTopCons" destination="sEe-Vz-bxZ" id="Gj7-7y-WLI"/>
                 <outlet property="contIcon" destination="r5W-2N-v7R" id="7mA-tT-ORx"/>
                 <outlet property="contSub" destination="58Q-9h-XAO" id="ZzN-h1-wfN"/>
                 <outlet property="contTitle" destination="XHP-rR-itM" id="Jhk-s4-Jtm"/>

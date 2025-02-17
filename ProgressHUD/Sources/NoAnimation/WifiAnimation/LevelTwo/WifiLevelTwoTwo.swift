@@ -25,7 +25,7 @@ final class WifiLevelTwoTwo: UIView, InstanceFromNibProtocol {
         if isVerySmallDevice {
             imagetopCons.constant = 20
             titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
-            infoLabel.font = .systemFont(ofSize: 10, weight: .regular)
+            infoLabel.font = .systemFont(ofSize: 12, weight: .regular)
         }
     }
     
