@@ -9,7 +9,9 @@ final class WifiLevelTwo: UIView, InstanceFromNibProtocol {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var imageTopConst: NSLayoutConstraint!
     
+    private let isVerySmallDevice = UIScreen.main.nativeBounds.height <= 1136
     var continueButtonTapped: (() -> Void)?
     
     override func awakeFromNib() {
@@ -17,6 +19,10 @@ final class WifiLevelTwo: UIView, InstanceFromNibProtocol {
         
         containerView.layer.cornerRadius = 15
         nextButton.layer.cornerRadius = 15
+        
+        if isVerySmallDevice {
+            imageTopConst.constant = 50
+        }
     }
     
     func setup(with model: ScreenFirstLevel) {
