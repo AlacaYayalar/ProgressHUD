@@ -26,7 +26,7 @@ final class WifiLevelTwo: UIView, InstanceFromNibProtocol {
         
         guard let url = URL(string: model.scr_img) else { return }
         
-        imageView.kf.setImage(with: url, placeholder: UIImage())//kf.setImage(with: url, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        imageView.kf.setImage(with: url, placeholder: UIImage())
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {

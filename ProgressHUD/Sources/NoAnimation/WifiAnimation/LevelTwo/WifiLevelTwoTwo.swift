@@ -30,6 +30,20 @@ final class WifiLevelTwoTwo: UIView, InstanceFromNibProtocol {
         guard let url = URL(string: model.scr_img) else { return }
         
         imageView.kf.setImage(with: url, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.progressLabel.text = model.scn_items[1]
+            self?.progressView.progress = 0.33
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+            self?.progressLabel.text = model.scn_items.last
+            self?.progressView.progress = 0.66
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 9) { [weak self] in
+            self?.progressView.progress = 1
+        }
     }
     
     @IBAction func nextTapped(_ sender: Any) {
