@@ -62,7 +62,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luC-Rc-OK3">
-                    <rect key="frame" x="100" y="623.5" width="832" height="55"/>
+                    <rect key="frame" x="150" y="623.5" width="732" height="55"/>
                     <color key="backgroundColor" red="0.12549019607843137" green="0.4823529411764706" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="o0X-3M-G4e"/>
@@ -107,10 +107,10 @@
                 </constraint>
                 <constraint firstItem="luC-Rc-OK3" firstAttribute="top" secondItem="MmB-P5-Plc" secondAttribute="bottom" constant="50" id="vjn-an-uq8"/>
                 <constraint firstItem="luC-Rc-OK3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="35" id="wZI-gM-qwn">
-                    <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="150"/>
                 </constraint>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="luC-Rc-OK3" secondAttribute="trailing" constant="35" id="xMk-ki-c3i">
-                    <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="150"/>
                 </constraint>
             </constraints>
             <connections>
