@@ -31,7 +31,7 @@ final class CardCell: UICollectionViewCell {
     
     private func setupSize() {
         if screenSE1 {
-            textFontSize = 15
+            textFontSize = 14
         } else if screenSE3 {
             textFontSize = 16
         } else {

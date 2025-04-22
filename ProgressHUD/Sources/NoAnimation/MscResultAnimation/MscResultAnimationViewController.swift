@@ -105,7 +105,21 @@ public class MscResultAnimationViewController: UIViewController, SpecialAnimatio
         }
         
         if screenSE1 {
-            
+            exploreButtonHeight = 40
+            switchContainerViewHeightAct = 45
+            switchContainerViewHeightDis = 60
+            cardsCollectionViewHeight = 55
+            pageControllHeight = 8
+            topOffsetAct = 0
+            topOffsetDis = 35
+            bottomOffset = 5
+            corgiIVTopOffsetAct = 5
+            corgiIVBottomOffsetAct  = 10
+            corgiIVTopOffsetDis = 10
+            corgiIVBottomOffsetDis = 25
+            topFontSize = 20
+            switchFontSize = 14
+            buttonFontSize = 14
         } else if screenSE3 {
             exploreButtonHeight = 50
             switchContainerViewHeightAct = 60
