@@ -264,15 +264,4 @@ final class Storage {
             UserDefaults.standard.set(newValue, forKey: "isMscActive")
         }
     }
-    
-//    static var isFirstShowMsc: Bool? {
-//        get {
-//            let castedValue = UserDefaults.standard.object(forKey: "isFirstShowMsc")
-//            
-//            return castedValue as? Bool
-//        }
-//        set {
-//            UserDefaults.standard.set(newValue, forKey: "isFirstShowMsc")
-//        }
-//    }
 }

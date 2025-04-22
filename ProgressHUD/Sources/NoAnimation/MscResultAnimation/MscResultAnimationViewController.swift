@@ -93,38 +93,16 @@ public class MscResultAnimationViewController: UIViewController, SpecialAnimatio
     
     // MARK: - Setup
     private func setupFirst() {
-//        if isPaid {
-//            if !Storage.isFirstShowMsc {
-//                isProtectionEnabled = true
-//                Storage.isFirstShowMsc = true
-//                Storage.isMscActive = true
-//            } else {
-//                isProtectionEnabled = Storage.isMscActive
-//            }
-//        } else {
-//            isProtectionEnabled = false
-//            Storage.isMscActive = false
-//        }
-//        if isPaid {
-//            if Storage.isMscActive == nil {
-//                Storage.isMscActive = isPaid
-//                isProtectionEnabled = isPaid
-//            } else {
-//                isProtectionEnabled = Storage.isMscActive ?? false
-//            }
-//        } else {
-            if Storage.isMscActive == nil {
-                Storage.isMscActive = isPaid
-                isProtectionEnabled = isPaid
+        if Storage.isMscActive == nil {
+            Storage.isMscActive = isPaid
+            isProtectionEnabled = isPaid
+        } else {
+            if isPaid {
+                isProtectionEnabled = Storage.isMscActive ?? false
             } else {
-                if isPaid {
-                    isProtectionEnabled = Storage.isMscActive ?? false
-                } else {
-                    isProtectionEnabled = false
-                }
+                isProtectionEnabled = false
             }
-            
-//        }
+        }
         
         if screenSE1 {
             
