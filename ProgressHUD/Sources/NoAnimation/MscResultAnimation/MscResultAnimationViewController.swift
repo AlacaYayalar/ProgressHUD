@@ -94,7 +94,7 @@ public class MscResultAnimationViewController: UIViewController, SpecialAnimatio
     // MARK: - Setup
     private func setupFirst() {
         if isPaid {
-            if Storage.isFirstShowMsc {
+            if !Storage.isFirstShowMsc {
                 isProtectionEnabled = true
                 Storage.isFirstShowMsc = true
             } else {
