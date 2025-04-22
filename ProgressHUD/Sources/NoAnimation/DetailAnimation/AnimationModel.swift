@@ -328,11 +328,13 @@ public struct Msc: Codable {
     let iconDis: String?
     
     enum CodingKeys: String, CodingKey {
-        case swtTitle, btnTitle, smallIcon
+        case swtTitle = "swtTitle"
+        case btnTitle = "btnTitle"
+        case smallIcon = "smallIcon"
         case cards = "Cards"
-        case title
+        case title = "title"
         case iconAct = "IconAct"
-        case titleDis
+        case titleDis = "titleDis"
         case iconDis = "IconDis"
     }
 }
