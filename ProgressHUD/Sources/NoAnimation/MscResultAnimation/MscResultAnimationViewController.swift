@@ -205,8 +205,10 @@ public class MscResultAnimationViewController: UIViewController, SpecialAnimatio
         closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         closeButton.tintColor = UIColor(red: 96/255, green: 96/255, blue: 96/255, alpha: 1)
         closeButton.backgroundColor = UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 1)
+        closeButton.addTarget(self, action: #selector(buttonExpTapped), for: .touchUpInside)
         closeButton.layer.cornerRadius = 16
         closeButton.alpha = 0
+        closeButton.isHidden = !ProgressHUD.shared.isXmarkShow
         mainContainerView.addSubview(closeButton)
     }
     
