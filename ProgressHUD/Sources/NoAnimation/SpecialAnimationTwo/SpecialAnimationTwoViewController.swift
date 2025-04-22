@@ -133,8 +133,8 @@ public class SpecialAnimationTwoViewController: UIViewController, SpecialAnimati
         specialOfferTwoView.timer?.invalidate()
     }
     
-    public func triggerToDetail() {
-        vc.goToResult()
+    public func triggerToDetail(isPaid: Bool) {
+        vc.goToResult(isPaid: isPaid)
     }
     
     private func getCurrentDateTime() -> String {

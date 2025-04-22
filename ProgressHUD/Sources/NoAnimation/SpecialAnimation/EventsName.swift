@@ -54,4 +54,5 @@ public enum EventsName: String {
     case scan4Hide = "scan4_hide"
     
     case antivirusActive = "antivirus_active"
+    case featureAction = "feature_action"
 }

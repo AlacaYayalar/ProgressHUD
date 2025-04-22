@@ -56,6 +56,7 @@ public struct AuthorizationOfferModel: Codable {
     var objectTwo: ObjectTwo?
     public var gap: Gap?
     var sheet: SheetObject?
+    var msc: Msc?
     
     enum CodingKeys: String, CodingKey {
         case imageUrl = "image_url"
@@ -85,6 +86,7 @@ public struct AuthorizationOfferModel: Codable {
         case homeIcon = "home_icon"
         case scn, prtd, gap, sheet
         case objectTwo = "object_2"
+        case msc = "msc"
     }
 }
 
@@ -314,4 +316,23 @@ struct SheetObject: Codable {
     let ic_3:String
     let ic_4:String
     let ic_5:String
+}
+
+public struct Msc: Codable {
+    let swtTitle, btnTitle: String?
+    let smallIcon: String?
+    let cards: [String]?
+    let title: String?
+    let iconAct: String?
+    let titleDis: String?
+    let iconDis: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case swtTitle, btnTitle, smallIcon
+        case cards = "Cards"
+        case title
+        case iconAct = "IconAct"
+        case titleDis
+        case iconDis = "IconDis"
+    }
 }

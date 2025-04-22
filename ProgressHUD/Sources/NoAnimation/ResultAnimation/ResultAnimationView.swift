@@ -253,4 +253,26 @@ final class Storage {
     static var isAllFeaturesEnabled: Bool {
         featuresStates.values.allSatisfy { $0 == true }
     }
+    
+    static var isMscActive: Bool {
+        get {
+            let castedValue = UserDefaults.standard.bool(forKey: "isMscActive")
+            
+            return castedValue
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "isMscActive")
+        }
+    }
+    
+    static var isFirstShowMsc: Bool {
+        get {
+            let castedValue = UserDefaults.standard.bool(forKey: "isFirstShowMsc")
+            
+            return castedValue
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "isFirstShowMsc")
+        }
+    }
 }

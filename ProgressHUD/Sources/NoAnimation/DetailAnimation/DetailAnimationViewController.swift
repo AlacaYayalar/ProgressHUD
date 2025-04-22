@@ -109,10 +109,11 @@ class DetailAnimationViewController: UIViewController {
         detailInformView.showAlertAndPush()
     }
     
-    public func goToResult() {
+    public func goToResult(isPaid: Bool) {
         delegate?.eventsFunc(event: .specialOffer2Hide)
         DispatchQueue.main.async {
-            let vc = ReslutAnimationViewContoller(self.model, isPaid: true, delegate: nil)
+//            let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: nil)
+            let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: nil)
             
             self.navigationController?.pushViewController(vc, animated: true)
         }
