@@ -97,6 +97,7 @@ public class MscResultAnimationViewController: UIViewController, SpecialAnimatio
             if !Storage.isFirstShowMsc {
                 isProtectionEnabled = true
                 Storage.isFirstShowMsc = true
+                Storage.isMscActive = true
             } else {
                 isProtectionEnabled = Storage.isMscActive
             }
