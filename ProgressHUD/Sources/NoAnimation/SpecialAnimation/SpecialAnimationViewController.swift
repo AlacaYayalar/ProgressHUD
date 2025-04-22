@@ -126,7 +126,7 @@ public class SpecialAnimationViewController: UIViewController {
     public func goToResult(isPaid: Bool) {
         delegate?.eventsFunc(event: .specialOffer1Hide)
 //        let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: nil)
-        let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: nil)
+        let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
         
         if ProgressHUD.shared.isNewAnimationOn {
             newNC?.pushViewController(vc, animated: true)

@@ -162,7 +162,7 @@ public class SpecialAnimationFourViewController: UIViewController {
         delegate?.eventsFunc(event: .specialOffer4Hide)
         DispatchQueue.main.async {
 //            let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: nil)
-            let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: nil)
+            let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
             
             self.navigationController?.pushViewController(vc, animated: true)
         }
