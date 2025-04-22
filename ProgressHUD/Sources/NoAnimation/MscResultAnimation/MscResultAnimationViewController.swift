@@ -117,7 +117,11 @@ public class MscResultAnimationViewController: UIViewController, SpecialAnimatio
                 Storage.isMscActive = isPaid
                 isProtectionEnabled = isPaid
             } else {
-                isProtectionEnabled = Storage.isMscActive ?? false
+                if isPaid {
+                    isProtectionEnabled = Storage.isMscActive ?? false
+                } else {
+                    isProtectionEnabled = false
+                }
             }
             
 //        }
