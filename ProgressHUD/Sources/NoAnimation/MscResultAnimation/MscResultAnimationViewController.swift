@@ -328,7 +328,7 @@ public class MscResultAnimationViewController: UIViewController, SpecialAnimatio
         }
     }
     
-    func makeUpd() {
+    public func makeUpd() {
         greenSwitch.isOn = true
         isProtectionEnabled = greenSwitch.isOn
         Storage.isMscActive = isProtectionEnabled
