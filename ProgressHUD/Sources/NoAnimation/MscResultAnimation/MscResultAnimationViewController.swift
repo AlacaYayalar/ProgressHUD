@@ -328,6 +328,13 @@ public class MscResultAnimationViewController: UIViewController, SpecialAnimatio
         }
     }
     
+    func makeUpd() {
+        greenSwitch.isOn = true
+        isProtectionEnabled = greenSwitch.isOn
+        Storage.isMscActive = isProtectionEnabled
+        updateUI(animated: true)
+    }
+    
     private func updateUI(animated: Bool) {
         let duration = animated ? 0.3 : 0
         
@@ -393,30 +400,10 @@ public class MscResultAnimationViewController: UIViewController, SpecialAnimatio
     private func loadCorgiImage(isHappy: Bool) {
         let urlString = isHappy ? (model?.msc?.iconAct ?? "") : (model?.msc?.iconDis ?? "")
         
-        if let url = URL(string: urlString) {
-            let processor = SVGImgProcessor()
-            corgiImageView.kf.setImage(
-                with: url,
-                options: [
-                    .processor(processor),
-                    .transition(.fade(0.2))
-                ],
-                completionHandler: { result in
-                    switch result {
-                    case .success(_):
-                        break
-                    case .failure(_):
-                        let systemName = isHappy ? "" : ""
-                        let configuration = UIImage.SymbolConfiguration(pointSize: 100)
-                        self.corgiImageView.image = UIImage(systemName: systemName, withConfiguration: configuration)
-                    }
-                }
-            )
-        } else {
-            let systemName = isHappy ? "" : ""
-            let configuration = UIImage.SymbolConfiguration(pointSize: 100)
-            corgiImageView.image = UIImage(systemName: systemName, withConfiguration: configuration)
-        }
+        guard let imURL = URL(string: urlString) else { return }
+        
+        let processor = SVGImgProcessor()
+        corgiImageView.kf.setImage(with: imURL, placeholder: UIImage(), options: [.processor(processor), .cacheOriginalImage, .transition(.fade(0.2))], completionHandler: nil)
     }
 }
 
