@@ -33,9 +33,11 @@ final class NewAnimationOneViewController: UIViewController {
     private var progress: Float = 0.0
     private var labelCount = 0
     private let redColor = UIColor(red: 255/255, green: 57/255, blue: 39/255, alpha: 1)
+    private let greenColor = UIColor().hexStringToUIColor(hex: "#65D65C")
     private let defaultColor = UIColor(red: 36/255, green: 36/255, blue: 36/255, alpha: 1)
     private let defaultGray = UIColor.init(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
-
+    private let isFromRsult: Bool
+    
     weak var delegate: SpecialAnimationDelegate?
     
     override func viewDidLoad() {
@@ -44,8 +46,14 @@ final class NewAnimationOneViewController: UIViewController {
         setupUI()
         startProgress()
         alert.goButtonCompletion = { [weak self] in
-            self?.delegate?.eventsFunc(event: .scan1Action)
-            self?.delegate?.buttonTapped(isResult: false)
+            guard let self else { return }
+            
+            if isFromRsult {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                self.delegate?.eventsFunc(event: .scan1Action)
+                self.delegate?.buttonTapped(isResult: false)
+            }
         }
         
         self.delegate?.eventsFunc(event: .scan1Show)
@@ -63,11 +71,12 @@ final class NewAnimationOneViewController: UIViewController {
         self.delegate?.eventsFunc(event: .scan1Hide)
     }
     
-    init(model: Objec, title: String, delegate: SpecialAnimationDelegate?) {
+    init(model: Objec, title: String, isFromRsult: Bool, delegate: SpecialAnimationDelegate?) {
         self.model = model
         self.titleText = title
-        self.myCount = model.strigs.count
+        self.myCount = model.strigs?.count ?? 20
         self.delegate = delegate
+        self.isFromRsult = isFromRsult
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -83,7 +92,7 @@ final class NewAnimationOneViewController: UIViewController {
                                 titleLabelText: model.messTlt,
                                 descriptionFirstLabelText: model.subMessTlt ?? "",
                                 descriptionSecondLabelText: model.subMessTxt ?? "",
-                                descriptionLowLabelText: model.messSbtlt,
+                                descriptionLowLabelText: model.messSbtlt ?? "",
                                 goButtonText: model.messBtn)
         titleLabel.text = titleText
         view.addSubview(titleLabel)
@@ -97,7 +106,7 @@ final class NewAnimationOneViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalToSuperview().inset(32)
         }
-
+        
         scrollView.backgroundColor = .white
         scrollView.layer.cornerRadius = 20
         scrollView.isScrollEnabled = false
@@ -108,7 +117,7 @@ final class NewAnimationOneViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
             make.horizontalEdges.equalToSuperview().inset(32)
         }
-
+        
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.alignment = .fill
@@ -133,7 +142,7 @@ final class NewAnimationOneViewController: UIViewController {
         dimmView.alpha = 0
         alert.alpha = 0
     }
-
+    
     private func startProgress() {
         let randomInterval = Double.random(in: 0.4...1.3)
         
@@ -160,25 +169,25 @@ final class NewAnimationOneViewController: UIViewController {
             formatter.dateFormat = "HH:mm:ss"
             let timeString = formatter.string(from: Date())
             
-            let fullText = "[\(timeString)] \(model.strigs[labelCount].name)"
+            let fullText = "[\(timeString)] \(model.strigs?[labelCount].name ?? "")"
             let attributedString = NSMutableAttributedString(string: fullText)
             let timeRange = NSRange(location: 0, length: "[\(timeString)]".count)
             attributedString.addAttribute(.foregroundColor, value: defaultGray, range: timeRange)
-            let messageRange = NSRange(location: timeRange.length + 1, length: model.strigs[labelCount].name.count)
+            let messageRange = NSRange(location: timeRange.length + 1, length: model.strigs?[labelCount].name.count ?? 0)
             
-
-            let messageColor: UIColor = model.strigs[labelCount].color?.contains("red") == true ? redColor : defaultColor
+            
+            let messageColor: UIColor = model.strigs?[labelCount].color?.contains("red") == true ? redColor : model.strigs?[labelCount].color?.contains("green") == true ? greenColor : defaultColor
             attributedString.addAttribute(.foregroundColor, value: messageColor, range: messageRange)
             label.attributedText = attributedString
             label.font = .systemFont(ofSize: UIDevice.current.userInterfaceIdiom == .pad ? 18 : 15, weight: .medium)
             label.alpha = 0.0
             labelCount += 1
             stackView.addArrangedSubview(label)
-
+            
             UIView.animate(withDuration: 0.3) {
                 label.alpha = 1.0
             }
-
+            
             scrollView.layoutIfNeeded()
             let contentHeight = scrollView.contentSize.height
             let visibleHeight = scrollView.bounds.height
@@ -191,7 +200,7 @@ final class NewAnimationOneViewController: UIViewController {
             showCustomAlert()
         }
     }
-
+    
     private func showCustomAlert() {
         UIView.animate(withDuration: 0.2) {
             self.dimmView.alpha = 1

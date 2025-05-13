@@ -13,11 +13,13 @@ public class SpecialAnimationViewController: UIViewController {
     public var model: AuthorizationOfferModel?
     private var newNC: UINavigationController?
     weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
     
-    public init(_ model: AuthorizationOfferModel? = nil, price: String ,delegate: SpecialAnimationDelegate) {
+    public init(_ model: AuthorizationOfferModel? = nil, price: String ,delegate: SpecialAnimationDelegate, rScreen: Int) {
         self.delegate = delegate
         self.price = price
         self.model = model
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -91,17 +93,17 @@ public class SpecialAnimationViewController: UIViewController {
                 case 0:
                     self?.delegate?.buttonTapped(isResult: false)
                     return
-
+                    
                 case 1:
-                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, isFromRsult: false, delegate: self?.delegate)
                 case 2:
-                    vc = NewAnimationTwoViewController(model: gap.objecs[1], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationTwoViewController(model: gap.objecs[1], alertModel: gap.objecs[0], title: gap.title, delegate: self?.delegate)
                 case 3:
-                    vc = NewAnimationThreeViewController(model: gap.objecs[2], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationThreeViewController(model: gap.objecs[2], alertModel: gap.objecs[0], title: gap.title, delegate: self?.delegate)
                 case 4:
-                    vc = NewAnimationFourViewController(model: gap.objecs[3], title: gap.titleTwo, delegate: self?.delegate)
+                    vc = NewAnimationFourViewController(model: gap.objecs[3], alertModel: gap.objecs[0], title: gap.titleTwo, delegate: self?.delegate)
                 default:
-                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, isFromRsult: false, delegate: self?.delegate)
                 }
                 
                 self?.newNC = UINavigationController(rootViewController: vc)
@@ -125,8 +127,13 @@ public class SpecialAnimationViewController: UIViewController {
     
     public func goToResult(isPaid: Bool) {
         delegate?.eventsFunc(event: .specialOffer1Hide)
-//        let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: nil)
-        let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
+        var vc = UIViewController()
+        
+        if self.rScreen == 2 {
+            vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
+        } else {
+            vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
+        }
         
         if ProgressHUD.shared.isNewAnimationOn {
             newNC?.pushViewController(vc, animated: true)

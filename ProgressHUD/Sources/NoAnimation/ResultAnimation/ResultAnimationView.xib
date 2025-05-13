@@ -122,7 +122,11 @@
                 <outlet property="bannerContainer" destination="RXz-fu-YBY" id="NDp-HH-pA9"/>
                 <outlet property="bannerHeight" destination="LP8-Su-Bej" id="opT-0J-wAg"/>
                 <outlet property="bannerTop" destination="ecC-ik-vKs" id="Osk-NG-Nr5"/>
+                <outlet property="circularBottomConstraint" destination="9aY-St-owe" id="IxJ-z8-Oby"/>
+                <outlet property="circularLeadingConstraint" destination="ERM-yM-gxn" id="hGu-4a-STU"/>
                 <outlet property="circularProgress" destination="ceT-sZ-e7r" id="xzA-3L-6o4"/>
+                <outlet property="circularTopConstraint" destination="IR4-2i-FFE" id="nr8-Ga-2zA"/>
+                <outlet property="circularTrailingConstraint" destination="f4r-Ce-277" id="E1w-NQ-9Fz"/>
                 <outlet property="iconImageView" destination="3Ma-cT-GRx" id="dDY-1V-vdm"/>
                 <outlet property="inactiveImageView" destination="M8q-mZ-RbB" id="cfN-1M-xRJ"/>
                 <outlet property="lhConst" destination="dFZ-GC-sOD" id="ktY-lk-QCY"/>

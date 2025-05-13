@@ -1,6 +1,10 @@
 import UIKit
 
 public class MscResultAnimationViewController: UIViewController, SpecialAnimationDelegate {
+    public func scanButtonTapped() {
+        
+    }
+    
     private let screenSE1 = UIScreen.main.nativeBounds.height <= 1136
     private let screenSE3 = UIScreen.main.nativeBounds.height <= 1334
     

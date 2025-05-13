@@ -26,6 +26,8 @@ enum LogLevel {
 }
 
 public class SpecialAnimationTwoViewController: UIViewController, SpecialAnimationDelegate {
+    public func scanButtonTapped() {}
+    
     public func eventsFunc(event: EventsName) {
         delegate?.eventsFunc(event: event)
     }
@@ -38,15 +40,17 @@ public class SpecialAnimationTwoViewController: UIViewController, SpecialAnimati
     private var data: [LogEntry] = []
     private var index = 0
     private lazy var vc: DetailAnimationViewController = {
-        return DetailAnimationViewController(model, delegate: self)
+        return DetailAnimationViewController(model, delegate: self, rScreen: rScreen)
     }()
     weak var delegate: SpecialAnimationDelegate?
     var dismissed: (() -> ())?
     public var model: AuthorizationOfferModel?
+    public var rScreen: Int
     
-    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate, rScreen: Int) {
         self.model = model
         self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }

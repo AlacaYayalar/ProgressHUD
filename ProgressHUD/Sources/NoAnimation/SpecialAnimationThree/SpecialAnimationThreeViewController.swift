@@ -74,10 +74,12 @@ public class SpecialAnimationThreeViewController: UIViewController {
     
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
     
-    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate, rScreen: Int) {
         self.model = model
         self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -85,7 +87,7 @@ public class SpecialAnimationThreeViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -120,7 +122,7 @@ public class SpecialAnimationThreeViewController: UIViewController {
         
         return text
     }
-
+    
     private func setUI() {
         guard let mainUrl = URL(string: model?.objectTwo?.dark_blue.main_img ?? "") else { return }
         
@@ -252,7 +254,7 @@ public class SpecialAnimationThreeViewController: UIViewController {
             
             alertMess = String(format: model?.objectTwo?.dark_blue.al_subtitle ?? "", authText)
         }
-
+        
         let alert = UIAlertController(title: model?.objectTwo?.dark_blue.al_title, message: alertMess, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: localizeText(forKey: .cancelTitle), style: .cancel) { [weak self] _ in
             self?.delegate?.eventsFunc(event: .specialOffer3SecondButtonDis)
@@ -268,17 +270,17 @@ public class SpecialAnimationThreeViewController: UIViewController {
                 case 0:
                     self?.delegate?.buttonTapped(isResult: false)
                     return
-
+                    
                 case 1:
-                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, isFromRsult: false, delegate: self?.delegate)
                 case 2:
-                    vc = NewAnimationTwoViewController(model: gap.objecs[1], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationTwoViewController(model: gap.objecs[1], alertModel: gap.objecs[0], title: gap.title, delegate: self?.delegate)
                 case 3:
-                    vc = NewAnimationThreeViewController(model: gap.objecs[2], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationThreeViewController(model: gap.objecs[2], alertModel: gap.objecs[0], title: gap.title, delegate: self?.delegate)
                 case 4:
-                    vc = NewAnimationFourViewController(model: gap.objecs[3], title: gap.titleTwo, delegate: self?.delegate)
+                    vc = NewAnimationFourViewController(model: gap.objecs[3], alertModel: gap.objecs[0], title: gap.titleTwo, delegate: self?.delegate)
                 default:
-                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, isFromRsult: false, delegate: self?.delegate)
                 }
                 
                 self?.navigationController?.pushViewController(vc, animated: true)
@@ -292,18 +294,22 @@ public class SpecialAnimationThreeViewController: UIViewController {
         delegate?.eventsFunc(event: .specialOffer3ShowSecond)
         present(alert, animated: true, completion: nil)
     }
-
+    
     @objc private func buttonTap() {
         showSingleButtonAlert()
     }
     
     public func goToResult(isPaid: Bool) {
         delegate?.eventsFunc(event: .specialOffer3Hide)
+        
         DispatchQueue.main.async {
-//            let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: nil)
-            let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
-            
-            self.navigationController?.pushViewController(vc, animated: true)
+            if self.rScreen == 2 {
+                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }
@@ -314,14 +320,14 @@ extension LAContext {
         case touchID = "Touch ID"
         case faceID = "Face ID"
     }
-
+    
     var biometricType: BiometricType {
         var error: NSError?
-
+        
         guard self.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
             return .none
         }
-
+        
         if #available(iOS 11.0, *) {
             switch self.biometryType {
             case .none:

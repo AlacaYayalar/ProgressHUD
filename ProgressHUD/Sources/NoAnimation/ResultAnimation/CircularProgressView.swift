@@ -29,7 +29,7 @@ class CircularProgressView: UIView {
             tracklayer.strokeColor = setTrackColor.cgColor
         }
     }
-
+    
     private var viewCGPath: CGPath? {
         return UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0),
                             radius: (frame.size.width - 1.5)/2,
@@ -64,5 +64,15 @@ class CircularProgressView: UIView {
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         progressLayer.strokeEnd = CGFloat(value)
         progressLayer.add(animation, forKey: "animateCircle")
+    }
+    
+    func updateLayers() {
+        tracklayer.path = viewCGPath
+        progressLayer.path = viewCGPath
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        updateLayers()
     }
 }

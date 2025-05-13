@@ -8,10 +8,12 @@ class DetailAnimationViewController: UIViewController {
     
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
     
-    init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate) {
+    init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate, rScreen: Int) {
         self.model = model
         self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -66,15 +68,15 @@ class DetailAnimationViewController: UIViewController {
                     self?.delegate?.buttonTapped(isResult: false)
                     return
                 case 1:
-                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, isFromRsult: false, delegate: self?.delegate)
                 case 2:
-                    vc = NewAnimationTwoViewController(model: gap.objecs[1], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationTwoViewController(model: gap.objecs[1], alertModel: gap.objecs[0], title: gap.title, delegate: self?.delegate)
                 case 3:
-                    vc = NewAnimationThreeViewController(model: gap.objecs[2], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationThreeViewController(model: gap.objecs[2], alertModel: gap.objecs[0], title: gap.title, delegate: self?.delegate)
                 case 4:
-                    vc = NewAnimationFourViewController(model: gap.objecs[3], title: gap.titleTwo, delegate: self?.delegate)
+                    vc = NewAnimationFourViewController(model: gap.objecs[3], alertModel: gap.objecs[0], title: gap.titleTwo, delegate: self?.delegate)
                 default:
-                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, delegate: self?.delegate)
+                    vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, isFromRsult: false, delegate: self?.delegate)
                 }
                 
                 self?.navigationController?.pushViewController(vc, animated: true)
@@ -108,10 +110,13 @@ class DetailAnimationViewController: UIViewController {
     public func goToResult(isPaid: Bool) {
         delegate?.eventsFunc(event: .specialOffer2Hide)
         DispatchQueue.main.async {
-//            let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: nil)
-            let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
-            
-            self.navigationController?.pushViewController(vc, animated: true)
+            if self.rScreen == 2 {
+                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }

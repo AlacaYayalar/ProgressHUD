@@ -6,11 +6,13 @@ public struct EnterModel: Codable {
     public var token: String
     public var screen: Int?
     public var screen2: Int?
+    public var rScreen: Int?
     public var offer: AuthorizationOfferObject?
     
     enum CodingKeys: String, CodingKey {
         case token
         case screen, screen2
+        case rScreen = "r_screen"
         case offer = "specialize"
     }
 }
@@ -51,7 +53,7 @@ public struct AuthorizationOfferModel: Codable {
     var homeTitle: String?
     var homeSub: String?
     var homeIcon: String?
-    var scn: ScnModel?
+    public var scn: ScnModel?
     var prtd: PrtdModel?
     var objectTwo: ObjectTwo?
     public var gap: Gap?
@@ -90,7 +92,7 @@ public struct AuthorizationOfferModel: Codable {
     }
 }
 
-struct ScnModel: Codable {
+public struct ScnModel: Codable {
     var title_proc            : String?
     var subtitle_proc        : String?
     var title_anim_proc        : String?
@@ -114,13 +116,38 @@ struct ScnModel: Codable {
     var anim_done_unp        : String?
     var rr_title            : String?
     var rr_subtitle            : String?
-    
+    public var push_title: String?
+    public var push_content: String?
+    var stats: Stats?
     var features            : [Features]?
     
     struct Features: Codable {
         var name    : String?
         var g_status: String?
         var b_status: String?
+    }
+    
+    struct Stats: Codable {
+        var cls    : String?
+        var statScnIcon5: String?
+        var statScnIcon4: String?
+        var statBtnSubtitle    : String?
+        var statScnIcon3: String?
+        var statScnCount5: String?
+        var statScnIcon2    : String?
+        var statScnTitle1: String?
+        var statImg: String?
+        var statScnText5: String?
+        var statBtnArrowImg: String?
+        var statScnText4: String?
+        var statScnCount4: String?
+        var statScnText3: String?
+        var statScnText2: String?
+        var statScnCount3: String?
+        var statScnSubtitle1: String?
+        var statBtnTitle: String?
+        var statScnImg1: String?
+        var statScnCount2: String?
     }
 }
 
@@ -189,11 +216,13 @@ public struct Gap: Codable {
     let orderIndex: Int?
     let title: String
     let titleTwo: String
+    let titleDeep: String
     let objecs: [Objec]
     
     enum CodingKeys: String, CodingKey {
         case titleTwo = "title_two"
         case orderIndex = "order_index"
+        case titleDeep = "title_deep"
         case title, objecs
     }
 }
@@ -261,17 +290,19 @@ struct CartItem: Codable {
 
 struct Objec: Codable {
     let prgrsTitle: String
-    let strigs: [Strig]
+    let strigs: [Strig]?
+    let strigs_hand_start: [Strig]?
     let messIcon, messTlt: String
     let subMessTlt, subMessTxt: String?
-    let messSbtlt, messBtn: String
+    let messSbtlt: String?
+    let messBtn: String
     let messTltPrc, messTltCmpl, subMessTxtOne, subMessTxtTwo: String?
     let subMessTxtThree, strigsTlt, strigsSubtlt, strigsRes: String?
     let messTltRed: [String]?
-
+    
     enum CodingKeys: String, CodingKey {
         case prgrsTitle = "prgrs_title"
-        case strigs
+        case strigs, strigs_hand_start
         case messIcon = "mess_icon"
         case messTlt = "mess_tlt"
         case subMessTlt = "sub_mess_tlt"

@@ -25,8 +25,10 @@ final class NewAnimationTwoViewController: UIViewController {
         return view
     }()
     
-    private var alert: CustomAlertViewTwo!
+    //    private var alert: CustomAlertViewTwo!
+    private var alert: CustomAlertView!
     private var model: Objec!
+    private var alertModel: Objec!
     private var myCount = 20
     private var titleText = ""
     private var timer: Timer?
@@ -37,7 +39,7 @@ final class NewAnimationTwoViewController: UIViewController {
     private let redColor = UIColor(red: 255/255, green: 57/255, blue: 39/255, alpha: 1)
     private let defaultColor = UIColor(red: 36/255, green: 36/255, blue: 36/255, alpha: 1)
     private let defaultGray = UIColor.init(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
-
+    
     weak var delegate: SpecialAnimationDelegate?
     
     override func viewDidLoad() {
@@ -65,10 +67,11 @@ final class NewAnimationTwoViewController: UIViewController {
         self.delegate?.eventsFunc(event: .scan1Hide)
     }
     
-    init(model: Objec, title: String, delegate: SpecialAnimationDelegate?) {
+    init(model: Objec, alertModel: Objec, title: String, delegate: SpecialAnimationDelegate?) {
         self.model = model
+        self.alertModel = alertModel
         self.titleText = title
-        self.myCount = model.strigs.count
+        self.myCount = model.strigs?.count ?? 20
         self.delegate = delegate
         
         super.init(nibName: nil, bundle: nil)
@@ -81,14 +84,20 @@ final class NewAnimationTwoViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
         progressView = TopProgressView(text: model.prgrsTitle)
-        alert = CustomAlertViewTwo(iconName: model.messIcon,
-                                 titleLabelText: model.messTlt,
-                                 subtitleLabelText: "\(model.messTltPrc ?? "")\n\(model.messTltCmpl ?? "")",
-                                 descriptionFirstLabelText: model.subMessTlt ?? "",
-                                 descriptionSecondLabelText: "\(model.subMessTxtOne ?? "")\n\(model.subMessTxtTwo ?? "")\n\(model.subMessTxtThree ?? "")",
-                                 descriptionLowLabelText: model.messSbtlt,
-                                 goButtonText: model.messBtn)
-
+        //        alert = CustomAlertViewTwo(iconName: model.messIcon,
+        //                                 titleLabelText: model.messTlt,
+        //                                 subtitleLabelText: "\(model.messTltPrc ?? "")\n\(model.messTltCmpl ?? "")",
+        //                                 descriptionFirstLabelText: model.subMessTlt ?? "",
+        //                                 descriptionSecondLabelText: "\(model.subMessTxtOne ?? "")\n\(model.subMessTxtTwo ?? "")\n\(model.subMessTxtThree ?? "")",
+        //                                 descriptionLowLabelText: model.messSbtlt ?? "",
+        //                                 goButtonText: model.messBtn)
+        alert = CustomAlertView(iconName: alertModel.messIcon,
+                                titleLabelText: alertModel.messTlt,
+                                descriptionFirstLabelText: alertModel.subMessTlt ?? "",
+                                descriptionSecondLabelText: alertModel.subMessTxt ?? "",
+                                descriptionLowLabelText: alertModel.messSbtlt ?? "",
+                                goButtonText: alertModel.messBtn)
+        
         titleLabel.text = titleText
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
@@ -101,7 +110,7 @@ final class NewAnimationTwoViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalToSuperview().inset(32)
         }
-
+        
         scrollView.backgroundColor = .white
         scrollView.layer.cornerRadius = 20
         scrollView.isScrollEnabled = false
@@ -112,7 +121,7 @@ final class NewAnimationTwoViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
             make.horizontalEdges.equalToSuperview().inset(32)
         }
-
+        
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.alignment = .fill
@@ -137,7 +146,7 @@ final class NewAnimationTwoViewController: UIViewController {
         dimmView.alpha = 0
         alert.alpha = 0
     }
-
+    
     private func startProgress() {
         let randomInterval = Double.random(in: 0.4...1.3)
         
@@ -160,12 +169,12 @@ final class NewAnimationTwoViewController: UIViewController {
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm:ss"
             let timeString = formatter.string(from: Date())
-            let fullText = "[\(timeString)] \(model.strigs[labelCount].name)"
+            let fullText = "[\(timeString)] \(model.strigs?[labelCount].name ?? "")"
             let attributedString = NSMutableAttributedString(string: fullText)
             let timeRange = NSRange(location: 0, length: "[\(timeString)]".count)
             attributedString.addAttribute(.foregroundColor, value: defaultGray, range: timeRange)
-            let messageRange = NSRange(location: timeRange.length + 1, length: model.strigs[labelCount].name.count)
-            let messageColor: UIColor = model.strigs[labelCount].color?.contains("red") == true ? redColor : defaultColor
+            let messageRange = NSRange(location: timeRange.length + 1, length: model.strigs?[labelCount].name.count ?? 0)
+            let messageColor: UIColor = model.strigs?[labelCount].color?.contains("red") == true ? redColor : defaultColor
             attributedString.addAttribute(.foregroundColor, value: messageColor, range: messageRange)
             label.attributedText = attributedString
             label.font = .systemFont(ofSize: UIDevice.current.userInterfaceIdiom == .pad ? 18 : 15, weight: .medium)
@@ -173,11 +182,11 @@ final class NewAnimationTwoViewController: UIViewController {
             labelCount += 1
             
             stackView.addArrangedSubview(label)
-
+            
             UIView.animate(withDuration: 0.3) {
                 label.alpha = 1.0
             }
-
+            
             scrollView.layoutIfNeeded()
             let contentHeight = scrollView.contentSize.height
             let visibleHeight = scrollView.bounds.height
@@ -186,7 +195,7 @@ final class NewAnimationTwoViewController: UIViewController {
                 scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: false)
             }
             
-            localCounter += model.strigs[labelCount].color?.contains("red") == true ? 1 : 0
+            localCounter += model.strigs?[labelCount].color?.contains("red") == true ? 1 : 0
             
             if localCounter < 3 {
                 self.globalCounter = localCounter
@@ -200,7 +209,7 @@ final class NewAnimationTwoViewController: UIViewController {
             showCustomAlert()
         }
     }
-
+    
     private func showCustomAlert() {
         UIView.animate(withDuration: 0.2) {
             self.dimmView.alpha = 1

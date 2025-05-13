@@ -5,6 +5,7 @@ import ScreenShield
 public protocol SpecialAnimationDelegate: AnyObject {
     func buttonTapped(isResult: Bool)
     func eventsFunc(event: EventsName)
+    func scanButtonTapped()
 }
 
 public class SpecialAnimationFourViewController: UIViewController {
@@ -20,10 +21,12 @@ public class SpecialAnimationFourViewController: UIViewController {
     
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
     
-    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate, rScreen: Int) {
         self.model = model
         self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,7 +34,7 @@ public class SpecialAnimationFourViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,7 +61,7 @@ public class SpecialAnimationFourViewController: UIViewController {
         delegate?.eventsFunc(event: .specialOffer4Show)
         navigationController?.navigationBar.isHidden = true
     }
- 
+    
     private func setupUI() {
         view.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 247/255, alpha: 1)
         
@@ -137,7 +140,7 @@ public class SpecialAnimationFourViewController: UIViewController {
             make.top.equalToSuperview().offset(10)
             make.leading.trailing.equalToSuperview()
         }
-                
+        
         tableView.snp.makeConstraints { make in
             make.top.equalTo(topLabel.snp.bottom)
             make.leading.trailing.equalToSuperview()
@@ -160,11 +163,15 @@ public class SpecialAnimationFourViewController: UIViewController {
     
     public func goToResult(isPaid: Bool) {
         delegate?.eventsFunc(event: .specialOffer4Hide)
+        
         DispatchQueue.main.async {
-//            let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: nil)
-            let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
-            
-            self.navigationController?.pushViewController(vc, animated: true)
+            if self.rScreen == 2 {
+                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     
@@ -179,17 +186,17 @@ public class SpecialAnimationFourViewController: UIViewController {
             case 0:
                 self.delegate?.buttonTapped(isResult: false)
                 return
-
+                
             case 1:
-                vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, delegate: self.delegate)
+                vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, isFromRsult: false, delegate: self.delegate)
             case 2:
-                vc = NewAnimationTwoViewController(model: gap.objecs[1], title: gap.title, delegate: self.delegate)
+                vc = NewAnimationTwoViewController(model: gap.objecs[1], alertModel: gap.objecs[0], title: gap.title, delegate: self.delegate)
             case 3:
-                vc = NewAnimationThreeViewController(model: gap.objecs[2], title: gap.title, delegate: self.delegate)
+                vc = NewAnimationThreeViewController(model: gap.objecs[2], alertModel: gap.objecs[0], title: gap.title, delegate: self.delegate)
             case 4:
-                vc = NewAnimationFourViewController(model: gap.objecs[3], title: gap.titleTwo, delegate: self.delegate)
+                vc = NewAnimationFourViewController(model: gap.objecs[3], alertModel: gap.objecs[0], title: gap.titleTwo, delegate: self.delegate)
             default:
-                vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, delegate: self.delegate)
+                vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, isFromRsult: false, delegate: self.delegate)
             }
             
             self.navigationController?.pushViewController(vc, animated: true)
@@ -209,11 +216,11 @@ extension SpecialAnimationFourViewController: UITableViewDataSource, UITableView
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let leftLabel = UILabel()

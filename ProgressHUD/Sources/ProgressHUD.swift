@@ -96,15 +96,15 @@ extension ProgressHUD {
         let vc: UIViewController
         
         switch gap.orderIndex {
- 
+            
         case 1:
-            vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, delegate: delegate)
+            vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, isFromRsult: false, delegate: delegate)
         case 2:
-            vc = NewAnimationTwoViewController(model: gap.objecs[1], title: gap.title, delegate: delegate)
+            vc = NewAnimationTwoViewController(model: gap.objecs[1], alertModel: gap.objecs[0], title: gap.title, delegate: delegate)
         case 3:
-            vc = NewAnimationThreeViewController(model: gap.objecs[2], title: gap.title, delegate: delegate)
+            vc = NewAnimationThreeViewController(model: gap.objecs[2], alertModel: gap.objecs[0], title: gap.title, delegate: delegate)
         case 4:
-            vc = NewAnimationFourViewController(model: gap.objecs[3], title: gap.titleTwo, delegate: delegate)
+            vc = NewAnimationFourViewController(model: gap.objecs[3], alertModel: gap.objecs[0], title: gap.titleTwo, delegate: delegate)
         default:
             return nil
         }

@@ -25,8 +25,10 @@ final class NewAnimationFourViewController: UIViewController {
         return view
     }()
     
-    private var alert: CustomAlertViewFour!
+    //    private var alert: CustomAlertViewFour!
+    private var alert: CustomAlertView!
     private var model: Objec!
+    private var alertModel: Objec!
     private var myCount = 20
     private var titleText = ""
     private var timer: Timer?
@@ -35,7 +37,7 @@ final class NewAnimationFourViewController: UIViewController {
     private let redColor = UIColor(red: 255/255, green: 57/255, blue: 39/255, alpha: 1)
     private let defaultColor = UIColor(red: 36/255, green: 36/255, blue: 36/255, alpha: 1)
     private let defaultGray = UIColor.init(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
-
+    
     private var isAnimating = false
     
     weak var delegate: SpecialAnimationDelegate?
@@ -65,10 +67,11 @@ final class NewAnimationFourViewController: UIViewController {
         self.delegate?.eventsFunc(event: .scan4Hide)
     }
     
-    init(model: Objec, title: String, delegate: SpecialAnimationDelegate?) {
+    init(model: Objec, alertModel: Objec, title: String, delegate: SpecialAnimationDelegate?) {
         self.model = model
+        self.alertModel = alertModel
         self.titleText = title
-        self.myCount = model.strigs.count
+        self.myCount = model.strigs?.count ?? 20
         self.delegate = delegate
         
         super.init(nibName: nil, bundle: nil)
@@ -81,11 +84,17 @@ final class NewAnimationFourViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
         progressView = TopProgressView(text: model.prgrsTitle)
-        alert = CustomAlertViewFour(iconName: model.messIcon,
-                                 titleLabelText: model.messTlt,
-                                 descriptionFirstLabelText: model.messTltCmpl ?? "",
-                                 descriptionLowLabelText: model.messSbtlt,
-                                 goButtonText: model.messBtn, strArray: model.messTltRed ?? [""])
+        //        alert = CustomAlertViewFour(iconName: model.messIcon,
+        //                                 titleLabelText: model.messTlt,
+        //                                 descriptionFirstLabelText: model.messTltCmpl ?? "",
+        //                                 descriptionLowLabelText: model.messSbtlt ?? "",
+        //                                 goButtonText: model.messBtn, strArray: model.messTltRed ?? [""])
+        alert = CustomAlertView(iconName: alertModel.messIcon,
+                                titleLabelText: alertModel.messTlt,
+                                descriptionFirstLabelText: alertModel.subMessTlt ?? "",
+                                descriptionSecondLabelText: alertModel.subMessTxt ?? "",
+                                descriptionLowLabelText: alertModel.messSbtlt ?? "",
+                                goButtonText: alertModel.messBtn)
         titleLabel.text = titleText
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
@@ -98,7 +107,7 @@ final class NewAnimationFourViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalToSuperview().inset(32)
         }
-
+        
         scrollView.backgroundColor = .clear
         scrollView.layer.cornerRadius = 20
         scrollView.isScrollEnabled = false
@@ -109,7 +118,7 @@ final class NewAnimationFourViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.horizontalEdges.equalToSuperview().inset(32)
         }
-
+        
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.alignment = .fill
@@ -134,7 +143,7 @@ final class NewAnimationFourViewController: UIViewController {
         dimmView.alpha = 0
         alert.alpha = 0
     }
-
+    
     private func startProgress() {
         let randomInterval = Double.random(in: 0.4...1.3)
         
@@ -154,18 +163,18 @@ final class NewAnimationFourViewController: UIViewController {
             
             progress += 1.0 / Float(myCount)
             progressView.setProgressValue(progress: progress)
-
+            
             let niceAddText = makeNiceStr(str: model.strigsSubtlt ?? "", num: labelCount + 1)
-            let boxView = LongBoxView(titleText: model.strigs[labelCount].name,
+            let boxView = LongBoxView(titleText: model.strigs?[labelCount].name ?? "",
                                       subtitleText: niceAddText,
                                       addText: model.strigsTlt ?? "",
                                       addRes: model.strigsRes ?? "",
-                                      iconName: model.strigs[labelCount].icn ?? "")
-
+                                      iconName: model.strigs?[labelCount].icn ?? "")
+            
             boxView.alpha = 0.0
             labelCount += 1
             stackView.insertArrangedSubview(boxView, at: 0)
-
+            
             UIView.animate(withDuration: 0.3, animations: {
                 boxView.alpha = 1.0
             }) { _ in
@@ -197,7 +206,7 @@ final class NewAnimationFourViewController: UIViewController {
         
         return modifiedString
     }
-
+    
     private func showCustomAlert() {
         UIView.animate(withDuration: 0.2) {
             self.dimmView.alpha = 1
