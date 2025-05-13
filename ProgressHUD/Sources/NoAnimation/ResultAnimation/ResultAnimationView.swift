@@ -12,7 +12,7 @@ protocol InstanceFromNibProtocol {
 extension InstanceFromNibProtocol {
     static func instanceFromNib() -> InstanceFromNibType {
         let loadedNib = Bundle.module.loadNibNamed(InstanceFromNibType.className, owner: self, options: nil)
-        
+
         return loadedNib?.first as! InstanceFromNibType
     }
 }
@@ -27,7 +27,7 @@ extension UIView {
     }
 }
 
-class ResultAnimationView: UIView, InstanceFromNibProtocol {
+final class ResultAnimationView: UIView, InstanceFromNibProtocol {
     typealias InstanceFromNibType = ResultAnimationView
     
     private let isSmallDevice = UIScreen.main.nativeBounds.height <= 1334
@@ -67,7 +67,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
     private var progress: Float = 0
     @IBOutlet weak var circularProgress: CircularProgressView!
     private let statsViewButton = CustomStatsButton()
-    
+
     private var timer: Timer?
     var timerBzz: Timer?
     
@@ -330,16 +330,5 @@ final class Storage {
     
     static var isAllFeaturesEnabled: Bool {
         featuresStates.values.allSatisfy { $0 == true }
-    }
-    
-    static var isMscActive: Bool? {
-        get {
-            let castedValue = UserDefaults.standard.object(forKey: "isMscActive")
-            
-            return castedValue as? Bool
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "isMscActive")
-        }
     }
 }
