@@ -78,7 +78,7 @@
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXz-fu-YBY">
-                    <rect key="frame" x="15" y="478" width="363" height="335"/>
+                    <rect key="frame" x="15" y="449.33333333333326" width="363" height="335"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="335" id="LP8-Su-Bej"/>
@@ -102,8 +102,8 @@
                 <constraint firstItem="M8q-mZ-RbB" firstAttribute="top" secondItem="i8c-U7-kK8" secondAttribute="top" id="Wdi-Ad-2v9"/>
                 <constraint firstItem="db2-Td-X2z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="XSj-RM-MAM"/>
                 <constraint firstItem="i8c-U7-kK8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bfM-4k-8lp"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RXz-fu-YBY" secondAttribute="bottom" constant="5" id="e6h-hL-KSq"/>
-                <constraint firstItem="RXz-fu-YBY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i8c-U7-kK8" secondAttribute="bottom" constant="10" id="ecC-ik-vKs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="RXz-fu-YBY" secondAttribute="bottom" constant="5" id="e6h-hL-KSq"/>
+                <constraint firstItem="RXz-fu-YBY" firstAttribute="top" secondItem="i8c-U7-kK8" secondAttribute="bottom" constant="10" id="ecC-ik-vKs"/>
                 <constraint firstItem="ceT-sZ-e7r" firstAttribute="trailing" secondItem="i8c-U7-kK8" secondAttribute="trailing" constant="-30" id="f4r-Ce-277"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RXz-fu-YBY" secondAttribute="trailing" constant="15" id="fIG-CN-Uq1"/>
                 <constraint firstItem="M8q-mZ-RbB" firstAttribute="bottom" secondItem="i8c-U7-kK8" secondAttribute="bottom" id="hzT-xP-iR3"/>
