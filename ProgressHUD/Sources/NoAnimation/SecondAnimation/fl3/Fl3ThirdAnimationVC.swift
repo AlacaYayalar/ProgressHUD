@@ -124,10 +124,14 @@ public final class Fl3ThirdAnimationVC: UIViewController {
     }()
     
     public var model: AuthorizationOfferModel?
+    weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
 
     // MARK: - Lifecycle
-    public init(_ model: AuthorizationOfferModel? = nil) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, rScreen: Int) {
         self.model = model
+        self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -241,7 +245,7 @@ public final class Fl3ThirdAnimationVC: UIViewController {
     // MARK: - Actions
 
     @objc private func secureMyAccountButtonTapped() {
-        let purchaseVC = Fl3FourthAnimationVC(model)
+        let purchaseVC = Fl3FourthAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
         
         navigationController?.pushViewController(purchaseVC, animated: true)
     }

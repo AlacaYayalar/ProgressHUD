@@ -55,12 +55,17 @@ public final class Fl1FourthAnimationVC: UIViewController {
     private var currentProgress: Float = 0.0
     private let totalDuration: TimeInterval = 5.0 // Simulate for 5 seconds
     private let isFromFirst: Bool
+    
     public var model: AuthorizationOfferModel?
+    weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
 
     // MARK: - Lifecycle
-    init(_ model: AuthorizationOfferModel? = nil, isFromFirst: Bool) {
+    init(_ model: AuthorizationOfferModel? = nil, isFromFirst: Bool, delegate: SpecialAnimationDelegate?, rScreen: Int) {
         self.model = model
         self.isFromFirst = isFromFirst
+        self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }

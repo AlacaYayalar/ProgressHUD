@@ -55,10 +55,14 @@ public final class Fl3FirstAnimationVC: UIViewController {
     private let totalDuration: TimeInterval = 1
     
     public var model: AuthorizationOfferModel?
+    weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
 
     // MARK: - Lifecycle
-    public init(_ model: AuthorizationOfferModel? = nil) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate, rScreen: Int) {
         self.model = model
+        self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -159,7 +163,7 @@ public final class Fl3FirstAnimationVC: UIViewController {
 
     private func navigateToNextScreen() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            let alertVC = Fl3SecondAnimationVC(self.model)
+            let alertVC = Fl3SecondAnimationVC(self.model, delegate: self.delegate, rScreen: self.rScreen)
             
             if let navController = self.navigationController {
                 navController.pushViewController(alertVC, animated: true)

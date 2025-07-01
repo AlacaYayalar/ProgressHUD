@@ -126,10 +126,14 @@ public final class Fl3FourthAnimationVC: UIViewController {
     private var selectedOption: Fl3FourthAnimationHelpView?
     
     public var model: AuthorizationOfferModel?
+    weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
 
     // MARK: - Lifecycle
-    public init(_ model: AuthorizationOfferModel? = nil) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, rScreen: Int) {
         self.model = model
+        self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -248,7 +252,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
             return
         }
         
-        let successVC = Fl3FifthAnimationVC(model)
+        let successVC = Fl3FifthAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
 
         navigationController?.pushViewController(successVC, animated: true)
     }

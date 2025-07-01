@@ -82,11 +82,15 @@ public final class Fl1ThirdAnimationVC: UIViewController {
     }()
     
     public var model: AuthorizationOfferModel?
+    weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
 
     // MARK: - Lifecycle
     
-    public init(_ model: AuthorizationOfferModel? = nil) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, rScreen: Int) {
         self.model = model
+        self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -189,7 +193,7 @@ public final class Fl1ThirdAnimationVC: UIViewController {
         let purchaseSucceeded = Bool.random()
 
         if purchaseSucceeded {
-            let successVC = Fl1FourthAnimationVC(isFromFirst: true)
+            let successVC = Fl1FourthAnimationVC(model, isFromFirst: true, delegate: self.delegate, rScreen: rScreen)
 
             navigationController?.pushViewController(successVC, animated: true)
         } else {

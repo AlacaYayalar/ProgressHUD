@@ -78,10 +78,14 @@ public final class Fl3SecondAnimationVC: UIViewController {
     private var wasNavigationBarHidden: Bool?
     
     public var model: AuthorizationOfferModel?
+    weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
 
     // MARK: - Lifecycle
-    public init(_ model: AuthorizationOfferModel? = nil) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, rScreen: Int) {
         self.model = model
+        self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -186,7 +190,7 @@ public final class Fl3SecondAnimationVC: UIViewController {
     // MARK: - Actions
 
     @objc private func viewDetailsButtonTapped() {
-        let detailVC = Fl3ThirdAnimationVC(model)
+        let detailVC = Fl3ThirdAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
 
         navigationController?.pushViewController(detailVC, animated: true)
     }

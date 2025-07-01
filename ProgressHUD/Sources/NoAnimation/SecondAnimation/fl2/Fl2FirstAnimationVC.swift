@@ -66,11 +66,15 @@ public final class Fl2FirstAnimationVC: UIViewController {
     private var scanningSteps: [(imageName: URL, statusText: String)] = []
     
     public var model: AuthorizationOfferModel?
+    weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
     
     // MARK: - Lifecycle
     
-    public init(_ model: AuthorizationOfferModel? = nil) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate, rScreen: Int) {
         self.model = model
+        self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -222,7 +226,7 @@ public final class Fl2FirstAnimationVC: UIViewController {
     }
     
     private func showFinish() {
-        let vc = Fl2SecondAnimationVC(model)
+        let vc = Fl2SecondAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
         
         navigationController?.pushViewController(vc, animated: true)
     }
