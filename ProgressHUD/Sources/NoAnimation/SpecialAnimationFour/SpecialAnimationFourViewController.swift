@@ -169,8 +169,8 @@ public class SpecialAnimationFourViewController: UIViewController {
                 let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
-                let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
-                self.navigationController?.pushViewController(vc, animated: true)
+//                let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
+//                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
@@ -189,12 +189,12 @@ public class SpecialAnimationFourViewController: UIViewController {
                 
             case 1:
                 vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, isFromRsult: false, delegate: self.delegate)
-            case 2:
-                vc = NewAnimationTwoViewController(model: gap.objecs[1], alertModel: gap.objecs[0], title: gap.title, delegate: self.delegate)
-            case 3:
-                vc = NewAnimationThreeViewController(model: gap.objecs[2], alertModel: gap.objecs[0], title: gap.title, delegate: self.delegate)
-            case 4:
-                vc = NewAnimationFourViewController(model: gap.objecs[3], alertModel: gap.objecs[0], title: gap.titleTwo, delegate: self.delegate)
+//            case 2:
+//                vc = NewAnimationTwoViewController(model: gap.objecs[1], alertModel: gap.objecs[0], title: gap.title, delegate: self.delegate)
+//            case 3:
+//                vc = NewAnimationThreeViewController(model: gap.objecs[2], alertModel: gap.objecs[0], title: gap.title, delegate: self.delegate)
+//            case 4:
+//                vc = NewAnimationFourViewController(model: gap.objecs[3], alertModel: gap.objecs[0], title: gap.titleTwo, delegate: self.delegate)
             default:
                 vc = NewAnimationOneViewController(model: gap.objecs[0], title: gap.title, isFromRsult: false, delegate: self.delegate)
             }

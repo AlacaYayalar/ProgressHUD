@@ -208,3 +208,39 @@ final class NewAnimationOneViewController: UIViewController {
         }
     }
 }
+
+func localizeText(forKey key: KeyForLocale) -> String {
+    let bundle = Bundle.module
+    
+    var result = bundle.localizedString(
+        forKey: key.rawValue,
+        value: nil,
+        table: nil
+    )
+    
+    if result == key.rawValue {
+        result = Bundle.module.localizedString(
+            forKey: key.rawValue,
+            value: nil,
+            table: "Localizable"
+        )
+    }
+    
+    return result
+}
+//
+enum KeyForLocale: String  {
+    case now
+    case subsOff
+    case subsOn
+    case subsPrice
+    case subsTitle
+    case subsSub
+    case subsCancel
+    case subsBuy
+    case subsDis
+    case subsActive
+    case alertText
+    case okTitle
+    case cancelTitle
+}
