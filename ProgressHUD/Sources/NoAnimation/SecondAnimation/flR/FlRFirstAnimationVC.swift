@@ -128,13 +128,13 @@ public final class FlRFirstAnimationVC: UIViewController {
     
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
-    public var rScreen: Int
+    public var isPaid: Bool?
 
     // MARK: - Lifecycle
-    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, rScreen: Int) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, isPaid: Bool) {
         self.model = model
         self.delegate = delegate
-        self.rScreen = rScreen
+        self.isPaid = isPaid
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -293,7 +293,7 @@ public final class FlRFirstAnimationVC: UIViewController {
     }
     
     @objc private func spamProtectionTapped() {
-        let nextVC = FlRSecondAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
+        let nextVC = FlRSecondAnimationVC(model, delegate: self.delegate)
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }

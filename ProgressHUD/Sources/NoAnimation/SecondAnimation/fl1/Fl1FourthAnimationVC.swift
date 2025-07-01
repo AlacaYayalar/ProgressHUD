@@ -175,7 +175,7 @@ public final class Fl1FourthAnimationVC: UIViewController {
 
     private func navigateToCompletionScreen() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let deviceSecureVC = Fl1FifthAnimationVC(self.model, isFromFirst: self.isFromFirst)
+            let deviceSecureVC = Fl1FifthAnimationVC(self.model, isFromFirst: self.isFromFirst, delegate: self.delegate, rScreen: self.rScreen)
             
             self.navigationController?.pushViewController(deviceSecureVC, animated: true)
         }

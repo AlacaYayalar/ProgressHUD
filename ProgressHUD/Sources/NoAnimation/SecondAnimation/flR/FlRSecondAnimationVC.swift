@@ -82,13 +82,11 @@ public final class FlRSecondAnimationVC: UIViewController {
     
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
-    public var rScreen: Int
 
     // MARK: - Lifecycle
-    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, rScreen: Int) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?) {
         self.model = model
         self.delegate = delegate
-        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }

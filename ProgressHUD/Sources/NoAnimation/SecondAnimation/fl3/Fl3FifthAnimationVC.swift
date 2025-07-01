@@ -202,9 +202,23 @@ public final class Fl3FifthAnimationVC: UIViewController {
 //            self.dismiss(animated: true, completion: nil)
 //        }
         
-        let vc = FlRFirstAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
+//        let vc = FlRFirstAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
+//        
+//        self.navigationController?.pushViewController(vc, animated: true)
         
-        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    public func goToResult(isPaid: Bool) {
+        DispatchQueue.main.async {
+            if self.rScreen == 2 {
+                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = FlRFirstAnimationVC(self.model, delegate: self.delegate, isPaid: isPaid)
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

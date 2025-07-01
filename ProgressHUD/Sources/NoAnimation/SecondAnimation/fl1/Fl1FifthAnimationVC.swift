@@ -88,12 +88,16 @@ public final class Fl1FifthAnimationVC: UIViewController {
     
     private let isFromFirst: Bool
     public var model: AuthorizationOfferModel?
+    weak var delegate: SpecialAnimationDelegate?
+    public var rScreen: Int
 
     // MARK: - Lifecycle
     
-    init(_ model: AuthorizationOfferModel? = nil, isFromFirst: Bool) {
+    init(_ model: AuthorizationOfferModel? = nil, isFromFirst: Bool, delegate: SpecialAnimationDelegate?, rScreen: Int) {
         self.model = model
         self.isFromFirst = isFromFirst
+        self.delegate = delegate
+        self.rScreen = rScreen
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -214,6 +218,19 @@ public final class Fl1FifthAnimationVC: UIViewController {
 
     @objc private func startNewScanTapped() {
         print("Start a new scan tapped")
+    }
+    
+    public func goToResult(isPaid: Bool) {
+        DispatchQueue.main.async {
+            if self.rScreen == 2 {
+                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = FlRFirstAnimationVC(self.model, delegate: self.delegate, isPaid: isPaid)
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
 }
 
