@@ -173,5 +173,16 @@ public final class Fl3FirstAnimationVC: UIViewController {
             }
         }
     }
+    
+    public func goToNext(isPaid: Bool) {
+        if let viewControllers = navigationController?.viewControllers {
+            for vc in viewControllers {
+                if let thirdVC = vc as? Fl3FourthAnimationVC {
+                    thirdVC.goToNext(isPaid: isPaid)
+                    break
+                }
+            }
+        }
+    }
 }
 

@@ -205,4 +205,16 @@ public final class Fl1ThirdAnimationVC: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    public func goToNext(isPaid: Bool) {
+//        DispatchQueue.main.async {
+//            if self.rScreen == 2 {
+//                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            } else {
+////                let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
+////                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
+    }
 }

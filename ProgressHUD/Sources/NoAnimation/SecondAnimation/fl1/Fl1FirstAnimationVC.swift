@@ -251,5 +251,16 @@ public final class Fl1FirstAnimationVC: UIViewController {
         let stepData = scanningSteps[step]
         statusLabel.text = stepData.statusText
     }
+    
+    public func goToNext(isPaid: Bool) {
+        if let viewControllers = navigationController?.viewControllers {
+            for vc in viewControllers {
+                if let thirdVC = vc as? Fl1ThirdAnimationVC {
+                    thirdVC.goToNext(isPaid: isPaid)
+                    break
+                }
+            }
+        }
+    }
 }
 

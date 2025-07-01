@@ -290,6 +290,16 @@ public final class Fl2FirstAnimationVC: UIViewController {
         }
     }
 
+    public func goToNext(isPaid: Bool) {        
+        if let viewControllers = navigationController?.viewControllers {
+            for vc in viewControllers {
+                if let thirdVC = vc as? Fl2SecondAnimationVC {
+                    thirdVC.goToNext(isPaid: isPaid)
+                    break
+                }
+            }
+        }
+    }
 }
 
 

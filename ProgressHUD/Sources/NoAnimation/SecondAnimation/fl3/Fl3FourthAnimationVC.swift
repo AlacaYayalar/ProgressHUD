@@ -269,4 +269,16 @@ public final class Fl3FourthAnimationVC: UIViewController {
             cancelButton.layer.shadowColor = UIColor.black.cgColor
         }
     }
+    
+    public func goToNext(isPaid: Bool) {
+//        DispatchQueue.main.async {
+//            if self.rScreen == 2 {
+//                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            } else {
+////                let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
+////                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
+    }
 }
