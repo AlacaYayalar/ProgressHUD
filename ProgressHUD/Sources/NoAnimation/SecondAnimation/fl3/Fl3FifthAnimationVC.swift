@@ -206,9 +206,10 @@ public final class Fl3FifthAnimationVC: UIViewController {
 //        
 //        self.navigationController?.pushViewController(vc, animated: true)
         
+        goToResult(isPaid: true)
     }
     
-    public func goToResult(isPaid: Bool) {
+    private func goToResult(isPaid: Bool) {
         DispatchQueue.main.async {
             if self.rScreen == 2 {
                 let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)

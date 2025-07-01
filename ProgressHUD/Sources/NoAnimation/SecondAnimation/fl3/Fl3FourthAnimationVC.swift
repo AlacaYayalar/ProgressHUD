@@ -251,10 +251,12 @@ public final class Fl3FourthAnimationVC: UIViewController {
             print("No option selected")
             return
         }
+//        
+//        let successVC = Fl3FifthAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
+//
+//        navigationController?.pushViewController(successVC, animated: true)
         
-        let successVC = Fl3FifthAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
-
-        navigationController?.pushViewController(successVC, animated: true)
+        self.delegate?.buttonTapped(isResult: false)
     }
 
     @objc private func cancelTapped() {
@@ -271,14 +273,13 @@ public final class Fl3FourthAnimationVC: UIViewController {
     }
     
     public func goToNext(isPaid: Bool) {
-//        DispatchQueue.main.async {
-//            if self.rScreen == 2 {
-//                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            } else {
-////                let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
-////                self.navigationController?.pushViewController(vc, animated: true)
-//            }
-//        }
+        if isPaid {
+            let successVC = Fl3FifthAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
+
+            navigationController?.pushViewController(successVC, animated: true)
+        } else {
+            let resultVC = FlRFirstAnimationVC(model, delegate: delegate, isPaid: false)
+            navigationController?.pushViewController(resultVC, animated: true)
+        }
     }
 }

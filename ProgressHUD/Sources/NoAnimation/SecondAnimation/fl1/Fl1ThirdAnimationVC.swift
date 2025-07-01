@@ -190,31 +190,32 @@ public final class Fl1ThirdAnimationVC: UIViewController {
     // MARK: - Actions
 
     @objc private func activateButtonTapped() {
-        let purchaseSucceeded = Bool.random()
-
-        if purchaseSucceeded {
+//        let purchaseSucceeded = Bool.random()
+//
+//        if purchaseSucceeded {
+//            let successVC = Fl1FourthAnimationVC(model, isFromFirst: true, delegate: self.delegate, rScreen: rScreen)
+//
+//            navigationController?.pushViewController(successVC, animated: true)
+//        } else {
+//            let alert = UIAlertController(title: "Activation Failed",
+//                                      message: "The security activation could not be completed at this time. Please try again later.",
+//                                      preferredStyle: .alert)
+//            
+//            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//        }
+        
+        self.delegate?.buttonTapped(isResult: false)
+    }
+    
+    public func goToNext(isPaid: Bool) {
+        if isPaid {
             let successVC = Fl1FourthAnimationVC(model, isFromFirst: true, delegate: self.delegate, rScreen: rScreen)
 
             navigationController?.pushViewController(successVC, animated: true)
         } else {
-            let alert = UIAlertController(title: "Activation Failed",
-                                      message: "The security activation could not be completed at this time. Please try again later.",
-                                      preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            let resultVC = FlRFirstAnimationVC(model, delegate: delegate, isPaid: false)
+            navigationController?.pushViewController(resultVC, animated: true)
         }
-    }
-    
-    public func goToNext(isPaid: Bool) {
-//        DispatchQueue.main.async {
-//            if self.rScreen == 2 {
-//                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            } else {
-////                let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
-////                self.navigationController?.pushViewController(vc, animated: true)
-//            }
-//        }
     }
 }
