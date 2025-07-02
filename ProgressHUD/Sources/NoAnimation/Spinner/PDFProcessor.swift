@@ -22,21 +22,19 @@ public struct PDFProcessor: ImageProcessor {
             let pageRect = page.bounds(for: .cropBox)
             let scale: CGFloat = UIScreen.main.scale
             let size = CGSize(width: pageRect.width * scale, height: pageRect.height * scale)
-            
+
             let renderer = UIGraphicsImageRenderer(size: size)
             let image = renderer.image { ctx in
-                let rotationAngle = page.rotation
                 ctx.cgContext.setFillColor(UIColor.clear.cgColor)
                 ctx.cgContext.fill(CGRect(origin: .zero, size: size))
                 
                 ctx.cgContext.saveGState()
                 
-                // Применяем масштаб
                 ctx.cgContext.scaleBy(x: scale, y: scale)
                 
-                // Центрируем и вращаем
+                let angle = CGFloat(page.rotation) * .pi / 180
                 ctx.cgContext.translateBy(x: pageRect.width / 2, y: pageRect.height / 2)
-                ctx.cgContext.rotate(by: CGFloat(rotationAngle) * .pi / 180)
+                ctx.cgContext.rotate(by: angle)
                 ctx.cgContext.translateBy(x: -pageRect.width / 2, y: -pageRect.height / 2)
                 
                 page.draw(with: .cropBox, to: ctx.cgContext)
