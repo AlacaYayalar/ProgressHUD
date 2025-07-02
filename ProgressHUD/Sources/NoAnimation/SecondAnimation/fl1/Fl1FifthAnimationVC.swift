@@ -40,6 +40,11 @@ public final class Fl1FifthAnimationVC: UIViewController {
         view.backgroundColor = UIColor(resource: .localContainer)
         view.layer.cornerRadius = 16
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.shadowColor = UIColor(resource: .localContainerShadow).cgColor
+        view.layer.shadowOpacity = 0.7
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        view.layer.shadowRadius = 12
+        view.clipsToBounds = false
         
         return view
     }()

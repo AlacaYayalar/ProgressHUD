@@ -31,11 +31,17 @@ public final class Fl3FifthAnimationVC: UIViewController {
         view.backgroundColor = UIColor(resource: .localContainer)
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 4
+//        view.layer.shadowColor = UIColor.black.cgColor
+//        view.layer.shadowOpacity = 0.1
+//        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        view.layer.shadowRadius = 4
         view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.layer.shadowColor = UIColor(resource: .localContainerShadow).cgColor
+        view.layer.shadowOpacity = 0.7
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        view.layer.shadowRadius = 12
+        view.clipsToBounds = false
         
         return view
     }()
