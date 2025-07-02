@@ -152,13 +152,17 @@ public final class Fl3FourthAnimationVC: UIViewController {
         setupUI()
         setupConstraints()
         
-        if let firstOption = purchaseOptions.first {
-            selectOption(firstOption)
-        }
+//        if let firstOption = purchaseOptions.first {
+//            selectOption(firstOption)
+//        }
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let firstOption = purchaseOptions.first {
+            selectOption(firstOption)
+        }
         
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
