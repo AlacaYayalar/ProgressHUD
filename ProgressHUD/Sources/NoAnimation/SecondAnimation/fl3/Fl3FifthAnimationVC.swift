@@ -28,7 +28,7 @@ public final class Fl3FifthAnimationVC: UIViewController {
     private let resultsContainerView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = UIColor(named: "localContainerColor") /*UIColor.localContainer*/
+        view.backgroundColor = UIColor(resource: .localContainer)
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
@@ -102,7 +102,7 @@ public final class Fl3FifthAnimationVC: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor(named: "localBGColor") /*UIColor.localBG*/
+        view.backgroundColor = UIColor(resource: .localBG)
         navigationItem.hidesBackButton = true
 
         setupUI()

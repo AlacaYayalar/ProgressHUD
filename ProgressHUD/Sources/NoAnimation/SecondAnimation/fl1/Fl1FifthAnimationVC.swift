@@ -37,7 +37,7 @@ public final class Fl1FifthAnimationVC: UIViewController {
     private let resultsContainerView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = UIColor(named: "localContainerColor") /*UIColor.localContainer*/
+        view.backgroundColor = UIColor(resource: .localContainer)
         view.layer.cornerRadius = 16
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -109,7 +109,7 @@ public final class Fl1FifthAnimationVC: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor(named: "localBGColor") /*UIColor.localBG*/
+        view.backgroundColor = UIColor(resource: .localBG)
 
         setupUI()
         setupConstraints()

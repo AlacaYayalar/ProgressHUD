@@ -37,10 +37,10 @@ public final class Fl2SecondAnimationVC: UIViewController {
     private let infoContainerView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = UIColor(named: "localContainerColor") /*.localContainer*/
+        view.backgroundColor = UIColor(resource: .localContainer)
         view.layer.cornerRadius = 16
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.shadowColor = UIColor(named: "localContainerShadowColor")?.cgColor /*UIColor.localContainerShadow.cgColor*/
+        view.layer.shadowColor = UIColor(resource: .localContainerShadow).cgColor
         view.layer.shadowOpacity = 0.7
         view.layer.shadowOffset = CGSize(width: 0, height: 4)
         view.layer.shadowRadius = 12
@@ -107,7 +107,7 @@ public final class Fl2SecondAnimationVC: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor(named: "localBGColor") /*UIColor.localBG*/
+        view.backgroundColor = UIColor(resource: .localBG)
 
         setupUI()
         setupConstraints()

@@ -145,7 +145,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(named: "localBGColor") /*UIColor.localBG*/
+        view.backgroundColor = UIColor(resource: .localBG)
         navigationItem.hidesBackButton = true
 
         setupUI()

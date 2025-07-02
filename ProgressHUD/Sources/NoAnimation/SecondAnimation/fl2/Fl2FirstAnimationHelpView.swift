@@ -36,11 +36,11 @@ public final class Fl2FirstAnimationHelpView: UIView {
     // MARK: - Setup
 
     private func setupView() {
-        backgroundColor = UIColor(named: "localContainerColor") /*.localContainer*/
+        backgroundColor = UIColor(resource: .localContainer)
         layer.cornerRadius = 15
         clipsToBounds = false
         
-        layer.shadowColor = UIColor(named: "localContainerShadowColor")?.cgColor /*UIColor.localContainerShadow.cgColor*/
+        layer.shadowColor = UIColor(resource: .localContainerShadow).cgColor /*UIColor.localContainerShadow.cgColor*/
         layer.shadowOpacity = 0.7
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.shadowRadius = 12
@@ -83,7 +83,7 @@ public final class Fl2FirstAnimationHelpView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
 
         let separator = UIView()
-        separator.backgroundColor = UIColor(named: "localSeporatorColor") /*.localSeporator*/
+        separator.backgroundColor = UIColor(resource: .localSeporator) 
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.isHidden = !showSeparator
 

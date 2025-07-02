@@ -6,7 +6,7 @@ public final class FlRSecondAnimationVC: UIViewController {
 
     private let topContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "resultContainerColor") /*.resultContainer*/
+        view.backgroundColor = UIColor(resource: .localContainer)
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
@@ -36,7 +36,7 @@ public final class FlRSecondAnimationVC: UIViewController {
 
     private let antiSpamContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "resultContainerColor") /*.resultContainer*/
+        view.backgroundColor = UIColor(resource: .resultContainer)
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
@@ -64,7 +64,7 @@ public final class FlRSecondAnimationVC: UIViewController {
     
     private let scanOptionsContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "resultContainerColor") /*.resultContainer*/
+        view.backgroundColor = UIColor(resource: .resultContainer)
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
@@ -98,7 +98,7 @@ public final class FlRSecondAnimationVC: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(named: "localBGColor") /*.localBG*/
+        view.backgroundColor = UIColor(resource: .localBG)
         setupInfo()
 //        setupUI()
         setupConstraints()
@@ -109,7 +109,7 @@ public final class FlRSecondAnimationVC: UIViewController {
 
         navigationController?.setNavigationBarHidden(false, animated: animated)
         navigationController?.navigationBar.backItem?.title = ""
-        navigationController?.navigationBar.tintColor = UIColor(named: "navItemColorCust") /*.navItemColorCust*/
+        navigationController?.navigationBar.tintColor = UIColor(resource: .navItemColorCust)
     }
 
     // MARK: - UI Setup

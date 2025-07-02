@@ -29,8 +29,8 @@ public final class Fl1FourthAnimationVC: UIViewController {
         let pv = UIProgressView(progressViewStyle: .default)
         
         pv.progress = 0.0
-        pv.progressTintColor = UIColor(named: "localProgressBlueColor") /*.localProgressBlue*/
-        pv.trackTintColor = UIColor(named: "localProgressBGColor") /*.localProgressBG*/
+        pv.progressTintColor = UIColor(resource: .localProgressBlue)
+        pv.trackTintColor = UIColor(resource: .localProgressBG)
         pv.layer.cornerRadius = 7
         pv.clipsToBounds = true
         pv.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +77,7 @@ public final class Fl1FourthAnimationVC: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(named: "localBGColor") /*UIColor.localBG*/
+        view.backgroundColor = UIColor(resource: .localBG)
 
         setupUI()
         setupConstraints()

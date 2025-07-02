@@ -27,7 +27,7 @@ public final class Fl3SecondAnimationVC: UIViewController {
     private let alertInfoContainerView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = UIColor(named: "localContainerColor") /*UIColor.localContainer*/
+        view.backgroundColor = UIColor(resource: .localContainer)
         view.layer.cornerRadius = 20
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = false // Important
@@ -97,7 +97,7 @@ public final class Fl3SecondAnimationVC: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(named: "localBGColor") /*UIColor.localBG*/
+        view.backgroundColor = UIColor(resource: .localBG)
 
         setupUI()
         setupConstraints()

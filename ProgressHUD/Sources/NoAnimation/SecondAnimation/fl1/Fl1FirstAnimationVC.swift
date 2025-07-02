@@ -18,7 +18,7 @@ public final class Fl1FirstAnimationVC: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: Constants.isIpad ? 48 : 30, weight: .bold)
-        label.textColor = UIColor(named: "localTitleColor") /*.localTitle*/
+        label.textColor = UIColor(resource: .localTitle)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -34,8 +34,8 @@ public final class Fl1FirstAnimationVC: UIViewController {
     
     private let progressView: UIProgressView = {
         let progress = UIProgressView(progressViewStyle: .default)
-        progress.progressTintColor = UIColor(named: "localProgressBlueColor") /*.localProgressBlue*/
-        progress.trackTintColor = UIColor(named: "localProgressBGColor") /*.localProgressBG*/
+        progress.progressTintColor = UIColor(resource: .localProgressBlue)
+        progress.trackTintColor = UIColor(resource: .localProgressBG)
         progress.layer.cornerRadius = 7
         progress.clipsToBounds = true
         progress.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ public final class Fl1FirstAnimationVC: UIViewController {
     private let statusLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = UIColor(named: "localSubtitleColor") /*.localSubtitle*/
+        label.textColor = UIColor(resource: .localSubtitle)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -53,8 +53,8 @@ public final class Fl1FirstAnimationVC: UIViewController {
     
     private let waitButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor(named: "localButtonColor") /*.localButton*/
-        button.setTitleColor(UIColor(named: "localButtonTextColor") /*.localButtonText*/, for: .normal)
+        button.backgroundColor = UIColor(resource: .localButton)
+        button.setTitleColor(UIColor(resource: .localButtonText), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: Constants.se3Screen ? (Constants.se1Screen ? 20 : 22) : 24, weight: .medium)
         button.isUserInteractionEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -131,7 +131,7 @@ public final class Fl1FirstAnimationVC: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = /*UIColor(named: "localBGColor")*/ UIColor(resource: .localBG)  /*.localBG*/
+        view.backgroundColor = UIColor(resource: .localBG)
         
         view.addSubview(titleLabel)
         view.addSubview(imageView)

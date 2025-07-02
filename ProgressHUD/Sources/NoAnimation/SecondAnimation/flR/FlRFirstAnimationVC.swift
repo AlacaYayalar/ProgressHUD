@@ -6,7 +6,7 @@ public final class FlRFirstAnimationVC: UIViewController {
     
     private let topContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "resultContainerColor") /*.resultContainer*/
+        view.backgroundColor = UIColor(resource: .resultContainer)
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = false // Important
         view.layer.shadowColor = UIColor.black.cgColor
@@ -46,7 +46,7 @@ public final class FlRFirstAnimationVC: UIViewController {
     
     private let spamProtectionContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "resultContainerColor") /*.resultContainer*/
+        view.backgroundColor = UIColor(resource: .resultContainer)
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = false // Important
         view.layer.shadowColor = UIColor.black.cgColor
@@ -82,7 +82,7 @@ public final class FlRFirstAnimationVC: UIViewController {
     
     private let realtimeProtectionContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "resultContainerColor") /*.resultContainer*/
+        view.backgroundColor = UIColor(resource: .resultContainer)
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = false // Important
         view.layer.shadowColor = UIColor.black.cgColor
@@ -146,7 +146,7 @@ public final class FlRFirstAnimationVC: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(named: "localBGColor") /*.localBG*/
+        view.backgroundColor = UIColor(resource: .localBG)
         setupUI()
         setupConstraints()
         setupActions()

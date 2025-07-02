@@ -18,7 +18,7 @@ public final class Fl3ThirdAnimationVC: UIViewController {
     private let topInfoContainerView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = UIColor(named: "localContainerColor")/*UIColor.localContainer*/
+        view.backgroundColor = UIColor(resource: .localContainer)
         view.layer.cornerRadius = 12
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = false
@@ -86,7 +86,7 @@ public final class Fl3ThirdAnimationVC: UIViewController {
     private let bottomInfoContainerView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = UIColor(named: "localContainerColor") /*UIColor.localContainer*/
+        view.backgroundColor = UIColor(resource: .localContainer)
         view.layer.cornerRadius = 20
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = false // Important
@@ -143,14 +143,14 @@ public final class Fl3ThirdAnimationVC: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(named: "localBGColor") /*UIColor.localBG*/
+        view.backgroundColor = UIColor(resource: .localBG)
 
         setupUI()
         setupConstraints()
         setupInfo()
         
         navigationController?.navigationBar.backItem?.title = ""
-        navigationController?.navigationBar.tintColor = UIColor(named: "navItemColorCust") /*.navItemColorCust*/
+        navigationController?.navigationBar.tintColor = UIColor(resource: .navItemColorCust)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
