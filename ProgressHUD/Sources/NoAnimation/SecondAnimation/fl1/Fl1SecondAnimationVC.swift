@@ -114,7 +114,7 @@ public final class Fl1SecondAnimationVC: UIViewController {
         let button = UIButton(type: .system)
         
         button.titleLabel?.font = .systemFont(ofSize: Constants.isIpad ? 24 : (Constants.se3Screen ? (Constants.se1Screen ? 16 : 16) : 18), weight: .medium)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = UIColor(resource: .localBlueButton)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 14
         button.translatesAutoresizingMaskIntoConstraints = false
