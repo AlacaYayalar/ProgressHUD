@@ -85,9 +85,10 @@ public final class Fl2FirstAnimationVC: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupInfo()
         setupUI()
         setupConstraints()
-        setupInfo()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -189,7 +190,7 @@ public final class Fl2FirstAnimationVC: UIViewController {
     
     private func startProgressAnimation() {
         // Заполняем по 1% каждые 0.03 секунды (3 секунд / 100% = 0.03 сек на 1%)
-        progressTimer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { [weak self] _ in
+        progressTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             
             self.currentProgress += 0.01 // +1%
