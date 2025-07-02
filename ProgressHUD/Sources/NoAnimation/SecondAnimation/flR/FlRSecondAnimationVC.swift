@@ -111,6 +111,12 @@ public final class FlRSecondAnimationVC: UIViewController {
         navigationController?.navigationBar.backItem?.title = ""
         navigationController?.navigationBar.tintColor = UIColor(resource: .navItemColorCust)
     }
+    
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
 
     // MARK: - UI Setup
     private func setupInfo() {
