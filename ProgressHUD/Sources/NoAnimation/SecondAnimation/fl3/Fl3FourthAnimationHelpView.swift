@@ -56,7 +56,7 @@ public final class Fl3FourthAnimationHelpView: UIView {
         self.titleLabel.text = title
         self.descriptionLabel.text = description
         self.isOptionSelected = isSelected
-        
+        self.model = model
         setupView()
         updateSelectionState()
         
