@@ -135,8 +135,13 @@ public final class Fl1FifthAnimationVC: UIViewController {
         
         guard let icon2URL = URL(string: isFromFirst ? (model?.flow1?.scr4_img ?? "") : (model?.flow2?.fl2_result_img ?? "")) else { return }
         
-//        checkmarkIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        checkmarkIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+
+        if isFromFirst {
+            checkmarkIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        } else {
+            checkmarkIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        }
+        
     }
 
     private func setupUI() {
