@@ -36,34 +36,52 @@ public final class Fl3FourthAnimationVC: UIViewController {
         return imageView
     }()
 
-    private lazy var option1View: Fl3FourthAnimationHelpView = {
-        let view = Fl3FourthAnimationHelpView(
-            title: "",
-            description: "",
-            isSelected: true
-        )
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.onTap = {
-            [weak self] in self?.selectOption(view)
-        }
-        
-        return view
-    }()
+//    private lazy var option1View: Fl3FourthAnimationHelpView = {
+//        let view = Fl3FourthAnimationHelpView(
+//            title: "",
+//            description: "",
+//            isSelected: true
+//        )
+//        
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.onTap = {
+//            [weak self] in self?.selectOption(view)
+//        }
+//        
+//        return view
+//    }()
+//
+//    private lazy var option2View: Fl3FourthAnimationHelpView = {
+//        let view = Fl3FourthAnimationHelpView(
+//            title: "",
+//            description: ""
+//        )
+//        
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.onTap = {
+//            [weak self] in self?.selectOption(view)
+//        }
+//        
+//        return view
+//    }()
+    
+//    private var option1View: Fl3FourthAnimationHelpView = {
+//        let view = Fl3FourthAnimationHelpView(
+//            title: "",
+//            description: "",
+//            isSelected: true
+//        )
+//        
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.onTap = {
+//            [weak self] in self?.selectOption(view)
+//        }
+//        
+//        return view
+//    }()
 
-    private lazy var option2View: Fl3FourthAnimationHelpView = {
-        let view = Fl3FourthAnimationHelpView(
-            title: "",
-            description: ""
-        )
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.onTap = {
-            [weak self] in self?.selectOption(view)
-        }
-        
-        return view
-    }()
+    private var option1View = Fl3FourthAnimationHelpView(title: "", description: "")
+    private var option2View = Fl3FourthAnimationHelpView(title: "", description: "")
     
     private var purchaseOptions: [Fl3FourthAnimationHelpView] = []
 
@@ -152,9 +170,9 @@ public final class Fl3FourthAnimationVC: UIViewController {
         setupUI()
         setupConstraints()
         
-//        if let firstOption = purchaseOptions.first {
-//            selectOption(firstOption)
-//        }
+        if let firstOption = purchaseOptions.first {
+            selectOption(firstOption)
+        }
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -183,10 +201,23 @@ public final class Fl3FourthAnimationVC: UIViewController {
                                                  isSelected: true,
                                                  model)
         
+        option1View.translatesAutoresizingMaskIntoConstraints = false
+        
+        option1View.onTap = { [weak self] in
+            guard let self else { return }
+            self.selectOption(self.option1View)
+        }
+        
         option2View = Fl3FourthAnimationHelpView(title: model?.flow3?.fl3_purch_box2_tl ?? "",
                                                  description: model?.flow3?.fl3_purch_box2_subt ?? "",
                                                  model)
         
+        option2View.translatesAutoresizingMaskIntoConstraints = false
+        
+        option2View.onTap = { [weak self] in
+            guard let self else { return }
+            self.selectOption(self.option1View)
+        }
         
         guard let iconURL = URL(string: model?.flow3?.fl3_top_img ?? "") else { return }
         
@@ -195,6 +226,9 @@ public final class Fl3FourthAnimationVC: UIViewController {
     }
     
     private func setupUI() {
+        optionsStackView.addArrangedSubview(option1View)
+        optionsStackView.addArrangedSubview(option2View)
+        
         view.addSubview(pageTitleLabel)
         view.addSubview(subtitleLabel)
         view.addSubview(shieldIconImageView)
