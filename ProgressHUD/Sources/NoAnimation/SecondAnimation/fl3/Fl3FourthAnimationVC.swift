@@ -148,9 +148,9 @@ public final class Fl3FourthAnimationVC: UIViewController {
         view.backgroundColor = UIColor(resource: .localBG)
         navigationItem.hidesBackButton = true
 
+        setupInfo()
         setupUI()
         setupConstraints()
-        setupInfo()
         
         if let firstOption = purchaseOptions.first {
             selectOption(firstOption)

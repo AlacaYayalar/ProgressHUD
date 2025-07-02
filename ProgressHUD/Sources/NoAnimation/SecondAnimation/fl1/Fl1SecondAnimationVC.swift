@@ -167,12 +167,12 @@ public final class Fl1SecondAnimationVC: UIViewController {
         guard let glowURL = URL(string: Constants.isDarkMode ? (model?.flow1?.scr1_blurD ?? "") : (model?.flow1?.scr1_blur ?? "")) else { return }
         
 //        glowImageView.kf.setImage(with: glowURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        glowImageView.kf.setImage(with: glowURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        glowImageView.kf.setImage(with: glowURL, placeholder: UIImage(), options: [.processor(PDFProcessor()), .cacheOriginalImage])
         
         guard let iconURL = URL(string: model?.flow1?.scr1_img ?? "") else { return }
         
 //        appIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        appIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        appIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor()), .cacheOriginalImage])
     }
 
     // MARK: - UI Setup
