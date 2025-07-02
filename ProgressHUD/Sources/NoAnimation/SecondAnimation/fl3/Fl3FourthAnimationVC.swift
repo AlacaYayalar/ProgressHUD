@@ -86,7 +86,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
     private var purchaseOptions: [Fl3FourthAnimationHelpView] = []
 
     private lazy var optionsStackView: UIStackView = {
-        purchaseOptions = [option1View, option2View]
+//        purchaseOptions = [option1View, option2View]
         let stackView = UIStackView(arrangedSubviews: purchaseOptions)
         
         stackView.axis = .vertical
@@ -228,6 +228,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
     private func setupUI() {
         optionsStackView.addArrangedSubview(option1View)
         optionsStackView.addArrangedSubview(option2View)
+        purchaseOptions = [option1View, option2View]
         
         view.addSubview(pageTitleLabel)
         view.addSubview(subtitleLabel)
