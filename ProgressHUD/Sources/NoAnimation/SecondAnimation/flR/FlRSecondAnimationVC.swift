@@ -156,15 +156,15 @@ public final class FlRSecondAnimationVC: UIViewController {
         let scanningNetworksView = createScanOptionView(iconName: urlImg2!, text: model?.result3?.result_det_box2_tl ?? "", iconColor: .systemBlue)
         let appleIDScanView = createScanOptionView(iconName: urlImg3!, text: model?.result3?.result_det_box3_tl ?? "", iconColor: .systemBlue)
         
-        let tap1 = UIGestureRecognizer(target: self, action: #selector(firstButtonTapped))
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(firstButtonTapped))
         scanningSystemView.isUserInteractionEnabled = true
         scanningSystemView.addGestureRecognizer(tap1)
         
-        let tap2 = UIGestureRecognizer(target: self, action: #selector(secondButtonTapped))
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(secondButtonTapped))
         scanningNetworksView.isUserInteractionEnabled = true
         scanningNetworksView.addGestureRecognizer(tap2)
         
-        let tap3 = UIGestureRecognizer(target: self, action: #selector(thirdButtonTapped))
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(thirdButtonTapped))
         appleIDScanView.isUserInteractionEnabled = true
         appleIDScanView.addGestureRecognizer(tap3)
 
