@@ -134,7 +134,8 @@ public final class Fl3SecondAnimationVC: UIViewController {
                 
         guard let iconURL = URL(string: model?.flow3?.loading3_det_img ?? "") else { return }
         
-        alertIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        alertIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        alertIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
     }
 
     private func setupUI() {

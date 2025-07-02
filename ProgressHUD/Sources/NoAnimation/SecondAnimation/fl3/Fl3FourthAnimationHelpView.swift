@@ -103,14 +103,16 @@ public final class Fl3FourthAnimationHelpView: UIView {
         if isOptionSelected {
             guard let iconURL = URL(string: model?.flow3?.fl3_top_circle_act ?? "") else { return }
             
-            checkmarkImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//            checkmarkImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+            checkmarkImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
             
             layer.borderColor = UIColor.systemBlue.cgColor
             layer.borderWidth = 2.0
         } else {
             guard let iconURL = URL(string: model?.flow3?.fl3_top_circle ?? "") else { return }
             
-            checkmarkImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//            checkmarkImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+            checkmarkImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
             
             layer.borderColor = UIColor.clear.cgColor
             layer.borderWidth = 0.0

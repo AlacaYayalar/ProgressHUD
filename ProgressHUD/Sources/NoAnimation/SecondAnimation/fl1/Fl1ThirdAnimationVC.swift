@@ -123,7 +123,8 @@ public final class Fl1ThirdAnimationVC: UIViewController {
         
         guard let icon2URL = URL(string: Constants.isDarkMode ? (model?.flow1?.scr2_blurD ?? "") : (model?.flow1?.scr2_blur ?? "")) else { return }
         
-        backgroundGlowImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        backgroundGlowImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        backgroundGlowImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
     }
 
     private func setupUI() {

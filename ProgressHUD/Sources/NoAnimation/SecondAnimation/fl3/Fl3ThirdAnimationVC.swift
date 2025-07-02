@@ -170,11 +170,13 @@ public final class Fl3ThirdAnimationVC: UIViewController {
         
         guard let ico1URL = URL(string: model?.flow3?.fl3_sc2_det_img1 ?? "") else { return }
         
-        flagImageView.kf.setImage(with: ico1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        flagImageView.kf.setImage(with: ico1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        flagImageView.kf.setImage(with: ico1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
         
         guard let icon2URL = URL(string: model?.flow3?.fl3_sc2_det_img2 ?? "") else { return }
         
-        smallWarningIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        smallWarningIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        smallWarningIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
     }
 
     private func setupUI() {

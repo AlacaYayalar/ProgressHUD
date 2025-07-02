@@ -119,7 +119,8 @@ public final class FlRSecondAnimationVC: UIViewController {
                 
         guard let iconURL = URL(string: model?.result3?.result_det_icon ?? "") else { return }
         
-        shieldIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        shieldIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        shieldIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
         
         guard let icon2URL = URL(string: model?.result3?.result_box1_img2 ?? "") else { return }
         
@@ -176,7 +177,8 @@ public final class FlRSecondAnimationVC: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let iconImageView = UIImageView()
-        iconImageView.kf.setImage(with: iconName, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        iconImageView.kf.setImage(with: iconName, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        iconImageView.kf.setImage(with: iconName, placeholder: UIImage(), options: [.processor(PDFProcessor())])
         iconImageView.tintColor = iconColor
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -189,7 +191,8 @@ public final class FlRSecondAnimationVC: UIViewController {
         
         let chevronImageView = UIImageView()
         
-        chevronImageView.kf.setImage(with: chevronImageURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        chevronImageView.kf.setImage(with: chevronImageURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        chevronImageView.kf.setImage(with: chevronImageURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
         
         chevronImageView.contentMode = .scaleAspectFit
         chevronImageView.translatesAutoresizingMaskIntoConstraints = false

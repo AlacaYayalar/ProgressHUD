@@ -125,11 +125,13 @@ public final class Fl1FifthAnimationVC: UIViewController {
         
         guard let icon1URL = URL(string: Constants.isDarkMode ? (model?.flow1?.scr4_blurD ?? "") : (model?.flow1?.scr4_blur ?? "")) else { return }
         
-        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
         
         guard let icon2URL = URL(string: isFromFirst ? (model?.flow1?.scr4_img ?? "") : (model?.flow2?.fl2_result_img ?? "")) else { return }
         
-        checkmarkIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        checkmarkIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        checkmarkIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
     }
 
     private func setupUI() {

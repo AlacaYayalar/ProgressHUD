@@ -249,7 +249,8 @@ public final class Fl2FirstAnimationVC: UIViewController {
         
         let stepData = scanningSteps[step]
                 
-        imageView.kf.setImage(with: stepData.imageName, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        imageView.kf.setImage(with: stepData.imageName, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        imageView.kf.setImage(with: stepData.imageName, placeholder: UIImage(), options: [.processor(PDFProcessor())])
         
         setBottomViewVisible(step == 2)
         scrollView.isScrollEnabled = (step == 2)        
