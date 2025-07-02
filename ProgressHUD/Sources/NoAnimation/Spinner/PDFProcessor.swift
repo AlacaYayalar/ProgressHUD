@@ -18,8 +18,9 @@ struct PDFProcessor: ImageProcessor {
         // Set desired thumbnail size
         let targetSize = CGSize(width: 300, height: 300) // or imageView.bounds.size if dynamic
         let image = page.thumbnail(of: targetSize, for: .cropBox)
+        let newImage = image.rotated(by: 180)
         
-        return image.rotated(by: 90)
+        return newImage
     }
 }
 
