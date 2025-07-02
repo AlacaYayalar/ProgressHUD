@@ -290,15 +290,21 @@ public final class FlRSecondAnimationVC: UIViewController {
     }
     
     @objc private func firstButtonTapped() {
-        print("1111")
+        guard let delegate = delegate else { return }
+        let vc = Fl1FirstAnimationVC(model, delegate: delegate, rScreen: 1)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func secondButtonTapped() {
-        print("2222")
+        guard let delegate = delegate else { return }
+        let vc = Fl2FirstAnimationVC(model, delegate: delegate, rScreen: 1)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func thirdButtonTapped() {
-        print("3333")
+        guard let delegate = delegate else { return }
+        let vc = Fl3FirstAnimationVC(model, delegate: delegate, rScreen: 1)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
