@@ -18,7 +18,8 @@ public struct PDFProcessor: ImageProcessor {
                 return nil
             }
 
-            let pageRect = page.bounds(for: .mediaBox)
+//            let pageRect = page.bounds(for: .mediaBox)
+            let pageRect = page.bounds(for: .cropBox)
             let scale: CGFloat = UIScreen.main.scale
             let size = CGSize(width: pageRect.width * scale, height: pageRect.height * scale)
 
