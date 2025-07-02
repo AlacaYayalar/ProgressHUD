@@ -19,7 +19,7 @@ struct PDFProcessor: ImageProcessor {
         let targetSize = CGSize(width: 300, height: 300) // or imageView.bounds.size if dynamic
         let image = page.thumbnail(of: targetSize, for: .cropBox)
         
-        return image.rotate(radians: .pi / 2)
+        return image
     }
 }
 
