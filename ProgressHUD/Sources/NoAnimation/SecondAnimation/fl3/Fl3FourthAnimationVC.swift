@@ -281,10 +281,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
     // MARK: - Actions
     private func selectOption(_ tappedOption: Fl3FourthAnimationHelpView) {
         purchaseOptions.forEach { optionView in
-            DispatchQueue.main.async {
-                optionView.isOptionSelected = (optionView == tappedOption)
-            }
-//            optionView.isOptionSelected = (optionView == tappedOption)
+            optionView.isOptionSelected = (optionView == tappedOption)
         }
         selectedOption = tappedOption
     }
