@@ -173,8 +173,6 @@ public final class Fl1SecondAnimationVC: UIViewController {
         
 //        appIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
         appIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
-        
-        appIconImageView.image = appIconImageView.image?.rotate(radians: .pi)
     }
 
     // MARK: - UI Setup
