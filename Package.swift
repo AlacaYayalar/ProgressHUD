@@ -35,7 +35,8 @@ let package = Package(
             resources: [
                 .process("PrivacyInfo.xcprivacy"),
                 .process("superAnimation.json"),
-                .process("Localizable.xcstrings")
+                .process("Localizable.xcstrings"),
+                .process("Media.xcassets")
             ]
         ),
     ]
