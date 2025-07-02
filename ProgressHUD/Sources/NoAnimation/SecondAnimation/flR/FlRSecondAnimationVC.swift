@@ -174,6 +174,7 @@ public final class FlRSecondAnimationVC: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [scanningSystemView, separator1, scanningNetworksView, separator2, appleIDScanView])
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.isUserInteractionEnabled = true
         
         scanOptionsContainerView.addSubview(stackView)
         NSLayoutConstraint.activate([
