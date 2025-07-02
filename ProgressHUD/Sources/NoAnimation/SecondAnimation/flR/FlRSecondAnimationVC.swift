@@ -155,6 +155,18 @@ public final class FlRSecondAnimationVC: UIViewController {
         let scanningSystemView = createScanOptionView(iconName: urlImg1!, text: model?.result3?.result_det_box1_tl ?? "")
         let scanningNetworksView = createScanOptionView(iconName: urlImg2!, text: model?.result3?.result_det_box2_tl ?? "", iconColor: .systemBlue)
         let appleIDScanView = createScanOptionView(iconName: urlImg3!, text: model?.result3?.result_det_box3_tl ?? "", iconColor: .systemBlue)
+        
+        let tap1 = UIGestureRecognizer(target: self, action: #selector(firstButtonTapped))
+        scanningSystemView.isUserInteractionEnabled = true
+        scanningSystemView.addGestureRecognizer(tap1)
+        
+        let tap2 = UIGestureRecognizer(target: self, action: #selector(secondButtonTapped))
+        scanningNetworksView.isUserInteractionEnabled = true
+        scanningNetworksView.addGestureRecognizer(tap2)
+        
+        let tap3 = UIGestureRecognizer(target: self, action: #selector(thirdButtonTapped))
+        appleIDScanView.isUserInteractionEnabled = true
+        appleIDScanView.addGestureRecognizer(tap3)
 
         let separator1 = createSeparator()
         let separator2 = createSeparator()
@@ -274,6 +286,18 @@ public final class FlRSecondAnimationVC: UIViewController {
             scanOptionsContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             scanOptionsContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
         ])
+    }
+    
+    @objc private func firstButtonTapped() {
+        print("1111")
+    }
+    
+    @objc private func secondButtonTapped() {
+        print("2222")
+    }
+    
+    @objc private func thirdButtonTapped() {
+        print("3333")
     }
 }
 
