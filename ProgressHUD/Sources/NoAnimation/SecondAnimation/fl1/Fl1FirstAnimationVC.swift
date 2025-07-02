@@ -131,7 +131,7 @@ public final class Fl1FirstAnimationVC: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = UIColor(named: "localBGColor") /*.localBG*/
+        view.backgroundColor = /*UIColor(named: "localBGColor")*/ UIColor(resource: .localBG)  /*.localBG*/
         
         view.addSubview(titleLabel)
         view.addSubview(imageView)
