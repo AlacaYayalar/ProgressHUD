@@ -216,7 +216,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
         
         option2View.onTap = { [weak self] in
             guard let self else { return }
-            self.selectOption(self.option1View)
+            self.selectOption(self.option2View)
         }
         
         guard let iconURL = URL(string: model?.flow3?.fl3_top_img ?? "") else { return }
