@@ -52,7 +52,7 @@ public final class Fl3FirstAnimationVC: UIViewController {
     // MARK: - Properties
     private var timer: Timer?
     private var currentProgress: Float = 0.0
-    private let totalDuration: TimeInterval = 1
+    private let totalDuration: TimeInterval = 3
     
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
