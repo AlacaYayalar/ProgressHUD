@@ -30,17 +30,6 @@ public final class Fl3ThirdAnimationVC: UIViewController {
         return view
     }()
 
-    private let flagImageView: UIImageView = {
-        let imageView = UIImageView()
-
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 8
-        imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return imageView
-    }()
-
     private let smallWarningIconImageView: UIImageView = {
         let imageView = UIImageView()
 
@@ -52,22 +41,22 @@ public final class Fl3ThirdAnimationVC: UIViewController {
     
     private let deviceLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.font = .systemFont(ofSize: 18, weight: .semibold)
         label.textColor = UIColor.black
         return label
     }()
 
     private let timeLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = UIColor.black
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = UIColor(red: 121/255, green: 121/255, blue: 121/255, alpha: 1)
         return label
     }()
 
     private let locationLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = UIColor.black
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = UIColor(red: 121/255, green: 121/255, blue: 121/255, alpha: 1)
         label.numberOfLines = 0
         return label
     }()
@@ -170,20 +159,18 @@ public final class Fl3ThirdAnimationVC: UIViewController {
         
         guard let ico1URL = URL(string: model?.flow3?.fl3_sc2_det_img1 ?? "") else { return }
         
-//        flagImageView.kf.setImage(with: ico1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        flagImageView.kf.setImage(with: ico1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+//        flagImageView.kf.setImage(with: ico1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
         
         guard let icon2URL = URL(string: model?.flow3?.fl3_sc2_det_img2 ?? "") else { return }
         
 //        smallWarningIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        smallWarningIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        smallWarningIconImageView.kf.setImage(with: ico1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
     }
 
     private func setupUI() {
         view.addSubview(pageTitleLabel)
         
         // Top container elements
-        topInfoContainerView.addSubview(flagImageView)
         topInfoContainerView.addSubview(smallWarningIconImageView)
         topInfoContainerView.addSubview(deviceInfoStackView)
         view.addSubview(topInfoContainerView)
@@ -212,21 +199,15 @@ public final class Fl3ThirdAnimationVC: UIViewController {
             topInfoContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding),
             topInfoContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding),
 
-            flagImageView.topAnchor.constraint(equalTo: topInfoContainerView.topAnchor, constant: 16),
-            flagImageView.leadingAnchor.constraint(equalTo: topInfoContainerView.leadingAnchor, constant: 16),
-            flagImageView.heightAnchor.constraint(equalToConstant: flagHeight),
-            flagImageView.widthAnchor.constraint(equalTo: flagImageView.heightAnchor, multiplier: 1.5),
-            flagImageView.bottomAnchor.constraint(lessThanOrEqualTo: topInfoContainerView.bottomAnchor, constant: -16),
-
-            smallWarningIconImageView.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 10),
+            smallWarningIconImageView.centerYAnchor.constraint(equalTo: topInfoContainerView.centerYAnchor, constant: 0),
             smallWarningIconImageView.leadingAnchor.constraint(equalTo: topInfoContainerView.leadingAnchor, constant: 16),
-            smallWarningIconImageView.widthAnchor.constraint(equalToConstant: 75),
-            smallWarningIconImageView.heightAnchor.constraint(equalToConstant: 60),
+            smallWarningIconImageView.widthAnchor.constraint(equalToConstant: 69),
+            smallWarningIconImageView.heightAnchor.constraint(equalToConstant: 49),
             
-            deviceInfoStackView.leadingAnchor.constraint(equalTo: smallWarningIconImageView.trailingAnchor, constant: 8),
-            deviceInfoStackView.trailingAnchor.constraint(equalTo: topInfoContainerView.trailingAnchor, constant: -15),
-            deviceInfoStackView.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 10),
-            deviceInfoStackView.bottomAnchor.constraint(lessThanOrEqualTo: topInfoContainerView.bottomAnchor, constant: -16),
+            deviceInfoStackView.leadingAnchor.constraint(equalTo: smallWarningIconImageView.trailingAnchor, constant: 20),
+            deviceInfoStackView.trailingAnchor.constraint(equalTo: topInfoContainerView.trailingAnchor, constant: -10),
+            deviceInfoStackView.topAnchor.constraint(equalTo: topInfoContainerView.topAnchor, constant: 15),
+            deviceInfoStackView.bottomAnchor.constraint(lessThanOrEqualTo: topInfoContainerView.bottomAnchor, constant: -15),
 
             bottomInfoContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding),
             bottomInfoContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding),
