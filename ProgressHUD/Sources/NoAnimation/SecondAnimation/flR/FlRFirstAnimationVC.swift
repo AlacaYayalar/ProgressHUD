@@ -185,7 +185,8 @@ public final class FlRFirstAnimationVC: UIViewController {
         guard let img1URL = URL(string:  model?.result3?.result_img ?? "") else { return }
         
 //        handIconImageView.kf.setImage(with: img1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        handIconImageView.kf.setImage(with: img1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+//        handIconImageView.kf.setImage(with: img1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        handIconImageView.kf.setImage(with: img1URL, placeholder: UIImage())
         
         guard let img2URL = URL(string: Constants.isDarkMode ? (model?.result3?.result_box1_img1D ?? "") : (model?.result3?.result_box1_img1 ?? "")) else { return }
         
