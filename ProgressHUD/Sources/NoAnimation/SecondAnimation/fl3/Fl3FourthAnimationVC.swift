@@ -100,7 +100,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
     private let infoTextLabel: UILabel = {
         let label = UILabel()
         
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textColor = UIColor.label
         label.textAlignment = .center
         label.numberOfLines = 0
