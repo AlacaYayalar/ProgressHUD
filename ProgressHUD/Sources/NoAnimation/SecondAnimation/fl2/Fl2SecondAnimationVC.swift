@@ -124,13 +124,11 @@ public final class Fl2SecondAnimationVC: UIViewController {
         
         guard let icon1URL = URL(string: Constants.isDarkMode ? (model?.flow1?.scr2_blurD ?? "") : (model?.flow1?.scr2_blur ?? "")) else { return }
         
-//        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
         
         guard let icon2URL = URL(string: model?.flow2?.det_img ?? "") else { return }
         
-//        warningIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        warningIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        warningIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage())
     }
 
     private func setupUI() {

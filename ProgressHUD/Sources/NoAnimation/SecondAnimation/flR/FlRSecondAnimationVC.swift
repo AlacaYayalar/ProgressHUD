@@ -125,8 +125,7 @@ public final class FlRSecondAnimationVC: UIViewController {
                 
         guard let iconURL = URL(string: model?.result3?.result_det_icon ?? "") else { return }
         
-//        shieldIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        shieldIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        shieldIconImageView.kf.setImage(with: iconURL, placeholder: UIImage())
         
         guard let icon2URL = URL(string: model?.result3?.result_box1_img2 ?? "") else { return }
         
@@ -158,9 +157,9 @@ public final class FlRSecondAnimationVC: UIViewController {
         
         view.addSubview(scanOptionsContainerView)
         
-        let scanningSystemView = createScanOptionView(iconName: urlImg1!, text: model?.result3?.result_det_box1_tl ?? "")
-        let scanningNetworksView = createScanOptionView(iconName: urlImg2!, text: model?.result3?.result_det_box2_tl ?? "", iconColor: .systemBlue)
-        let appleIDScanView = createScanOptionView(iconName: urlImg3!, text: model?.result3?.result_det_box3_tl ?? "", iconColor: .systemBlue)
+        let scanningSystemView = createScanOptionView(iconName: urlImg1!, text: model?.result3?.result_det_box1_tl ?? "", isNeedtoUseSVG: true)
+        let scanningNetworksView = createScanOptionView(iconName: urlImg2!, text: model?.result3?.result_det_box2_tl ?? "", iconColor: .systemBlue, isNeedtoUseSVG: false)
+        let appleIDScanView = createScanOptionView(iconName: urlImg3!, text: model?.result3?.result_det_box3_tl ?? "", iconColor: .systemBlue, isNeedtoUseSVG: false)
         
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(firstButtonTapped))
         scanningSystemView.isUserInteractionEnabled = true
@@ -191,13 +190,18 @@ public final class FlRSecondAnimationVC: UIViewController {
         ])
     }
 
-    private func createScanOptionView(iconName: URL, text: String, iconColor: UIColor = .gray) -> UIView {
+    private func createScanOptionView(iconName: URL, text: String, iconColor: UIColor = .gray, isNeedtoUseSVG: Bool) -> UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let iconImageView = UIImageView()
-//        iconImageView.kf.setImage(with: iconName, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        iconImageView.kf.setImage(with: iconName, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+
+        if isNeedtoUseSVG {
+            iconImageView.kf.setImage(with: iconName, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        } else {
+            iconImageView.kf.setImage(with: iconName, placeholder: UIImage())
+        }
+        
         iconImageView.tintColor = iconColor
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -210,8 +214,7 @@ public final class FlRSecondAnimationVC: UIViewController {
         
         let chevronImageView = UIImageView()
         
-//        chevronImageView.kf.setImage(with: chevronImageURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        chevronImageView.kf.setImage(with: chevronImageURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        chevronImageView.kf.setImage(with: chevronImageURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
         
         chevronImageView.contentMode = .scaleAspectFit
         chevronImageView.translatesAutoresizingMaskIntoConstraints = false

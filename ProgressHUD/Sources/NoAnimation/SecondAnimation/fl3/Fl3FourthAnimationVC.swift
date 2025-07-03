@@ -221,8 +221,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
         
         guard let iconURL = URL(string: model?.flow3?.fl3_top_img ?? "") else { return }
         
-//        shieldIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        shieldIconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        shieldIconImageView.kf.setImage(with: iconURL, placeholder: UIImage())
     }
     
     private func setupUI() {

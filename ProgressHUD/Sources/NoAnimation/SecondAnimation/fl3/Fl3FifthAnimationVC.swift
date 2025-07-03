@@ -140,14 +140,13 @@ public final class Fl3FifthAnimationVC: UIViewController {
         
         guard let icon1URL = URL(string: Constants.isDarkMode ? (model?.flow1?.scr2_blurD ?? "") : (model?.flow1?.scr2_blur ?? "")) else { return }
         
-//        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
         
 //        guard let iconURL = URL(string: Constants.isDarkMode ? (model?.flow3?.fl3_result_img_d ?? ""): (model?.flow3?.fl3_result_img ?? "")) else { return }
         guard let iconURL = URL(string: model?.flow3?.fl3_result_img ?? "") else { return }
         
 //        protectedGraphicImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        protectedGraphicImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        protectedGraphicImageView.kf.setImage(with: iconURL, placeholder: UIImage())
     }
 
     private func setupUI() {

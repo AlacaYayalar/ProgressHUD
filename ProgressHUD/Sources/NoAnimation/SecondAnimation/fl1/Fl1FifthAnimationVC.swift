@@ -130,8 +130,7 @@ public final class Fl1FifthAnimationVC: UIViewController {
         
         guard let icon1URL = URL(string: Constants.isDarkMode ? (model?.flow1?.scr4_blurD ?? "") : (model?.flow1?.scr4_blur ?? "")) else { return }
         
-//        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
         
         guard let icon2URL = URL(string: isFromFirst ? (model?.flow1?.scr4_img ?? "") : (model?.flow2?.fl2_result_img ?? "")) else { return }
         
@@ -139,7 +138,7 @@ public final class Fl1FifthAnimationVC: UIViewController {
         if isFromFirst {
             checkmarkIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
         } else {
-            checkmarkIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+            checkmarkIconImageView.kf.setImage(with: icon2URL, placeholder: UIImage())
         }
         
     }

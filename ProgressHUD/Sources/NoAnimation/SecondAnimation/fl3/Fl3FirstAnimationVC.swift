@@ -101,8 +101,7 @@ public final class Fl3FirstAnimationVC: UIViewController {
                 
         guard let iconURL = URL(string: model?.flow3?.loading3_img ?? "") else { return }
         
-//        iconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        iconImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        iconImageView.kf.setImage(with: iconURL, placeholder: UIImage())
     }
     
     private func setupUI() {

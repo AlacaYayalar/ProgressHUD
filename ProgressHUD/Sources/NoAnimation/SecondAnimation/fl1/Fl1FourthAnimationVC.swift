@@ -103,8 +103,7 @@ public final class Fl1FourthAnimationVC: UIViewController {
         
         guard let iconURL = URL(string: model?.flow1?.scr3_img ?? "") else { return }
         
-//        iconWithGlowImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        iconWithGlowImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        iconWithGlowImageView.kf.setImage(with: iconURL, placeholder: UIImage())
     }
     
     private func setupUI() {
