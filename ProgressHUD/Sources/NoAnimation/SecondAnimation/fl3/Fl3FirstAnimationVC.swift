@@ -113,7 +113,7 @@ public final class Fl3FirstAnimationVC: UIViewController {
 
     // MARK: - Constraints
     private func setupConstraints() {
-        let iconSize: CGFloat = 200
+        let iconSize: CGFloat = 300
         let horizontalPadding: CGFloat = 20
         let titleTopPadding: CGFloat = 60
 
@@ -125,7 +125,7 @@ public final class Fl3FirstAnimationVC: UIViewController {
             iconImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
             iconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
-            iconImageView.heightAnchor.constraint(equalToConstant: 400),
+            iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
 
             progressView.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 30),
             progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding),
