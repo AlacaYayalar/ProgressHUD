@@ -138,7 +138,8 @@ public final class Fl3FifthAnimationVC: UIViewController {
         resultsDetailLabel.text = model?.flow3?.fl3_result_subt
         okButton.setTitle(model?.flow3?.fl3_result_ok ?? "", for: .normal)
         
-        guard let icon1URL = URL(string: Constants.isDarkMode ? (model?.flow1?.scr2_blurD ?? "") : (model?.flow1?.scr2_blur ?? "")) else { return }
+//        guard let icon1URL = URL(string: Constants.isDarkMode ? (model?.flow1?.scr2_blurD ?? "") : (model?.flow1?.scr2_blur ?? "")) else { return }
+        guard let icon1URL = URL(string: Constants.isDarkMode ? (model?.flow1?.scr4_blurD ?? "") : (model?.flow1?.scr4_blur ?? "")) else { return }
         
         backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
         
