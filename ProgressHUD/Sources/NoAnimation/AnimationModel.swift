@@ -263,7 +263,7 @@ struct Flow3: Codable {
 
 struct Result3: Codable {
     let result_det_icon, result_det_box2_img, result_det_box3_img, result_tl: String?
-    let result_box1_img1, result_det_tl, result_det_box1_img, result_det_box2_tl: String?
+    let result_box1_img1, result_box1_img1D, result_det_tl, result_det_box1_img, result_det_box2_tl: String?
     let result_det_box1_tl, result_box2_img1, result_det_box3_tl, result_img: String?
     let result_box1_img2, result_det_subt, result_box1_tl, result_subt, result_box2_tl: String?
     let result_box2_subt: String?

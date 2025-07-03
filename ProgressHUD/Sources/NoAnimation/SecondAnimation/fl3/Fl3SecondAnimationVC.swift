@@ -14,11 +14,20 @@ public final class Fl3SecondAnimationVC: UIViewController {
         
         return label
     }()
+    
+    private let backgroundGlowImageView: UIImageView = {
+        let imageView = UIImageView()
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
 
     private let alertIconImageView: UIImageView = {
         let imageView = UIImageView()
 
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
@@ -131,6 +140,11 @@ public final class Fl3SecondAnimationVC: UIViewController {
         alertTitleLabel.text = model?.flow3?.loading3_details_tl
         alertDetailLabel.text = model?.flow3?.loading3_details_subt
         viewDetailsButton.setTitle(model?.flow3?.loading3_details_btn, for: .normal)
+        
+        guard let icon1URL = URL(string: Constants.isDarkMode ? (model?.flow1?.scr2_blurD ?? "") : (model?.flow1?.scr2_blur ?? "")) else { return }
+        
+//        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
                 
         guard let iconURL = URL(string: model?.flow3?.loading3_det_img ?? "") else { return }
         
@@ -139,6 +153,7 @@ public final class Fl3SecondAnimationVC: UIViewController {
     }
 
     private func setupUI() {
+        view.addSubview(backgroundGlowImageView)
         view.addSubview(titleLabel)
         view.addSubview(alertIconImageView)
         
@@ -163,10 +178,13 @@ public final class Fl3SecondAnimationVC: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPaddingForText),
 
             alertIconImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
-            alertIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            alertIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 17),
             alertIconImageView.heightAnchor.constraint(equalToConstant: iconSize),
-            alertIconImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            alertIconImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            alertIconImageView.widthAnchor.constraint(equalToConstant: iconSize),
+            backgroundGlowImageView.centerYAnchor.constraint(equalTo: alertIconImageView.centerYAnchor, constant: 17),
+            backgroundGlowImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundGlowImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundGlowImageView.heightAnchor.constraint(equalToConstant: 500),
 
             alertInfoContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPaddingForElements),
             alertInfoContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPaddingForElements),

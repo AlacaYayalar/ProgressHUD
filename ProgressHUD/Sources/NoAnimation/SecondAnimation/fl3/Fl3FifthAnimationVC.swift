@@ -3,11 +3,20 @@ import UIKit
 public final class Fl3FifthAnimationVC: UIViewController {
 
     // MARK: - UI Elements
+    
+    private let backgroundGlowImageView: UIImageView = { //!
+        let imageView = UIImageView()
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
 
     private let protectedGraphicImageView: UIImageView = {
         let imageView = UIImageView()
 
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
@@ -129,13 +138,20 @@ public final class Fl3FifthAnimationVC: UIViewController {
         resultsDetailLabel.text = model?.flow3?.fl3_result_subt
         okButton.setTitle(model?.flow3?.fl3_result_ok ?? "", for: .normal)
         
-        guard let iconURL = URL(string: Constants.isDarkMode ? (model?.flow3?.fl3_result_img_d ?? ""): (model?.flow3?.fl3_result_img ?? "")) else { return }
+        guard let icon1URL = URL(string: Constants.isDarkMode ? (model?.flow1?.scr2_blurD ?? "") : (model?.flow1?.scr2_blur ?? "")) else { return }
+        
+//        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        backgroundGlowImageView.kf.setImage(with: icon1URL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
+        
+//        guard let iconURL = URL(string: Constants.isDarkMode ? (model?.flow3?.fl3_result_img_d ?? ""): (model?.flow3?.fl3_result_img ?? "")) else { return }
+        guard let iconURL = URL(string: model?.flow3?.fl3_result_img ?? "") else { return }
         
 //        protectedGraphicImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
         protectedGraphicImageView.kf.setImage(with: iconURL, placeholder: UIImage(), options: [.processor(PDFProcessor())])
     }
 
     private func setupUI() {
+        view.addSubview(backgroundGlowImageView)
         view.addSubview(protectedGraphicImageView)
         view.addSubview(statusLabel)
 
@@ -154,9 +170,14 @@ public final class Fl3FifthAnimationVC: UIViewController {
 
         NSLayoutConstraint.activate([
             protectedGraphicImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            protectedGraphicImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            protectedGraphicImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            protectedGraphicImageView.heightAnchor.constraint(equalToConstant: 250),
+            protectedGraphicImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            protectedGraphicImageView.heightAnchor.constraint(equalToConstant: 179),
+            protectedGraphicImageView.widthAnchor.constraint(equalToConstant: 179),
+            
+            backgroundGlowImageView.centerYAnchor.constraint(equalTo: protectedGraphicImageView.centerYAnchor, constant: 0),
+            backgroundGlowImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundGlowImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundGlowImageView.heightAnchor.constraint(equalToConstant: 500),
 
             statusLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             statusLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: statusLabelCenterYOffset),
