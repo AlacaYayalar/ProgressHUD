@@ -7,7 +7,7 @@ public final class FlRSecondAnimationVC: UIViewController {
     private let topContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(resource: .resultContainer)
-        view.layer.cornerRadius = 16
+        view.layer.cornerRadius = 20
         view.layer.masksToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.1
