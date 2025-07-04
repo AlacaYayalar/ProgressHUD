@@ -106,14 +106,11 @@ public class SpecialAnimationFourViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         contentView.backgroundColor = .clear
-//        tableView.backgroundColor = .clear
-//        tableView.backgroundColor = UIColor(resource: .resultContainer)
-        tableView.backgroundColor = .green
+        tableView.backgroundColor = .clear
         tableView.minimumZoomScale = 1.0
         tableView.maximumZoomScale = 1.0
         tableView.accessibilityIgnoresInvertColors = true
         tableView.accessibilityViewIsModal = true
-        tableView.backgroundView?.backgroundColor = .orange
         
         bottomLabel.text = model?.objectTwo?.center.footer_text
         bottomLabel.numberOfLines = 0
@@ -232,7 +229,6 @@ extension SpecialAnimationFourViewController: UITableViewDataSource, UITableView
         let leftLabel = UILabel()
         
         cell.selectionStyle = .none
-//        leftLabel.textColor = .black
         leftLabel.textColor = .label
         leftLabel.font = .systemFont(ofSize: isVerySmallDevice ? 14 : 16, weight: .regular)
         
@@ -258,8 +254,7 @@ extension SpecialAnimationFourViewController: UITableViewDataSource, UITableView
             make.centerY.equalTo(cell.contentView.snp.centerY)
         }
         
-        cell.backgroundColor = .blue
-        cell.contentView.backgroundColor = .yellow
+        cell.contentView.backgroundColor = UIColor(resource: .resultContainer)
         
         return cell
     }
