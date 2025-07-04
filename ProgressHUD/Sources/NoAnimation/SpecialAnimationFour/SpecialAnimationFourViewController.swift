@@ -107,11 +107,13 @@ public class SpecialAnimationFourViewController: UIViewController {
         
         contentView.backgroundColor = .clear
 //        tableView.backgroundColor = .clear
-        tableView.backgroundColor = UIColor(resource: .resultContainer)
+//        tableView.backgroundColor = UIColor(resource: .resultContainer)
+        tableView.backgroundColor = .green
         tableView.minimumZoomScale = 1.0
         tableView.maximumZoomScale = 1.0
         tableView.accessibilityIgnoresInvertColors = true
         tableView.accessibilityViewIsModal = true
+        tableView.backgroundView?.backgroundColor = .orange
         
         bottomLabel.text = model?.objectTwo?.center.footer_text
         bottomLabel.numberOfLines = 0
@@ -255,6 +257,9 @@ extension SpecialAnimationFourViewController: UITableViewDataSource, UITableView
             make.trailing.equalTo(cell.contentView.snp.trailing).offset(-16)
             make.centerY.equalTo(cell.contentView.snp.centerY)
         }
+        
+        cell.backgroundColor = .blue
+        cell.contentView.backgroundColor = .yellow
         
         return cell
     }
