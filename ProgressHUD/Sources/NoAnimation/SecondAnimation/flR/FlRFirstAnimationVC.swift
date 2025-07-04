@@ -1,4 +1,5 @@
 import UIKit
+import ScreenShield
 
 public final class FlRFirstAnimationVC: UIViewController {
 
@@ -151,6 +152,21 @@ public final class FlRFirstAnimationVC: UIViewController {
         setupConstraints()
         setupActions()
         setupInfo()
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.topContainerView)
+            ScreenShield.shared.protect(view: self.handIconImageView)
+            ScreenShield.shared.protect(view: self.protectedStatusLabel)
+            ScreenShield.shared.protect(view: self.lastScanLabel)
+            ScreenShield.shared.protect(view: self.spamProtectionContainerView)
+            ScreenShield.shared.protect(view: self.spamProtectionLabel)
+            ScreenShield.shared.protect(view: self.warningIconImageView)
+            ScreenShield.shared.protect(view: self.realtimeProtectionContainerView)
+            ScreenShield.shared.protect(view: self.shieldIconImageView)
+            ScreenShield.shared.protect(view: self.realtimeProtectionTitleLabel)
+            ScreenShield.shared.protect(view: self.realtimeProtectionSubtitleLabel)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
 
     public override func viewWillAppear(_ animated: Bool) {

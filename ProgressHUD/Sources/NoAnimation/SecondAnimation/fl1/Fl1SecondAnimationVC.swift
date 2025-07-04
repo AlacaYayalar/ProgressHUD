@@ -1,4 +1,5 @@
 import UIKit
+import ScreenShield
 
 public final class Fl1SecondAnimationVC: UIViewController {
     // MARK: - UI Elements
@@ -149,6 +150,21 @@ public final class Fl1SecondAnimationVC: UIViewController {
         setupUI()
         setupConstraints()
         setupInfo()
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.titleLabel)
+            ScreenShield.shared.protect(view: self.iconContainerView)
+            ScreenShield.shared.protect(view: self.glowImageView)
+            ScreenShield.shared.protect(view: self.appIconImageView)
+            ScreenShield.shared.protect(view: self.badgeView)
+            ScreenShield.shared.protect(view: self.badgeLabel)
+            ScreenShield.shared.protect(view: self.resultsContainerView)
+            ScreenShield.shared.protect(view: self.resultsTitleLabel)
+            ScreenShield.shared.protect(view: self.suspiciousLabel)
+            ScreenShield.shared.protect(view: self.threatsLabel)
+            ScreenShield.shared.protect(view: self.activateButton)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
     
     public override func viewWillAppear(_ animated: Bool) {

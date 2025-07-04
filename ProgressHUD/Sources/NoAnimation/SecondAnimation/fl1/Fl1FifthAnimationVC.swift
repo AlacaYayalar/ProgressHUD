@@ -1,4 +1,5 @@
 import UIKit
+import ScreenShield
 
 public final class Fl1FifthAnimationVC: UIViewController {
 
@@ -119,6 +120,17 @@ public final class Fl1FifthAnimationVC: UIViewController {
         setupUI()
         setupConstraints()
         setupInfo()
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.backgroundGlowImageView)
+            ScreenShield.shared.protect(view: self.checkmarkIconImageView)
+            ScreenShield.shared.protect(view: self.secureStatusLabel)
+            ScreenShield.shared.protect(view: self.resultsContainerView)
+            ScreenShield.shared.protect(view: self.resultsTitleLabel)
+            ScreenShield.shared.protect(view: self.resultsDetailLabel)
+            ScreenShield.shared.protect(view: self.startNewScanButton)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
 
     // MARK: - UI Setup

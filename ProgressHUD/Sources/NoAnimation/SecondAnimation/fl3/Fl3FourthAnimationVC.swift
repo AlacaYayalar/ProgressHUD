@@ -1,4 +1,5 @@
 import UIKit
+import ScreenShield
 
 public final class Fl3FourthAnimationVC: UIViewController {
 
@@ -35,50 +36,6 @@ public final class Fl3FourthAnimationVC: UIViewController {
         
         return imageView
     }()
-
-//    private lazy var option1View: Fl3FourthAnimationHelpView = {
-//        let view = Fl3FourthAnimationHelpView(
-//            title: "",
-//            description: "",
-//            isSelected: true
-//        )
-//        
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.onTap = {
-//            [weak self] in self?.selectOption(view)
-//        }
-//        
-//        return view
-//    }()
-//
-//    private lazy var option2View: Fl3FourthAnimationHelpView = {
-//        let view = Fl3FourthAnimationHelpView(
-//            title: "",
-//            description: ""
-//        )
-//        
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.onTap = {
-//            [weak self] in self?.selectOption(view)
-//        }
-//        
-//        return view
-//    }()
-    
-//    private var option1View: Fl3FourthAnimationHelpView = {
-//        let view = Fl3FourthAnimationHelpView(
-//            title: "",
-//            description: "",
-//            isSelected: true
-//        )
-//        
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.onTap = {
-//            [weak self] in self?.selectOption(view)
-//        }
-//        
-//        return view
-//    }()
 
     private var option1View = Fl3FourthAnimationHelpView(title: "", description: "")
     private var option2View = Fl3FourthAnimationHelpView(title: "", description: "")
@@ -172,6 +129,19 @@ public final class Fl3FourthAnimationVC: UIViewController {
         
         if let firstOption = purchaseOptions.first {
             selectOption(firstOption)
+        }
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.pageTitleLabel)
+            ScreenShield.shared.protect(view: self.subtitleLabel)
+            ScreenShield.shared.protect(view: self.shieldIconImageView)
+            ScreenShield.shared.protect(view: self.option1View)
+            ScreenShield.shared.protect(view: self.option2View)
+            ScreenShield.shared.protect(view: self.optionsStackView)
+            ScreenShield.shared.protect(view: self.infoTextLabel)
+            ScreenShield.shared.protect(view: self.secureMyAccountButton)
+            ScreenShield.shared.protect(view: self.cancelButton)
+            ScreenShield.shared.protectFromScreenRecording()
         }
     }
     

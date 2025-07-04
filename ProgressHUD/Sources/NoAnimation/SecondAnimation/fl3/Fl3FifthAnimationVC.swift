@@ -1,10 +1,11 @@
 import UIKit
+import ScreenShield
 
 public final class Fl3FifthAnimationVC: UIViewController {
 
     // MARK: - UI Elements
     
-    private let backgroundGlowImageView: UIImageView = { //!
+    private let backgroundGlowImageView: UIImageView = {
         let imageView = UIImageView()
         
         imageView.contentMode = .scaleAspectFill
@@ -40,10 +41,6 @@ public final class Fl3FifthAnimationVC: UIViewController {
         view.backgroundColor = UIColor(resource: .localContainer)
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = false
-//        view.layer.shadowColor = UIColor.black.cgColor
-//        view.layer.shadowOpacity = 0.1
-//        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-//        view.layer.shadowRadius = 4
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.layer.shadowColor = UIColor(resource: .localContainerShadow).cgColor
@@ -123,6 +120,17 @@ public final class Fl3FifthAnimationVC: UIViewController {
         setupUI()
         setupConstraints()
         setupInfo()
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.backgroundGlowImageView)
+            ScreenShield.shared.protect(view: self.protectedGraphicImageView)
+            ScreenShield.shared.protect(view: self.statusLabel)
+            ScreenShield.shared.protect(view: self.resultsContainerView)
+            ScreenShield.shared.protect(view: self.resultsTitleLabel)
+            ScreenShield.shared.protect(view: self.resultsDetailLabel)
+            ScreenShield.shared.protect(view: self.okButton)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
 
     public override func viewWillAppear(_ animated: Bool) {

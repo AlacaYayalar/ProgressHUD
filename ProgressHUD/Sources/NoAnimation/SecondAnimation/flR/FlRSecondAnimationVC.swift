@@ -1,4 +1,5 @@
 import UIKit
+import ScreenShield
 
 public final class FlRSecondAnimationVC: UIViewController {
 
@@ -102,6 +103,17 @@ public final class FlRSecondAnimationVC: UIViewController {
         setupInfo()
 //        setupUI()
         setupConstraints()
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.topContainerView)
+            ScreenShield.shared.protect(view: self.shieldIconImageView)
+            ScreenShield.shared.protect(view: self.titleLabel)
+            ScreenShield.shared.protect(view: self.antiSpamContainerView)
+            ScreenShield.shared.protect(view: self.antiSpamLabel)
+            ScreenShield.shared.protect(view: self.antiSpamSwitch)
+            ScreenShield.shared.protect(view: self.scanOptionsContainerView)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
     
     public override func viewWillAppear(_ animated: Bool) {

@@ -1,4 +1,5 @@
 import UIKit
+import ScreenShield
 
 struct Constants {
     static let se3Screen = UIScreen.main.nativeBounds.height <= 1334
@@ -96,6 +97,15 @@ public final class Fl1FirstAnimationVC: UIViewController {
         setupUI()
         setupConstraints()
         setupInfo()
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.titleLabel)
+            ScreenShield.shared.protect(view: self.imageView)
+            ScreenShield.shared.protect(view: self.progressView)
+            ScreenShield.shared.protect(view: self.statusLabel)
+            ScreenShield.shared.protect(view: self.waitButton)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
     
     public override func viewDidAppear(_ animated: Bool) {

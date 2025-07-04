@@ -1,4 +1,5 @@
 import UIKit
+import ScreenShield
 
 public final class Fl2SecondAnimationVC: UIViewController {
 
@@ -112,6 +113,17 @@ public final class Fl2SecondAnimationVC: UIViewController {
         setupUI()
         setupConstraints()
         setupInfo()
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.backgroundGlowImageView)
+            ScreenShield.shared.protect(view: self.warningIconImageView)
+            ScreenShield.shared.protect(view: self.titleLabel)
+            ScreenShield.shared.protect(view: self.infoContainerView)
+            ScreenShield.shared.protect(view: self.primaryInfoLabel)
+            ScreenShield.shared.protect(view: self.secondaryInfoLabel)
+            ScreenShield.shared.protect(view: self.activateButton)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
 
     // MARK: - UI Setup

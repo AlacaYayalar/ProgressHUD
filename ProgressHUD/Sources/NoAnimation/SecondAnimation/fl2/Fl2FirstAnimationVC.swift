@@ -1,4 +1,5 @@
 import UIKit
+import ScreenShield
 
 public final class Fl2FirstAnimationVC: UIViewController {
     // MARK: - UI Elements
@@ -89,6 +90,16 @@ public final class Fl2FirstAnimationVC: UIViewController {
         setupInfo()
         setupUI()
         setupConstraints()
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.titleLabel)
+            ScreenShield.shared.protect(view: self.imageView)
+            ScreenShield.shared.protect(view: self.progressView)
+            ScreenShield.shared.protect(view: self.statusLabel)
+            ScreenShield.shared.protect(view: self.bottomView)
+            ScreenShield.shared.protect(view: self.scrollView)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
     
     public override func viewWillAppear(_ animated: Bool) {

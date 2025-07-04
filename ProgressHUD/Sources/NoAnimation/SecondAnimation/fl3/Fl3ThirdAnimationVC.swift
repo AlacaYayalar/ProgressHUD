@@ -1,4 +1,5 @@
 import UIKit
+import ScreenShield
 
 public final class Fl3ThirdAnimationVC: UIViewController {
     
@@ -140,6 +141,20 @@ public final class Fl3ThirdAnimationVC: UIViewController {
         
         navigationController?.navigationBar.backItem?.title = ""
         navigationController?.navigationBar.tintColor = UIColor(resource: .navItemColorCust)
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.pageTitleLabel)
+            ScreenShield.shared.protect(view: self.topInfoContainerView)
+            ScreenShield.shared.protect(view: self.smallWarningIconImageView)
+            ScreenShield.shared.protect(view: self.deviceLabel)
+            ScreenShield.shared.protect(view: self.timeLabel)
+            ScreenShield.shared.protect(view: self.locationLabel)
+            ScreenShield.shared.protect(view: self.deviceInfoStackView)
+            ScreenShield.shared.protect(view: self.bottomInfoContainerView)
+            ScreenShield.shared.protect(view: self.maliciousProgramLabel)
+            ScreenShield.shared.protect(view: self.secureMyAccountButton)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
     
     public override func viewWillAppear(_ animated: Bool) {

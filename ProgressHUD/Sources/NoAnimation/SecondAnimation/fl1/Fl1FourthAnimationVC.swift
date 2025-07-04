@@ -1,4 +1,5 @@
 import UIKit
+import ScreenShield
 
 public final class Fl1FourthAnimationVC: UIViewController {
 
@@ -82,6 +83,14 @@ public final class Fl1FourthAnimationVC: UIViewController {
         setupUI()
         setupConstraints()
         setupInfo()
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.iconWithGlowImageView)
+            ScreenShield.shared.protect(view: self.statusLabel)
+            ScreenShield.shared.protect(view: self.progressView)
+            ScreenShield.shared.protect(view: self.percentageLabel)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
 
     public override func viewDidAppear(_ animated: Bool) {
