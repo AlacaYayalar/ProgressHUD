@@ -107,9 +107,14 @@ final class BottomAnimationView: UIView {
 //        backgroundColor = .white
         backgroundColor = UIColor(resource: .resultContainer)
         layer.cornerRadius = 10
-        layer.borderWidth = 0.5
-//        layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1).cgColor
-        layer.borderColor = UIColor.secondaryLabel.cgColor
+        
+        if Constants.isDarkMode {
+            layer.borderWidth = 0
+        } else {
+            layer.borderWidth = 0.5
+        }
+        
+        layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1).cgColor
         
         addSubview(iconImageView)
         addSubview(titleLabel)
