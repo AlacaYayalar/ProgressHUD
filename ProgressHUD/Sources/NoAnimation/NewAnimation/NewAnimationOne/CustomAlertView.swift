@@ -119,7 +119,7 @@ final class CustomAlertView: UIView {
         backgroundColor = UIColor(resource: .resultContainer)
         layer.cornerRadius = 14
         
-        descriptionBackView.backgroundColor = Constants.isDarkMode ? UIColor(red: 75/255, green: 75/255, blue: 75/255, alpha: 1) : .black.withAlphaComponent(0.06)
+        descriptionBackView.backgroundColor = Constants.isDarkMode ? UIColor(red: 75/255, green: 75/255, blue: 75/255, alpha: 1) : .black.withAlphaComponent(0.06) 
 
         addSubview(icon)
         addSubview(titleLabel)
