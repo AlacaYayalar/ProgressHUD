@@ -21,7 +21,8 @@ final class TopProgressView: UIView {
         let label = UILabel()
         
         label.font = .systemFont(ofSize: UIDevice.current.userInterfaceIdiom == .pad ? 18 : 13, weight: .semibold)
-        label.textColor = UIColor(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
+//        label.textColor = UIColor(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
+        label.textColor = .secondaryLabel
         label.textAlignment = .center
         
         return label
@@ -60,7 +61,8 @@ final class TopProgressView: UIView {
         stackView.addArrangedSubview(titleLabel)
         addSubview(stackView)
         
-        backgroundColor = .white
+//        backgroundColor = .white
+        backgroundColor = UIColor(resource: .resultContainer)
         layer.cornerRadius = 20
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.04

@@ -10,7 +10,8 @@ final class NewAnimationOneViewController: UIViewController {
         let label = UILabel()
         
         label.font = .systemFont(ofSize: 24, weight: .bold)
-        label.textColor = UIColor(red: 36/255, green: 36/255, blue: 36/255, alpha: 1)
+//        label.textColor = UIColor(red: 36/255, green: 36/255, blue: 36/255, alpha: 1)
+        label.textColor = .label
         label.textAlignment = .center
         label.numberOfLines = 0
         
@@ -34,8 +35,10 @@ final class NewAnimationOneViewController: UIViewController {
     private var labelCount = 0
     private let redColor = UIColor(red: 255/255, green: 57/255, blue: 39/255, alpha: 1)
     private let greenColor = UIColor().hexStringToUIColor(hex: "#65D65C")
-    private let defaultColor = UIColor(red: 36/255, green: 36/255, blue: 36/255, alpha: 1)
-    private let defaultGray = UIColor.init(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
+//    private let defaultColor = UIColor(red: 36/255, green: 36/255, blue: 36/255, alpha: 1)
+    private let defaultColor = UIColor.label
+//    private let defaultGray = UIColor.init(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
+    private let defaultGray = UIColor.secondaryLabel
     private let isFromRsult: Bool
     
     weak var delegate: SpecialAnimationDelegate?
@@ -86,7 +89,8 @@ final class NewAnimationOneViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+//        view.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+        view.backgroundColor = UIColor(resource: .localBG)
         progressView = TopProgressView(text: model.prgrsTitle)
         alert = CustomAlertView(iconName: model.messIcon,
                                 titleLabelText: model.messTlt,
@@ -107,7 +111,8 @@ final class NewAnimationOneViewController: UIViewController {
             make.horizontalEdges.equalToSuperview().inset(32)
         }
         
-        scrollView.backgroundColor = .white
+//        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = UIColor(resource: .resultContainer)
         scrollView.layer.cornerRadius = 20
         scrollView.isScrollEnabled = false
         scrollView.showsVerticalScrollIndicator = false

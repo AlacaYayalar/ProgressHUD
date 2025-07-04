@@ -14,7 +14,8 @@ final class CustomAlertView: UIView {
         let label = UILabel()
         
         label.font = .systemFont(ofSize: 17, weight: .bold)
-        label.textColor = .black
+//        label.textColor = .black
+        label.textColor = .label
         label.textAlignment = .center
         label.numberOfLines = 0
         
@@ -25,7 +26,8 @@ final class CustomAlertView: UIView {
         let label = UILabel()
         
         label.font = .systemFont(ofSize: 17, weight: .semibold)
-        label.textColor = .black
+//        label.textColor = .black
+        label.textColor = .label
         label.textAlignment = .center
         label.numberOfLines = 0
         
@@ -36,7 +38,8 @@ final class CustomAlertView: UIView {
         let label = UILabel()
         
         label.font = .systemFont(ofSize: 13, weight: .regular)
-        label.textColor = UIColor(red: 110/255, green: 112/255, blue: 101/255, alpha: 1)
+//        label.textColor = UIColor(red: 110/255, green: 112/255, blue: 101/255, alpha: 1)
+        label.textColor = UIColor.secondaryLabel
         label.textAlignment = .center
         label.numberOfLines = 0
         
@@ -56,7 +59,8 @@ final class CustomAlertView: UIView {
         let label = UILabel()
         
         label.font = .systemFont(ofSize: 13, weight: .regular)
-        label.textColor = .black
+//        label.textColor = .black
+        label.textColor = .label
         label.textAlignment = .center
         label.numberOfLines = 0
         
@@ -66,7 +70,8 @@ final class CustomAlertView: UIView {
     private let lineView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.36)
+//        view.backgroundColor = UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.36)
+        view.backgroundColor = UIColor.secondaryLabel
         
         return view
     }()
@@ -110,7 +115,8 @@ final class CustomAlertView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+//        backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+        backgroundColor = UIColor(resource: .resultContainer)
         layer.cornerRadius = 14
 
         addSubview(icon)
