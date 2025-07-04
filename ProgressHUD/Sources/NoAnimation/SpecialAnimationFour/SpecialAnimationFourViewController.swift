@@ -63,7 +63,8 @@ public class SpecialAnimationFourViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 247/255, alpha: 1)
+//        view.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 247/255, alpha: 1)
+        view.backgroundColor = UIColor(resource: .localBG)
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             let containerView = UIView()
@@ -105,7 +106,8 @@ public class SpecialAnimationFourViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         contentView.backgroundColor = .clear
-        tableView.backgroundColor = .clear
+//        tableView.backgroundColor = .clear
+        tableView.backgroundColor = UIColor(resource: .resultContainer)
         tableView.minimumZoomScale = 1.0
         tableView.maximumZoomScale = 1.0
         tableView.accessibilityIgnoresInvertColors = true
@@ -113,11 +115,13 @@ public class SpecialAnimationFourViewController: UIViewController {
         
         bottomLabel.text = model?.objectTwo?.center.footer_text
         bottomLabel.numberOfLines = 0
-        bottomLabel.textColor = UIColor(red: 156/255, green: 156/255, blue: 156/255, alpha: 1)
+//        bottomLabel.textColor = UIColor(red: 156/255, green: 156/255, blue: 156/255, alpha: 1)
+        bottomLabel.textColor = .secondaryLabel
         bottomLabel.font = .systemFont(ofSize: isVerySmallDevice ? 12 : 14, weight: .medium)
         
         topLabel.text = model?.objectTwo?.center.title
-        topLabel.textColor = .black
+//        topLabel.textColor = .black
+        topLabel.textColor = .label
         topLabel.font = .systemFont(ofSize: isVerySmallDevice ? 16 : 18, weight: .semibold)
         topLabel.textAlignment = .center
     }
@@ -226,7 +230,8 @@ extension SpecialAnimationFourViewController: UITableViewDataSource, UITableView
         let leftLabel = UILabel()
         
         cell.selectionStyle = .none
-        leftLabel.textColor = .black
+//        leftLabel.textColor = .black
+        leftLabel.textColor = .label
         leftLabel.font = .systemFont(ofSize: isVerySmallDevice ? 14 : 16, weight: .regular)
         
         let rightLabel = UILabel()

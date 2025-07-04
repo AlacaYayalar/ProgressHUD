@@ -15,13 +15,15 @@ final class BottomAnimationView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: isVerySmallDevice ? 14 : 16, weight: .semibold)
+        label.textColor = .label
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: isVerySmallDevice ? 10 : 12, weight: .regular)
-        label.textColor = UIColor(red: 103/255, green: 103/255, blue: 103/255, alpha: 1)
+//        label.textColor = UIColor(red: 103/255, green: 103/255, blue: 103/255, alpha: 1)
+        label.textColor = .secondaryLabel
         return label
     }()
     
@@ -29,7 +31,7 @@ final class BottomAnimationView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: isVerySmallDevice ? 12 : 14, weight: .medium)
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     
@@ -102,7 +104,8 @@ final class BottomAnimationView: UIView {
         actionButton?.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         actionButton?.layer.cornerRadius = 19
         
-        backgroundColor = .white
+//        backgroundColor = .white
+        backgroundColor = UIColor(resource: .resultContainer)
         layer.cornerRadius = 10
         layer.borderWidth = 0.5
         layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1).cgColor
