@@ -58,6 +58,12 @@
             "value" : "設定画面にリダイレクトされます"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정으로 리디렉션됩니다"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -145,6 +151,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャンセル"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "취소"
           }
         },
         "pl" : {
@@ -236,6 +248,12 @@
             "value" : "今すぐ"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지금"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -325,6 +343,12 @@
             "value" : "OK"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "좋아요"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -412,6 +436,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ディープスキャン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "딥 스캔"
           }
         },
         "pl" : {
@@ -681,6 +711,12 @@
             "value" : "無効"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장애가 있는"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -857,6 +893,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "オン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~에"
           }
         },
         "pl" : {

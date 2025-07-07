@@ -217,7 +217,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                     NSAttributedString.Key.foregroundColor: UIColor().hexStringToUIColor(hex: "#000000"),
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIDevice.current.userInterfaceIdiom == .pad ? 18 : (isSmallDevice ? (isVerySmallDevice ? 8 : 9) : 12), weight: .medium)
                 ])
-                let attributedStrTwo = NSMutableAttributedString(string: localizeText(forKey: .subsActive), attributes: [
+                let attributedStrTwo = NSMutableAttributedString(string: (model?.gap?.titleDeep ?? localizeText(forKey: .subsActive)), attributes: [
                     NSAttributedString.Key.foregroundColor: UIColor().hexStringToUIColor(hex: "#65D65C"),
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIDevice.current.userInterfaceIdiom == .pad ? 21 : (isSmallDevice ? (isVerySmallDevice ? 10 : 11) : 14), weight: .bold)
                 ])
@@ -248,7 +248,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                     NSAttributedString.Key.foregroundColor: UIColor().hexStringToUIColor(hex: "#000000"),
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIDevice.current.userInterfaceIdiom == .pad ? 18 : (isSmallDevice ? (isVerySmallDevice ? 10 : 11) : 12), weight: .medium)
                 ])
-                let attributedStrTwo = NSMutableAttributedString(string: "\n" + localizeText(forKey: .subsActive), attributes: [
+                let attributedStrTwo = NSMutableAttributedString(string: "\n" + (model?.gap?.titleDeep ?? localizeText(forKey: .subsActive)), attributes: [
                     NSAttributedString.Key.foregroundColor: UIColor().hexStringToUIColor(hex: "#65D65C"),
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIDevice.current.userInterfaceIdiom == .pad ? 21 : (isSmallDevice ? (isVerySmallDevice ? 12 : 13) : 14), weight: .bold)
                 ])
@@ -284,7 +284,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 NSAttributedString.Key.foregroundColor: UIColor().hexStringToUIColor(hex: "#000000"),
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: (isSmallDevice ? (isVerySmallDevice ? 10 : 11) : 12), weight: .medium)
             ])
-            let attributedStrTwo = NSMutableAttributedString(string: "\n" + localizeText(forKey: .subsActive), attributes: [
+            let attributedStrTwo = NSMutableAttributedString(string: "\n" + (model?.gap?.titleDeep ?? localizeText(forKey: .subsActive)), attributes: [
                 NSAttributedString.Key.foregroundColor: UIColor().hexStringToUIColor(hex: "#E74444"),
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: (isSmallDevice ? (isVerySmallDevice ? 12 : 13) : 14), weight: .bold)
             ])
