@@ -174,7 +174,7 @@ public final class Fl3FifthAnimationVC: UIViewController {
 
     private func setupConstraints() {
         let horizontalPadding: CGFloat = 25
-        let statusLabelCenterYOffset: CGFloat = Constants.se3Screen ? (-view.bounds.height * 0.03) : (view.bounds.height * 0.05)
+        let statusLabelCenterYOffset: CGFloat = Constants.se3Screen ? (-view.bounds.height * 0.018) : (view.bounds.height * 0.05)
 
         NSLayoutConstraint.activate([
             protectedGraphicImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
