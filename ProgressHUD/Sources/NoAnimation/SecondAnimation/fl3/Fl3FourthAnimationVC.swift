@@ -195,6 +195,8 @@ public final class Fl3FourthAnimationVC: UIViewController {
     }
     
     private func setupUI() {
+        infoTextLabel.font = .systemFont(ofSize: Constants.se3Screen ? 13 : 15, weight: .medium)
+        
         optionsStackView.addArrangedSubview(option1View)
         optionsStackView.addArrangedSubview(option2View)
         purchaseOptions = [option1View, option2View]
