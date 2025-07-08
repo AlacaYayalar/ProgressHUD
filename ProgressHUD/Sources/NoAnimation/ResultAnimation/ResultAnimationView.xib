@@ -29,7 +29,7 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i8c-U7-kK8" customClass="LottieAnimationView" customModule="Lottie">
                     <rect key="frame" x="57" y="155" width="279" height="279"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="localBGColor"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="279" id="Gcl-wW-fii"/>
                         <constraint firstAttribute="height" constant="279" id="dFZ-GC-sOD"/>
