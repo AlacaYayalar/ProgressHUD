@@ -27,7 +27,7 @@
                                             <rect key="frame" x="16" y="5" width="49" height="53"/>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="FIM-gg-B10" secondAttribute="trailing" constant="5" id="0TP-66-BTG"/>
                                         <constraint firstItem="FIM-gg-B10" firstAttribute="leading" secondItem="HkX-6l-XSU" secondAttribute="leading" constant="16" id="A6Z-UG-6l0"/>
