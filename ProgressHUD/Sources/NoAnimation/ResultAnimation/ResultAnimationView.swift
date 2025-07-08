@@ -204,7 +204,8 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
         self.isTarifPaidAndActive = isTarifPaidAndActive
         self.model = model
         bannerView.setup(with: model, isPaid: isTarifPaidAndActive)
-        backgroundColor = .white
+//        backgroundColor = .white
+        backgroundColor = UIColor(resource: .localBG)
         animationView.backgroundColor = .white
         
         statsViewButton.setup(with: model) { [weak self] in
