@@ -226,7 +226,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 inactiveImageView.isHidden = true
                 subtitleLabel.text = model?.scn?.subtitle_compl
                 iconImageView.image = UIImage(resource: .vector)
-                titleLabel.text = String(format: model?.scn?.title_compl ?? "", localizeText(forKey: .subsOn))
+                titleLabel.text = String(format: model?.scn?.title_compl ?? "", model?.scn?.title_on ?? localizeText(forKey: .subsOn))
                 animationSubtitle.attributedText = attributedStrOne
                 animationTitle.text = model?.scn?.title_anim_compl
                 
@@ -259,7 +259,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 animationTitle.text = model?.scn?.title_anim_unp
                 subtitleLabel.text = model?.scn?.subtitle_unp
                 iconImageView.image = UIImage(resource: .inVector)
-                titleLabel.text = String(format: model?.scn?.title_compl ?? "", localizeText(forKey: .subsDis))
+                titleLabel.text = String(format: model?.scn?.title_compl ?? "", model?.scn?.disabled ?? localizeText(forKey: .subsDis))
                 animationSubtitle.attributedText = attributedStrOne
                 
                 circularLeadingConstraint.constant = UIDevice.current.userInterfaceIdiom == .pad ? 72 : (isSmallDevice ? (isVerySmallDevice ? 42 : 41) : 30)
@@ -291,7 +291,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
             attributedStrOne.append(attributedStrTwo)
             
             circularProgress.isHidden = true
-            titleLabel.text = String(format: model?.scn?.title_compl ?? "", localizeText(forKey: .subsDis))
+            titleLabel.text = String(format: model?.scn?.title_compl ?? "", model?.scn?.disabled ?? localizeText(forKey: .subsDis))
             subtitleLabel.text = model?.scn?.subtitle_unp
             animationTitle.text = model?.scn?.title_anim_unp
             animationSubtitle.attributedText = attributedStrOne

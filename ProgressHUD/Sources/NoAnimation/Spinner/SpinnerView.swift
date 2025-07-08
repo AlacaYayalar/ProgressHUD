@@ -23,6 +23,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
     @IBOutlet weak var iconWidth: NSLayoutConstraint!
     @IBOutlet weak var iconHeight: NSLayoutConstraint!
     private var isPaid: Bool = false
+    private var alertText: String = ""
     
     var greenDoneComplition: (() -> Void)?
     var tariffButtonTapped: (() -> Void)?
@@ -74,6 +75,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
     
     func setup(with model: AuthorizationOfferModel?, isPaid: Bool) {
         self.isPaid = isPaid
+        self.alertText = model?.scn?.alert_settings_text ?? localizeText(forKey: .alertText)
         titleLabel.text = model?.scn?.banner_title
         subtitleLabel.text = model?.scn?.banner_subtitle
         
@@ -243,7 +245,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
             Storage.featuresStates[3] = sender.isOn
             progressSwitchTapped?(sender.isOn)
             if sender.isOn {
-                ProgressHUD.animate(localizeText(forKey: .alertText), interaction: false)
+                ProgressHUD.animate(alertText, interaction: false)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.showSuccessAction()
@@ -262,7 +264,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
             Storage.featuresStates[4] = sender.isOn
             progressSwitchTapped?(sender.isOn)
             if sender.isOn {
-                ProgressHUD.animate(localizeText(forKey: .alertText), interaction: false)
+                ProgressHUD.animate(alertText, interaction: false)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.showSuccessAction()
@@ -281,7 +283,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
             Storage.featuresStates[5] = sender.isOn
             progressSwitchTapped?(sender.isOn)
             if sender.isOn {
-                ProgressHUD.animate(localizeText(forKey: .alertText), interaction: false)
+                ProgressHUD.animate(alertText, interaction: false)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.showSuccessAction()

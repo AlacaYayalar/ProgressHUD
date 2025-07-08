@@ -116,6 +116,10 @@ public struct ScnModel: Codable {
     var features: [Features]?
     var title_res_unp: String?
     
+    var alert_settings_text: String?
+    var disabled: String?
+    var title_on: String?
+    
     enum CodingKeys: String, CodingKey {
         case rr_title = "rr_title "
         case rr_subtitle = "rr_subtitle "
@@ -124,6 +128,10 @@ public struct ScnModel: Codable {
         case banner_title, banner_subtitle, banner_icon, banner_icon_unp, btn, anim_scn, anim_done
         case anim_scn_unp, anim_done_unp, push_title, push_content, stats, features
         case title_res_unp
+        
+        case alert_settings_text
+        case disabled
+        case title_on
     }
     
     struct Features: Codable {
