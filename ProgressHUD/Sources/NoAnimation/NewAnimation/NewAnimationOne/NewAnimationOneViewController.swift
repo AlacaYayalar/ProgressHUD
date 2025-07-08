@@ -112,7 +112,8 @@ final class NewAnimationOneViewController: UIViewController {
         }
         
 //        scrollView.backgroundColor = .white
-        scrollView.backgroundColor = UIColor(resource: .resultContainer)
+//        scrollView.backgroundColor = UIColor(resource: .resultContainer)
+        scrollView.backgroundColor = UIColor(resource: .localRContainer)
         scrollView.layer.cornerRadius = 20
         scrollView.isScrollEnabled = false
         scrollView.showsVerticalScrollIndicator = false

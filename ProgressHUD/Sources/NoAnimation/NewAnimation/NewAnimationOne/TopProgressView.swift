@@ -62,7 +62,8 @@ final class TopProgressView: UIView {
         addSubview(stackView)
         
 //        backgroundColor = .white
-        backgroundColor = UIColor(resource: .resultContainer)
+//        backgroundColor = UIColor(resource: .resultContainer)
+        backgroundColor = UIColor(resource: .localRContainer)
         layer.cornerRadius = 20
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.04
