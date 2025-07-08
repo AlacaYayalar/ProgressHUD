@@ -236,10 +236,16 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 guard let url = URL(string: model?.scn?.anim_done ?? "") else { return }
                 
                 animationView.isHidden = false
-                LottieAnimation.loadedFrom(url: url, closure: { [weak self] animation in
-                    self?.animationView.animation = animation
-                    self?.animationView.play()
-                }, animationCache: DefaultAnimationCache.sharedCache)
+                if Constants.isDarkMode {
+                    animationView.animation = LottieAnimation.named("protectedNew")
+                    animationView.play()
+                } else {
+                    LottieAnimation.loadedFrom(url: url, closure: { [weak self] animation in
+                        self?.animationView.animation = animation
+                        self?.animationView.play()
+                    }, animationCache: DefaultAnimationCache.sharedCache)
+                }
+                
                 
                 circularLeadingConstraint.constant = UIDevice.current.userInterfaceIdiom == .pad ? 60 : (isSmallDevice ? (isVerySmallDevice ? 36 : 35) : 35)
                 circularTopConstraint.constant = UIDevice.current.userInterfaceIdiom == .pad ? 60 : (isSmallDevice ? (isVerySmallDevice ? 36 : 35) : 35)
