@@ -105,7 +105,7 @@ final class BottomAnimationView: UIView {
         actionButton?.layer.cornerRadius = 19
         
 //        backgroundColor = .white
-        backgroundColor = UIColor(resource: .resultContainer)
+        backgroundColor = UIColor(resource: .localRContainer)
         layer.cornerRadius = 10
         
         if Constants.isDarkMode {

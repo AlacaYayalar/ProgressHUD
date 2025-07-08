@@ -254,7 +254,7 @@ extension SpecialAnimationFourViewController: UITableViewDataSource, UITableView
             make.centerY.equalTo(cell.contentView.snp.centerY)
         }
         
-        cell.contentView.backgroundColor = UIColor(resource: .resultContainer)
+        cell.contentView.backgroundColor = UIColor(resource: .localRContainer)
         
         return cell
     }
