@@ -238,7 +238,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 animationView.isHidden = false
                 if Constants.isDarkMode {
                     let bundle = Bundle.module
-                    animationView.animation = LottieAnimation.named("protectedNew")
+                    animationView.animation = LottieAnimation.named("protectedNew2")
                     animationView.play()
                 } else {
                     LottieAnimation.loadedFrom(url: url, closure: { [weak self] animation in
