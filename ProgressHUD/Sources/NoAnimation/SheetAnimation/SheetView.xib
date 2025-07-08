@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,13 +49,11 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ww" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6w-WM-nTz">
                                     <rect key="frame" x="0.0" y="69.999999999999943" width="502.33333333333331" height="26.333333333333329"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                    <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rr" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxs-Kq-01r">
                                     <rect key="frame" x="0.0" y="106.33333333333331" width="502.33333333333331" height="19.333333333333329"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrq-Js-S2f">
@@ -119,7 +118,7 @@
                                             <color key="color" red="0.20392156859999999" green="0.47058823529999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </activityIndicatorView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="localRContainer2Color"/>
                                     <constraints>
                                         <constraint firstItem="VDT-54-XBu" firstAttribute="centerY" secondItem="Loo-0O-fYD" secondAttribute="centerY" id="0je-lq-ljl"/>
                                         <constraint firstItem="3Tg-28-yb6" firstAttribute="leading" secondItem="Loo-0O-fYD" secondAttribute="leading" constant="15" id="O7X-re-wxT"/>
@@ -160,7 +159,7 @@
                                             <color key="color" red="0.20392156859999999" green="0.47058823529999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </activityIndicatorView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="localRContainer2Color"/>
                                     <constraints>
                                         <constraint firstItem="j2R-e8-XWe" firstAttribute="leading" secondItem="moa-gI-3l6" secondAttribute="trailing" constant="15" id="1Qo-u5-8Cq"/>
                                         <constraint firstItem="j2R-e8-XWe" firstAttribute="centerY" secondItem="AJW-RV-ZNh" secondAttribute="centerY" id="9A4-NA-mSe"/>
@@ -201,7 +200,7 @@
                                             <color key="color" red="0.20392156859999999" green="0.47058823529999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </activityIndicatorView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="localRContainer2Color"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="2IK-7I-4oq" secondAttribute="trailing" constant="15" id="A51-ic-Lpv"/>
                                         <constraint firstAttribute="trailing" secondItem="z93-BV-02h" secondAttribute="trailing" constant="15" id="TWk-JK-cLg"/>
@@ -233,7 +232,7 @@
                             <rect key="frame" x="47" y="261.33333333333331" width="299" height="4"/>
                         </progressView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="localRContainer2Color"/>
                     <constraints>
                         <constraint firstItem="JdZ-Nh-0tY" firstAttribute="centerX" secondItem="2oD-kb-zk5" secondAttribute="centerX" id="1J2-eu-wJD"/>
                         <constraint firstItem="wx2-uU-11X" firstAttribute="leading" secondItem="2oD-kb-zk5" secondAttribute="leading" constant="25" id="1YP-Xk-bGh"/>
@@ -298,6 +297,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="localRContainer2Color">
+            <color red="0.99999994039535522" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -305,10 +307,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

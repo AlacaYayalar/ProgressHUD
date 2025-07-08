@@ -30,7 +30,7 @@ final class StatsView: UIView {
     }
     
     private func setupView() {
-        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(Constants.isDarkMode ? 0.6 : 0.4)
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(Constants.isDarkMode ? 0.65 : 0.4)
         backgroundView.alpha = 0
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeTapped))
