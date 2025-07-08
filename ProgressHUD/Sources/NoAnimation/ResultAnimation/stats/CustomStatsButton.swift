@@ -26,7 +26,7 @@ final class CustomStatsButton: UIView {
     
     private func setupView() {
 //        backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
-        backgroundColor = UIColor(resource: .resultContainer)
+        backgroundColor = UIColor(resource: .localRContainer)
         layer.cornerRadius = 15
         clipsToBounds = true
         
