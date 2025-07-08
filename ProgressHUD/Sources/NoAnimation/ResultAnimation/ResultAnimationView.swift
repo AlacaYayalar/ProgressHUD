@@ -217,7 +217,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
         if isTarifPaidAndActive {
             if Storage.isAllFeaturesEnabled, Storage.featuresStates.count == 6 {
                 let attributedStrOne = NSMutableAttributedString(string: String(model?.scn?.subtitle_anim_compl?.dropLast(2) ?? ""), attributes: [
-                    NSAttributedString.Key.foregroundColor: UIColor().hexStringToUIColor(hex: "#000000"),
+                    NSAttributedString.Key.foregroundColor: UIColor.label /*UIColor().hexStringToUIColor(hex: "#000000")*/,
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIDevice.current.userInterfaceIdiom == .pad ? 18 : (isSmallDevice ? (isVerySmallDevice ? 8 : 9) : 12), weight: .medium)
                 ])
                 let attributedStrTwo = NSMutableAttributedString(string: (model?.gap?.titleDeep ?? localizeText(forKey: .subsActive)), attributes: [
