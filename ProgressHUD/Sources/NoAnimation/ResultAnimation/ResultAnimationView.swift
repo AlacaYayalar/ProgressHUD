@@ -217,7 +217,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
         if isTarifPaidAndActive {
             if Storage.isAllFeaturesEnabled, Storage.featuresStates.count == 6 {
                 let attributedStrOne = NSMutableAttributedString(string: String(model?.scn?.subtitle_anim_compl?.dropLast(2) ?? ""), attributes: [
-                    NSAttributedString.Key.foregroundColor: UIColor.label /*UIColor().hexStringToUIColor(hex: "#000000")*/,
+                    NSAttributedString.Key.foregroundColor: UIColor().hexStringToUIColor(hex: "#000000"),
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIDevice.current.userInterfaceIdiom == .pad ? 18 : (isSmallDevice ? (isVerySmallDevice ? 8 : 9) : 12), weight: .medium)
                 ])
                 let attributedStrTwo = NSMutableAttributedString(string: (model?.gap?.titleDeep ?? localizeText(forKey: .subsActive)), attributes: [
@@ -232,6 +232,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 titleLabel.text = String(format: model?.scn?.title_compl ?? "", model?.scn?.title_on ?? localizeText(forKey: .subsOn))
                 animationSubtitle.attributedText = attributedStrOne
                 animationTitle.text = model?.scn?.title_anim_compl
+                animationTitle.textColor = UIColor().hexStringToUIColor(hex: "#000000")
                 
                 guard let url = URL(string: model?.scn?.anim_done ?? "") else { return }
                 
@@ -255,7 +256,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 layoutIfNeeded()
             } else {
                 let attributedStrOne = NSMutableAttributedString(string: String(model?.scn?.subtitle_anim_compl?.dropLast(2) ?? ""), attributes: [
-                    NSAttributedString.Key.foregroundColor: UIColor().hexStringToUIColor(hex: "#000000"),
+                    NSAttributedString.Key.foregroundColor: UIColor.label /*UIColor().hexStringToUIColor(hex: "#000000")*/,
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIDevice.current.userInterfaceIdiom == .pad ? 18 : (isSmallDevice ? (isVerySmallDevice ? 10 : 11) : 12), weight: .medium)
                 ])
                 let attributedStrTwo = NSMutableAttributedString(string: "\n" + (model?.gap?.titleDeep ?? localizeText(forKey: .subsActive)), attributes: [
@@ -271,6 +272,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 iconImageView.image = UIImage(resource: .inVector)
                 titleLabel.text = String(format: model?.scn?.title_compl ?? "", model?.scn?.disabled ?? localizeText(forKey: .subsDis))
                 animationSubtitle.attributedText = attributedStrOne
+                animationTitle.textColor = UIColor.label
                 
                 circularLeadingConstraint.constant = UIDevice.current.userInterfaceIdiom == .pad ? 72 : (isSmallDevice ? (isVerySmallDevice ? 42 : 41) : 30)
                 circularTopConstraint.constant = UIDevice.current.userInterfaceIdiom == .pad ? 72 : (isSmallDevice ? (isVerySmallDevice ? 42 : 41) : 30)
