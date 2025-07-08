@@ -167,7 +167,7 @@ final class SheetView: UIView, InstanceFromNibProtocol {
                     let imURL = URL(string: model.ic_5)!
                     
                     self.iconImage.kf.setImage(with: imURL, options: [.processor(SVGImgProcessor())])
-                    self.title.textColor = .black
+                    self.title.textColor = UIColor.label
                     self.iconImage.isHidden = false
                     self.iconcontainer.isHidden = false
                     self.iconActivity.isHidden = true
