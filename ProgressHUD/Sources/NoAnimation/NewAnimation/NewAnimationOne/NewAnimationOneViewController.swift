@@ -21,7 +21,7 @@ final class NewAnimationOneViewController: UIViewController {
     private let dimmView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = .black.withAlphaComponent(0.4)
+        view.backgroundColor = .black.withAlphaComponent(Constants.isDarkMode ? 0.65 : 0.4)
         
         return view
     }()
