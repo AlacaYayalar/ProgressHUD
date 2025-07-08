@@ -23,13 +23,16 @@ final class BoxStatView: UIView {
         icon.contentMode = .scaleAspectFit
         
         titleLabel.font = .systemFont(ofSize: 13, weight: .regular)
-        titleLabel.textColor = .black
+//        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor.label
         titleLabel.textAlignment = .left
         numberText.font = .systemFont(ofSize: 13, weight: .regular)
-        numberText.textColor = UIColor(red: 156/255, green: 156/255, blue: 156/255, alpha: 1)
+//        numberText.textColor = UIColor(red: 156/255, green: 156/255, blue: 156/255, alpha: 1)
+        numberText.textColor = UIColor.secondaryLabel
         numberText.textAlignment = .right
         titleLabel.numberOfLines = 0
-        line.backgroundColor = UIColor(red: 226/255, green: 226/255, blue: 226/255, alpha: 1)
+//        line.backgroundColor = UIColor(red: 226/255, green: 226/255, blue: 226/255, alpha: 1)
+        line.backgroundColor = UIColor.secondaryLabel
         
         addSubview(icon)
         addSubview(numberText)

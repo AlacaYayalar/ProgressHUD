@@ -39,7 +39,8 @@ final class StatsView: UIView {
         addSubview(backgroundView)
         backgroundView.snp.makeConstraints { $0.edges.equalToSuperview() }
         
-        containerView.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+//        containerView.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+        containerView.backgroundColor = UIColor(resource: .localRContainer)
         containerView.layer.cornerRadius = 14
         containerView.clipsToBounds = true
         
@@ -47,9 +48,11 @@ final class StatsView: UIView {
         
         titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         titleLabel.textAlignment = .center
+        titleLabel.textColor = UIColor.label
         
         subtitleLabel.font = .systemFont(ofSize: 13, weight: .regular)
         subtitleLabel.textAlignment = .center
+        subtitleLabel.textColor = UIColor.label
         
         textStackView.axis = .vertical
         textStackView.spacing = 0
@@ -60,11 +63,13 @@ final class StatsView: UIView {
         textStackView.addArrangedSubview(textBox4)
         textStackView.addArrangedSubview(textBox5)
         
-        textStackView.backgroundColor = .white
+//        textStackView.backgroundColor = .white
+        textStackView.backgroundColor = UIColor(resource: .localRContainer2)
         textStackView.layer.cornerRadius = 8
         textStackView.clipsToBounds = true
         
-        lineView.backgroundColor = UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.36)
+//        lineView.backgroundColor = UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.36)
+        lineView.backgroundColor = UIColor.secondaryLabel
         
         closeButton.setTitleColor(UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1), for: .normal)
         closeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
