@@ -115,7 +115,6 @@ public struct ScnModel: Codable {
     var stats: Stats?
     var features: [Features]?
     var title_res_unp: String?
-    
     var alert_settings_text: String?
     var disabled: String?
     var title_on: String?
