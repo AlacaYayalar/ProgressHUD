@@ -160,6 +160,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
         }
         
         circularProgress.configureProgressViewToBeCircular()
+        inactiveImageView.image = UIImage(named: "inActiveSub")
         
         circularProgress.setProgressColor = UIColor().hexStringToUIColor(hex: "#65D65C")
         circularProgress.setTrackColor = UIColor(displayP3Red: 205.0/255.0, green: 247.0/255.0, blue: 212.0/255.0, alpha: 1.0)
