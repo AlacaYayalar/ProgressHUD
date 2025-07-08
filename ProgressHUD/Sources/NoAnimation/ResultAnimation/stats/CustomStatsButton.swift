@@ -25,22 +25,26 @@ final class CustomStatsButton: UIView {
     }
     
     private func setupView() {
-        backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
+//        backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
+        backgroundColor = UIColor(resource: .resultContainer)
         layer.cornerRadius = 15
         clipsToBounds = true
         
         icon.contentMode = .scaleAspectFit
         chevroneIcon.contentMode = .scaleAspectFit
+        chevroneIcon.tintColor = UIColor.label
         
         stackView.axis = .vertical
         stackView.spacing = 2
         stackView.alignment = .leading
         
         titleLabel.font = .systemFont(ofSize: 14, weight: .semibold)
-        titleLabel.textColor = .black
+//        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor.label
         titleLabel.textAlignment = .left
         subtitleLabel.font = .systemFont(ofSize: 10, weight: .medium)
-        subtitleLabel.textColor = UIColor(red: 103/255, green: 103/255, blue: 103/255, alpha: 1)
+//        subtitleLabel.textColor = UIColor(red: 103/255, green: 103/255, blue: 103/255, alpha: 1)
+        subtitleLabel.textColor = UIColor.secondaryLabel
         subtitleLabel.textAlignment = .left
         
         stackView.addArrangedSubview(titleLabel)
