@@ -172,7 +172,7 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
             guard let self, let gap = model?.gap else { return }
             
             if isPaid {
-                let vc = NewAnimationOneViewController(model: gap.objecs[4],
+                let vc = NewAnimationOneViewController(model: gap.objecs[1],
                                                        title: gap.titleDeep,
                                                        isFromRsult: true,
                                                        delegate: self.delegate)
