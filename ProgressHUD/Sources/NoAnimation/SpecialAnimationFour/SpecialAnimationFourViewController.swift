@@ -172,8 +172,9 @@ public class SpecialAnimationFourViewController: UIViewController {
                 let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
-//                let vc = MscResultAnimationViewController(self.model, isPaid: isPaid, delegate: self.delegate)
-//                self.navigationController?.pushViewController(vc, animated: true)
+                let vc = FlRFirstAnimationVC(self.model, delegate: self.delegate, isPaid: isPaid)
+                
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
