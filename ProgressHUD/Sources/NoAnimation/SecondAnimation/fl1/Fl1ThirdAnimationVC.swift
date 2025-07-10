@@ -217,7 +217,7 @@ public final class Fl1ThirdAnimationVC: UIViewController {
 //            self.present(alert, animated: true, completion: nil)
 //        }
         
-        self.delegate?.buttonTapped(isResult: false)
+        self.delegate?.buttonTapped(isResult: false, fl1IsSecond: false)
     }
     
     public func goToNext(isPaid: Bool) {

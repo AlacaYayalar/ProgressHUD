@@ -295,7 +295,7 @@ public final class Fl1SecondAnimationVC: UIViewController {
 //
 //            navigationController?.pushViewController(highRiskVC, animated: true)
 //        }
-        self.delegate?.buttonTapped(isResult: false)
+        self.delegate?.buttonTapped(isResult: false, fl1IsSecond: true)
     }
     
     public func goToNext(isPaid: Bool) {

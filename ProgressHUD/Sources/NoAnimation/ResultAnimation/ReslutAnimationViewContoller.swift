@@ -2,15 +2,19 @@
 import UIKit
 
 public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDelegate {
+    public func buttonTapped(isResult: Bool, fl1IsSecond: Bool?) {
+        delegate?.buttonTapped(isResult: isResult, fl1IsSecond: nil)
+    }
+    
     private let isVerySmallDevice = UIScreen.main.nativeBounds.height <= 1136
     
     public func eventsFunc(event: EventsName) {
         delegate?.eventsFunc(event: event)
     }
     
-    public func buttonTapped(isResult: Bool) {
-        delegate?.buttonTapped(isResult: isResult)
-    }
+//    public func buttonTapped(isResult: Bool) {
+//        delegate?.buttonTapped(isResult: isResult, fl1IsSecond: nil)
+//    }
     
     public func scanButtonTapped() {}
     
@@ -142,7 +146,7 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
             //            vc.modalPresentationStyle = .fullScreen
             //
             //            self.navigationController?.present(vc, animated: true)
-            self.delegate?.buttonTapped(isResult: true)
+            self.delegate?.buttonTapped(isResult: true, fl1IsSecond: nil)
         }
         
         resultView.openSheetVCTapped = { [weak self] in
@@ -181,7 +185,7 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
             } else {
                 switch gap.orderIndex {
                 case 0:
-                    self.delegate?.buttonTapped(isResult: true)
+                    self.delegate?.buttonTapped(isResult: true, fl1IsSecond: nil)
                     return
 //                case 2:
 //                    let vc = NewAnimationTwoViewController(model: gap.objecs[1], alertModel: gap.objecs[0], title: gap.title, delegate: self.delegate)

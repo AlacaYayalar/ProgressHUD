@@ -267,7 +267,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
 //
 //        navigationController?.pushViewController(successVC, animated: true)
         
-        self.delegate?.buttonTapped(isResult: false)
+        self.delegate?.buttonTapped(isResult: false, fl1IsSecond: nil)
     }
 
     @objc private func cancelTapped() {
