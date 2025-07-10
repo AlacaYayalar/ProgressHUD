@@ -284,16 +284,33 @@ public final class Fl1SecondAnimationVC: UIViewController {
     // MARK: - Actions
 
     @objc private func activateButtonTapped() {
-        let purchaseSucceeded = Bool.random()
-
-        if purchaseSucceeded {
-            let successVC = Fl1FourthAnimationVC(model, isFromFirst: true, delegate: self.delegate, rScreen: rScreen)
-
-            navigationController?.pushViewController(successVC, animated: true)
+//        let purchaseSucceeded = Bool.random()
+//
+//        if purchaseSucceeded {
+//            let successVC = Fl1FourthAnimationVC(model, isFromFirst: true, delegate: self.delegate, rScreen: rScreen)
+//
+//            navigationController?.pushViewController(successVC, animated: true)
+//        } else {
+//            let highRiskVC = Fl1ThirdAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
+//
+//            navigationController?.pushViewController(highRiskVC, animated: true)
+//        }
+        self.delegate?.buttonTapped(isResult: false)
+    }
+    
+    public func goToNext(isPaid: Bool) {
+        if isPaid {
+            if rScreen == 2 {
+                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
+                navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let successVC = Fl1FourthAnimationVC(model, isFromFirst: true, delegate: self.delegate, rScreen: rScreen)
+                navigationController?.pushViewController(successVC, animated: true)
+            }
         } else {
-            let highRiskVC = Fl1ThirdAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
-
-            navigationController?.pushViewController(highRiskVC, animated: true)
+//            let resultVC = FlRFirstAnimationVC(model, delegate: delegate, isPaid: false)
+            let nextVC = Fl1ThirdAnimationVC(model, delegate: delegate, rScreen: rScreen)
+            navigationController?.pushViewController(nextVC, animated: true)
         }
     }
 }
