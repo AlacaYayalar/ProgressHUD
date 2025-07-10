@@ -288,9 +288,14 @@ public final class Fl3FourthAnimationVC: UIViewController {
             let successVC = Fl3FifthAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
 
             navigationController?.pushViewController(successVC, animated: true)
-        } else {
-            let resultVC = FlRFirstAnimationVC(model, delegate: delegate, isPaid: false)
-            navigationController?.pushViewController(resultVC, animated: true)
+        } else {            
+            if self.rScreen == 2 {
+                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = FlRFirstAnimationVC(self.model, delegate: self.delegate, isPaid: isPaid)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }

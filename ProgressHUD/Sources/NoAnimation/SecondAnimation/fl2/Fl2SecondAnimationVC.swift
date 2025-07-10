@@ -231,8 +231,13 @@ public final class Fl2SecondAnimationVC: UIViewController {
 
             navigationController?.pushViewController(successVC, animated: true)
         } else {
-            let resultVC = FlRFirstAnimationVC(model, delegate: delegate, isPaid: false)
-            navigationController?.pushViewController(resultVC, animated: true)
+            if self.rScreen == 2 {
+                let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = FlRFirstAnimationVC(self.model, delegate: self.delegate, isPaid: isPaid)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }
