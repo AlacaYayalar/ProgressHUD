@@ -265,6 +265,11 @@ public final class Fl1FirstAnimationVC: UIViewController {
     public func goToNext(isPaid: Bool) {
         if let viewControllers = navigationController?.viewControllers {
             for vc in viewControllers {
+                if let secondVC = vc as? Fl1SecondAnimationVC {
+                    secondVC.goToNext(isPaid: isPaid)
+//                    break
+                }
+                
                 if let thirdVC = vc as? Fl1ThirdAnimationVC {
                     thirdVC.goToNext(isPaid: isPaid)
                     break
