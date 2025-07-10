@@ -290,6 +290,7 @@ public final class Fl1SecondAnimationVC: UIViewController {
     public func goToNext(isPaid: Bool) {
         if isPaid {
             let nextStepVC = Fl1FourthAnimationVC(model, isFromFirst: true, delegate: delegate, rScreen: rScreen)
+            navigationController?.pushViewController(nextStepVC, animated: true)
         } else {
             let nextVC = Fl1ThirdAnimationVC(model, delegate: delegate, rScreen: rScreen)
             navigationController?.pushViewController(nextVC, animated: true)
