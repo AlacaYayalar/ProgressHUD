@@ -129,7 +129,11 @@ public final class FlRFirstAnimationVC: UIViewController {
     
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
-    public var isPaid: Bool?
+    public var isPaid: Bool {
+        didSet {
+            updUI()
+        }
+    }
 
     // MARK: - Lifecycle
     public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, isPaid: Bool) {
@@ -298,6 +302,10 @@ public final class FlRFirstAnimationVC: UIViewController {
             protectionSwitch.centerYAnchor.constraint(equalTo: realtimeProtectionContainerView.centerYAnchor),
             protectionSwitch.leadingAnchor.constraint(equalTo: protectionLabelsStack!.trailingAnchor, constant: 8)
         ])
+    }
+    
+    private func updUI() {
+        
     }
     
     // MARK: - Actions
