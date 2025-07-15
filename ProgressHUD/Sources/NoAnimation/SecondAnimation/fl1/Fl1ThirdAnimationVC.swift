@@ -214,7 +214,7 @@ public final class Fl1ThirdAnimationVC: UIViewController {
                 let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
                 navigationController?.pushViewController(vc, animated: false)
             } else {
-                let successVC = FlRFirstAnimationVC(model, delegate: delegate, isPaid: false)
+                let successVC = ProtectionDashboardViewController(model, delegate: delegate, isPaid: false)
                 navigationController?.pushViewController(successVC, animated: true)
             }
         }

@@ -238,7 +238,7 @@ public final class Fl3FifthAnimationVC: UIViewController {
 //            self.dismiss(animated: true, completion: nil)
 //        }
         
-//        let vc = FlRFirstAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
+//        let vc = ProtectionDashboardViewController(model, delegate: self.delegate, rScreen: self.rScreen)
 //        
 //        self.navigationController?.pushViewController(vc, animated: true)
         
@@ -251,7 +251,7 @@ public final class Fl3FifthAnimationVC: UIViewController {
                 let vc = ReslutAnimationViewContoller(self.model, isPaid: isPaid, delegate: self.delegate)
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
-                let vc = FlRFirstAnimationVC(self.model, delegate: self.delegate, isPaid: isPaid)
+                let vc = ProtectionDashboardViewController(self.model, delegate: self.delegate, isPaid: isPaid)
                 
                 self.navigationController?.pushViewController(vc, animated: true)
             }
