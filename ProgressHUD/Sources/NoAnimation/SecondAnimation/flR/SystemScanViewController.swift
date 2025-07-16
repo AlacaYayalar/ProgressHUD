@@ -40,7 +40,7 @@ final class SystemScanViewController: UIViewController {
         let imageView = UIImageView()
 
         imageView.image = UIImage(resource: .circlesLoading)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
