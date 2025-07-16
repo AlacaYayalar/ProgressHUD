@@ -1,93 +1,117 @@
-import UIKit
-import ScreenShield
 
-public final class FlRSecondAnimationVC: UIViewController {
+import UIKit
+
+final class FlRSecondAnimationVC: UIViewController {
 
     // MARK: - UI Elements
 
-    private let topContainerView: UIView = {
+    private let iconContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(resource: .resultContainer)
-        view.layer.cornerRadius = 20
-        view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 4
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    private let shieldIconImageView: UIImageView = {
+    private let iconImageView: UIImageView = {
         let imageView = UIImageView()
+        
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+
+    private let checkmarkImageView: UIImageView = {
+        let imageView = UIImageView()
+        if #available(iOS 13.0, *) {
+            imageView.image = UIImage(systemName: "checkmark.circle.fill")
+            imageView.tintColor = .systemGreen
+        }
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
+        imageView.alpha = 0
+        imageView.backgroundColor = UIColor.systemBackground
+        imageView.layer.cornerRadius = 10
+        
+        return imageView
+    }()
+    
+    private let circlesImageView: UIImageView = {
+        let imageView = UIImageView()
+
+        imageView.image = UIImage(resource: .circlesLoading)
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         return imageView
     }()
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 30, weight: .bold)
-        label.textColor = .label
+        
+        label.font = .systemFont(ofSize: 28, weight: .bold)
+        label.textColor = UIColor.label
         label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
 
-    private let antiSpamContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(resource: .resultContainer)
-        view.layer.cornerRadius = 16
-        view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 4
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    private let antiSpamLabel: UILabel = {
+    private let statusLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .medium)
-        label.textColor = .label
+        
+        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.textColor = UIColor.secondaryLabel
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        
         return label
     }()
+    
+    private let progressView: UIProgressView = {
+        let pv = UIProgressView(progressViewStyle: .default)
+        
+        pv.progress = 0.0
+        pv.progressTintColor = .systemBlue
+        pv.trackTintColor = UIColor.systemGray4
+        pv.layer.cornerRadius = 4
+        pv.clipsToBounds = true
+        pv.translatesAutoresizingMaskIntoConstraints = false
+        
+        return pv
+    }()
 
-    private let antiSpamSwitch: UISwitch = {
-        let toggle = UISwitch()
-        toggle.isOn = false
-        toggle.translatesAutoresizingMaskIntoConstraints = false
-        return toggle
+    private lazy var fixingButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.setTitle(model?.result3?.result_fixing, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
+        button.backgroundColor = UIColor.systemGray5
+        button.setTitleColor(UIColor.secondaryLabel, for: .normal)
+        button.layer.cornerRadius = 30
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isUserInteractionEnabled = false
+        
+        return button
     }()
-    
-    private let scanOptionsContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(resource: .resultContainer)
-        view.layer.cornerRadius = 16
-        view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 4
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private var chevronImageURL = URL(string: "")
-    private var urlImg1 = URL(string: "")
-    private var urlImg2 = URL(string: "")
-    private var urlImg3 = URL(string: "")
-    
+
+    // MARK: - Properties
+    private var timer: Timer?
+    private var currentProgress: Float = 0.0
+    private let totalDuration: TimeInterval = 4.5 // Total time for the scan
+    private lazy var scanStatuses = [model?.flow1?.loading_subt_1, model?.flow1?.loading_subt_2, model?.flow1?.loading_subt_3]
+    private var lastStatusIndex = -1
+
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
-
-    // MARK: - Lifecycle
-    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?) {
+    public var isPaid: Bool
+    
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, isPaid: Bool) {
         self.model = model
         self.delegate = delegate
+        self.isPaid = isPaid
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -95,237 +119,170 @@ public final class FlRSecondAnimationVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    public override func viewDidLoad() {
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(resource: .localBG)
-        setupInfo()
-//        setupUI()
+        setupUI()
         setupConstraints()
-        
-        if !ProgressHUD.shared.isShow {
-            ScreenShield.shared.protect(view: self.topContainerView)
-            ScreenShield.shared.protect(view: self.shieldIconImageView)
-            ScreenShield.shared.protect(view: self.titleLabel)
-            ScreenShield.shared.protect(view: self.antiSpamContainerView)
-            ScreenShield.shared.protect(view: self.antiSpamLabel)
-            ScreenShield.shared.protect(view: self.antiSpamSwitch)
-            ScreenShield.shared.protect(view: self.scanOptionsContainerView)
-            ScreenShield.shared.protectFromScreenRecording()
-        }
     }
-    
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
 
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        navigationController?.navigationBar.backItem?.title = ""
-        navigationController?.navigationBar.tintColor = UIColor(resource: .navItemColorCust)
-    }
-    
-    public override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        startScanningAnimation()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        timer?.invalidate()
+        timer = nil
     }
 
     // MARK: - UI Setup
-    private func setupInfo() {
-        titleLabel.text = model?.result3?.result_det_tl
-        antiSpamLabel.text = model?.result3?.result_det_subt
-                
-        guard let iconURL = URL(string: model?.result3?.result_det_icon ?? "") else { return }
+    private func setupUI() {
+        view.addSubview(circlesImageView)
+        view.addSubview(iconContainerView)
+        iconContainerView.addSubview(iconImageView)
+        iconContainerView.addSubview(checkmarkImageView)
+
+        view.addSubview(titleLabel)
+        view.addSubview(statusLabel)
+        view.addSubview(progressView)
+        view.addSubview(fixingButton)
         
-        shieldIconImageView.kf.setImage(with: iconURL, placeholder: UIImage())
-        
-        guard let icon2URL = URL(string: model?.result3?.result_box1_img2 ?? "") else { return }
-        
-        chevronImageURL = icon2URL
+        titleLabel.text = model?.flow1?.loading_tl
         
         guard let img1URL = URL(string: model?.result3?.result_det_box1_img ?? "") else { return }
         
-        urlImg1 = img1URL
-        
-        guard let img2URL = URL(string: model?.result3?.result_det_box2_img ?? "") else { return }
-        
-        urlImg2 = img2URL
-        
-        guard let img3URL = URL(string: model?.result3?.result_det_box3_img ?? "") else { return }
-        
-        urlImg3 = img3URL
-        
-        setupUI()
+        iconImageView.kf.setImage(with: img1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
     }
-    
-    private func setupUI() {
-        view.addSubview(topContainerView)
-        topContainerView.addSubview(shieldIconImageView)
-        topContainerView.addSubview(titleLabel)
-        
-        view.addSubview(antiSpamContainerView)
-        antiSpamContainerView.addSubview(antiSpamLabel)
-        antiSpamContainerView.addSubview(antiSpamSwitch)
-        
-        view.addSubview(scanOptionsContainerView)
-        
-        let scanningSystemView = createScanOptionView(iconName: urlImg1!, text: model?.result3?.result_det_box1_tl ?? "", isNeedtoUseSVG: true)
-        let scanningNetworksView = createScanOptionView(iconName: urlImg2!, text: model?.result3?.result_det_box2_tl ?? "", iconColor: .systemBlue, isNeedtoUseSVG: false)
-        let appleIDScanView = createScanOptionView(iconName: urlImg3!, text: model?.result3?.result_det_box3_tl ?? "", iconColor: .systemBlue, isNeedtoUseSVG: false)
-        
-        let tap1 = UITapGestureRecognizer(target: self, action: #selector(firstButtonTapped))
-        scanningSystemView.isUserInteractionEnabled = true
-        scanningSystemView.addGestureRecognizer(tap1)
-        
-        let tap2 = UITapGestureRecognizer(target: self, action: #selector(secondButtonTapped))
-        scanningNetworksView.isUserInteractionEnabled = true
-        scanningNetworksView.addGestureRecognizer(tap2)
-        
-        let tap3 = UITapGestureRecognizer(target: self, action: #selector(thirdButtonTapped))
-        appleIDScanView.isUserInteractionEnabled = true
-        appleIDScanView.addGestureRecognizer(tap3)
-
-        let separator1 = createSeparator()
-        let separator2 = createSeparator()
-        
-        let stackView = UIStackView(arrangedSubviews: [scanningSystemView, separator1, scanningNetworksView, separator2, appleIDScanView])
-        stackView.axis = .vertical
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.isUserInteractionEnabled = true
-        
-        scanOptionsContainerView.addSubview(stackView)
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: scanOptionsContainerView.topAnchor, constant: 10),
-            stackView.bottomAnchor.constraint(equalTo: scanOptionsContainerView.bottomAnchor, constant: -10),
-            stackView.leadingAnchor.constraint(equalTo: scanOptionsContainerView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scanOptionsContainerView.trailingAnchor)
-        ])
-    }
-
-    private func createScanOptionView(iconName: URL, text: String, iconColor: UIColor = .gray, isNeedtoUseSVG: Bool) -> UIView {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        let iconImageView = UIImageView()
-
-        if isNeedtoUseSVG {
-            iconImageView.kf.setImage(with: iconName, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        } else {
-            iconImageView.kf.setImage(with: iconName, placeholder: UIImage())
-        }
-        
-        iconImageView.tintColor = iconColor
-        iconImageView.contentMode = .scaleAspectFit
-        iconImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let label = UILabel()
-        label.text = text
-        label.font = .systemFont(ofSize: 18, weight: .regular)
-        label.textColor = .label
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        let chevronImageView = UIImageView()
-        
-        chevronImageView.kf.setImage(with: chevronImageURL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        
-        chevronImageView.contentMode = .scaleAspectFit
-        chevronImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(iconImageView)
-        view.addSubview(label)
-        view.addSubview(chevronImageView)
-        
-        NSLayoutConstraint.activate([
-            iconImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            iconImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            iconImageView.widthAnchor.constraint(equalToConstant: 24),
-            iconImageView.heightAnchor.constraint(equalToConstant: 24),
-            
-            label.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 12),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
-            chevronImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            chevronImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            chevronImageView.widthAnchor.constraint(equalToConstant: 7),
-            chevronImageView.heightAnchor.constraint(equalToConstant: 16),
-            
-            view.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        return view
-    }
-
-    private func createSeparator() -> UIView {
-        let separatorContainer = UIView()
-        separatorContainer.translatesAutoresizingMaskIntoConstraints = false
-
-        let separator = UIView()
-        separator.backgroundColor = .separator
-        separator.translatesAutoresizingMaskIntoConstraints = false
-        
-        separatorContainer.addSubview(separator)
-        
-        NSLayoutConstraint.activate([
-            separator.leadingAnchor.constraint(equalTo: separatorContainer.leadingAnchor, constant: 56),
-            separator.trailingAnchor.constraint(equalTo: separatorContainer.trailingAnchor),
-            separator.topAnchor.constraint(equalTo: separatorContainer.topAnchor),
-            separator.bottomAnchor.constraint(equalTo: separatorContainer.bottomAnchor),
-            separator.heightAnchor.constraint(equalToConstant: 0.5)
-        ])
-        
-        return separatorContainer
-    }
-
-    // MARK: - Constraints
 
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            topContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            topContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            topContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            
-            shieldIconImageView.topAnchor.constraint(equalTo: topContainerView.topAnchor, constant: 30),
-            shieldIconImageView.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor),
-            shieldIconImageView.widthAnchor.constraint(equalToConstant: 98),
-            shieldIconImageView.heightAnchor.constraint(equalToConstant: 115),
-            
-            titleLabel.topAnchor.constraint(equalTo: shieldIconImageView.bottomAnchor, constant: 16),
-            titleLabel.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: -30),
-            
-            antiSpamContainerView.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 20),
-            antiSpamContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            antiSpamContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            antiSpamContainerView.heightAnchor.constraint(equalToConstant: 70),
+        let iconSize: CGFloat = 80
+        let checkmarkSize: CGFloat = 25
+        let horizontalPadding: CGFloat = 50
 
-            antiSpamLabel.leadingAnchor.constraint(equalTo: antiSpamContainerView.leadingAnchor, constant: 16),
-            antiSpamLabel.centerYAnchor.constraint(equalTo: antiSpamContainerView.centerYAnchor),
+        NSLayoutConstraint.activate([
+            // Icon Container (acts as an anchor for the main icon and checkmark)
+            iconContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            iconContainerView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -20),
+            iconContainerView.widthAnchor.constraint(equalToConstant: iconSize),
+            iconContainerView.heightAnchor.constraint(equalToConstant: iconSize),
+
+            circlesImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            circlesImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            circlesImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            circlesImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            // Main Icon
+            iconImageView.centerXAnchor.constraint(equalTo: iconContainerView.centerXAnchor),
+            iconImageView.centerYAnchor.constraint(equalTo: iconContainerView.centerYAnchor),
+            iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
+            iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
+
+            // Checkmark Badge
+            checkmarkImageView.trailingAnchor.constraint(equalTo: iconContainerView.trailingAnchor, constant: 5),
+            checkmarkImageView.bottomAnchor.constraint(equalTo: iconContainerView.bottomAnchor, constant: 5),
+            checkmarkImageView.widthAnchor.constraint(equalToConstant: checkmarkSize),
+            checkmarkImageView.heightAnchor.constraint(equalToConstant: checkmarkSize),
             
-            antiSpamSwitch.trailingAnchor.constraint(equalTo: antiSpamContainerView.trailingAnchor, constant: -16),
-            antiSpamSwitch.centerYAnchor.constraint(equalTo: antiSpamContainerView.centerYAnchor),
+            // Title Label
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -25), // Slightly above center
+
+            // Status Label
+            statusLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            statusLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            scanOptionsContainerView.topAnchor.constraint(equalTo: antiSpamContainerView.bottomAnchor, constant: 20),
-            scanOptionsContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            scanOptionsContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
+            // Progress View
+            progressView.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 20),
+            progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding),
+            progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding),
+            progressView.heightAnchor.constraint(equalToConstant: 8),
+
+            // Fixing Button
+            fixingButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            fixingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            fixingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            fixingButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
     
-    @objc private func firstButtonTapped() {
-        guard let delegate = delegate else { return }
-        let vc = Fl1FirstAnimationVC(model, delegate: delegate, rScreen: 1)
-        navigationController?.pushViewController(vc, animated: true)
+    // MARK: - Animation Logic
+    private func startScanningAnimation() {
+        // Reset state
+        currentProgress = 0.0
+        lastStatusIndex = -1
+        
+        let updatesPerSecond: Double = 30.0
+        let increment = 1.0 / (Float(totalDuration) * Float(updatesPerSecond))
+
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0 / updatesPerSecond, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.currentProgress += increment
+            
+            // Update UI based on progress
+            self.updateProgressUI()
+            
+            if self.currentProgress >= 1.0 {
+                self.currentProgress = 1.0
+                self.timer?.invalidate()
+                self.timer = nil
+                self.showCompletionState()
+            }
+        }
     }
     
-    @objc private func secondButtonTapped() {
-        guard let delegate = delegate else { return }
-        let vc = Fl2FirstAnimationVC(model, delegate: delegate, rScreen: 1)
-        navigationController?.pushViewController(vc, animated: true)
+    private func updateProgressUI() {
+        // Update progress bar
+        progressView.setProgress(currentProgress, animated: true)
+        
+        // Update status label based on progress segments
+        let statusIndex = Int(currentProgress * Float(scanStatuses.count))
+        
+        if statusIndex < scanStatuses.count && statusIndex != lastStatusIndex {
+            statusLabel.text = scanStatuses[statusIndex]
+            lastStatusIndex = statusIndex
+        }
     }
     
-    @objc private func thirdButtonTapped() {
-        guard let delegate = delegate else { return }
-        let vc = Fl3FirstAnimationVC(model, delegate: delegate, rScreen: 1)
-        navigationController?.pushViewController(vc, animated: true)
+    private func showCompletionState() {
+        // Final UI update to 100%
+        self.progressView.setProgress(1.0, animated: true)
+        
+        // Animate the transition to the "secure" state
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseInOut, animations: {
+            self.titleLabel.text = self.model?.flow1?.scr4_tl
+            
+            // Fade out the progress elements and the button
+            self.statusLabel.alpha = 0
+            self.progressView.alpha = 0
+            self.fixingButton.alpha = 0
+            
+            // Fade in the checkmark
+            self.checkmarkImageView.isHidden = false
+            self.checkmarkImageView.alpha = 1
+            self.checkmarkImageView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3) // Pop effect
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                let vc = FlRFirstAnimationVC(self.model, delegate: self.delegate, isPaid: self.isPaid)
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }) { _ in
+            // Clean up the hidden views from the hierarchy
+            self.statusLabel.isHidden = true
+            self.progressView.isHidden = true
+            self.fixingButton.isHidden = true
+            
+            // Animate the checkmark pop back to normal size
+            UIView.animate(withDuration: 0.3) {
+                self.checkmarkImageView.transform = .identity
+            }
+        }
     }
 }
-

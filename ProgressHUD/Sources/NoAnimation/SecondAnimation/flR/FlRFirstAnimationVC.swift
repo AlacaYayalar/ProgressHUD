@@ -1,141 +1,75 @@
-import UIKit
-import ScreenShield
 
-public final class FlRFirstAnimationVC: UIViewController {
+import UIKit
+
+final class FlRFirstAnimationVC: UIViewController {
 
     // MARK: - UI Elements
-    
-    private let topContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(resource: .resultContainer)
-        view.layer.cornerRadius = 16
-        view.layer.masksToBounds = false // Important
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 4
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+
+    private let titleCont: UIView = {
+        let titleCont = UIView()
+        
+        titleCont.backgroundColor = UIColor(resource: .localRContainer)
+        titleCont.layer.cornerRadius = 40
+        titleCont.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        titleCont.backgroundColor = UIColor(resource: .resultContainerNew)
+        titleCont.translatesAutoresizingMaskIntoConstraints = false
+        
+        return titleCont
     }()
-    
-    private let handIconImageView: UIImageView = {
+            
+    private let headerIconImageView: UIImageView = {
         let imageView = UIImageView()
         
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 20
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
-    
-    private let protectedStatusLabel: UILabel = {
+
+    private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 30, weight: .bold)
-        label.textColor = .label
+
+        label.font = .systemFont(ofSize: 28, weight: .bold)
+        label.textColor = UIColor.label
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
-    
+
     private let lastScanLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15, weight: .regular)
-        label.textColor = .secondaryLabel
+        
+        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.textColor = UIColor.secondaryLabel
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
-    
-    private let spamProtectionContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(resource: .resultContainer)
-        view.layer.cornerRadius = 16
-        view.layer.masksToBounds = false // Important
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 4
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+
+    private let mainStackView: UIStackView = {
+        let stackView = UIStackView()
+        
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
     }()
     
-    private let spamProtectionLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .medium)
-        label.textColor = .label
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let warningIconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let chevronImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.tintColor = .secondaryLabel
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let realtimeProtectionContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(resource: .resultContainer)
-        view.layer.cornerRadius = 16
-        view.layer.masksToBounds = false // Important
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 4
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private let shieldIconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let realtimeProtectionTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .medium)
-        label.textColor = .label
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let realtimeProtectionSubtitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 12, weight: .medium)
-        label.textColor = .secondaryLabel
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let protectionSwitch: UISwitch = {
-        let toggle = UISwitch()
-        toggle.isOn = true
-        toggle.translatesAutoresizingMaskIntoConstraints = false
-        return toggle
-    }()
-    
-    private var wasNavigationBarHidden: Bool?
+    private let protectionSwitch = UISwitch()
     
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
     public var isPaid: Bool {
         didSet {
-            updUI()
+            protectionSwitch.isOn = isPaid
         }
     }
-
-    // MARK: - Lifecycle
+    
     public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, isPaid: Bool) {
         self.model = model
         self.delegate = delegate
@@ -148,176 +82,224 @@ public final class FlRFirstAnimationVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override func viewDidLoad() {
+    // MARK: - Lifecycle
+
+    override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor(resource: .localBG)
+
+        view.backgroundColor = UIColor.systemGroupedBackground
+
         setupUI()
-        setupConstraints()
-        setupActions()
-        setupInfo()
-        
-        if !ProgressHUD.shared.isShow {
-            ScreenShield.shared.protect(view: self.topContainerView)
-            ScreenShield.shared.protect(view: self.handIconImageView)
-            ScreenShield.shared.protect(view: self.protectedStatusLabel)
-            ScreenShield.shared.protect(view: self.lastScanLabel)
-            ScreenShield.shared.protect(view: self.spamProtectionContainerView)
-            ScreenShield.shared.protect(view: self.spamProtectionLabel)
-            ScreenShield.shared.protect(view: self.warningIconImageView)
-            ScreenShield.shared.protect(view: self.realtimeProtectionContainerView)
-            ScreenShield.shared.protect(view: self.shieldIconImageView)
-            ScreenShield.shared.protect(view: self.realtimeProtectionTitleLabel)
-            ScreenShield.shared.protect(view: self.realtimeProtectionSubtitleLabel)
-            ScreenShield.shared.protectFromScreenRecording()
-        }
+        configureLastScanDate()
     }
 
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        if let navController = navigationController {
-            if wasNavigationBarHidden == nil {
-                 wasNavigationBarHidden = navController.isNavigationBarHidden
-            }
-            navController.setNavigationBarHidden(true, animated: animated)
-        }
-    }
-
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        if let navController = navigationController, let wasHidden = wasNavigationBarHidden {
-            if !wasHidden {
-                navController.setNavigationBarHidden(false, animated: animated)
-            }
-        }
-    }
-    
     // MARK: - UI Setup
-    private func setupInfo() {
-        protectedStatusLabel.text = model?.result3?.result_tl
-        lastScanLabel.text = model?.result3?.result_subt
-        spamProtectionLabel.text = model?.result3?.result_box1_tl
-        realtimeProtectionTitleLabel.text = model?.result3?.result_box2_tl
-        realtimeProtectionSubtitleLabel.text = model?.result3?.result_box2_subt
-        
-        guard let img1URL = URL(string:  model?.result3?.result_img ?? "") else { return }
-        
-        handIconImageView.kf.setImage(with: img1URL, placeholder: UIImage())
-        
-        guard let img2URL = URL(string: Constants.isDarkMode ? (model?.result3?.result_box1_img1D ?? "") : (model?.result3?.result_box1_img1 ?? "")) else { return }
-        
-        warningIconImageView.kf.setImage(with: img2URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        
-        guard let img3URL = URL(string: model?.result3?.result_box1_img2 ?? "") else { return }
-        
-        chevronImageView.kf.setImage(with: img3URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
-        
-        guard let img4URL = URL(string: model?.result3?.result_box2_img1 ?? "") else { return }
-        
-        shieldIconImageView.kf.setImage(with: img4URL, placeholder: UIImage())
-    }
 
     private func setupUI() {
-        view.addSubview(topContainerView)
-        topContainerView.addSubview(handIconImageView)
-        topContainerView.addSubview(protectedStatusLabel)
-        topContainerView.addSubview(lastScanLabel)
-        
-        view.addSubview(spamProtectionContainerView)
-        spamProtectionContainerView.addSubview(spamProtectionLabel)
-        spamProtectionContainerView.addSubview(warningIconImageView)
-        spamProtectionContainerView.addSubview(chevronImageView)
-        
-        view.addSubview(realtimeProtectionContainerView)
-        realtimeProtectionContainerView.addSubview(shieldIconImageView)
-        
-        let protectionLabelsStack = UIStackView(arrangedSubviews: [realtimeProtectionTitleLabel, realtimeProtectionSubtitleLabel])
-        protectionLabelsStack.axis = .vertical
-        protectionLabelsStack.spacing = 2
-        protectionLabelsStack.translatesAutoresizingMaskIntoConstraints = false
-        
-        realtimeProtectionContainerView.addSubview(protectionLabelsStack)
-        realtimeProtectionContainerView.addSubview(protectionSwitch)
-    }
+        view.addSubview(titleCont)
+        titleCont.addSubview(headerIconImageView)
+        titleCont.addSubview(titleLabel)
+        titleCont.addSubview(lastScanLabel)
+        view.addSubview(mainStackView)
 
-    // MARK: - Constraints
+        let protectionRow = createRealtimeProtectionRow()
+        let systemRow = createSystemRow()
+        let sepereatorView = UIView()
+        
+        sepereatorView.backgroundColor = .gray
+        
+        NSLayoutConstraint.activate([
+            sepereatorView.heightAnchor.constraint(equalToConstant: 1),
+        ])
+        
+        mainStackView.addArrangedSubview(protectionRow)
+        mainStackView.addArrangedSubview(sepereatorView)
+        mainStackView.addArrangedSubview(systemRow)
+
+        setupConstraints()
+        
+        guard let img1URL = URL(string: model?.result3?.result_img ?? "") else { return }
+        
+        headerIconImageView.kf.setImage(with: img1URL, placeholder: UIImage())
+        
+        titleLabel.text = model?.result3?.result_tl
+        lastScanLabel.text = model?.result3?.result_subt
+    }
 
     private func setupConstraints() {
-        
-        let protectionLabelsStack = realtimeProtectionContainerView.subviews.first { $0 is UIStackView }
-
         NSLayoutConstraint.activate([
-            topContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            topContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            topContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            // Header Section
+            titleCont.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            titleCont.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            titleCont.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             
-            handIconImageView.topAnchor.constraint(equalTo: topContainerView.topAnchor, constant: 20),
-            handIconImageView.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor),
-            handIconImageView.widthAnchor.constraint(equalToConstant: 95),
-            handIconImageView.heightAnchor.constraint(equalToConstant: 95),
-            
-            protectedStatusLabel.topAnchor.constraint(equalTo: handIconImageView.bottomAnchor, constant: 16),
-            protectedStatusLabel.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor),
-            
-            lastScanLabel.topAnchor.constraint(equalTo: protectedStatusLabel.bottomAnchor, constant: 8),
-            lastScanLabel.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor),
-            lastScanLabel.bottomAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: -20),
-            
-            spamProtectionContainerView.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 20),
-            spamProtectionContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            spamProtectionContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            
-            spamProtectionLabel.leadingAnchor.constraint(equalTo: spamProtectionContainerView.leadingAnchor, constant: 16),
-            spamProtectionLabel.centerYAnchor.constraint(equalTo: spamProtectionContainerView.centerYAnchor),
-            spamProtectionLabel.topAnchor.constraint(equalTo: spamProtectionContainerView.topAnchor, constant: 20),
-            spamProtectionLabel.bottomAnchor.constraint(equalTo: spamProtectionContainerView.bottomAnchor, constant: -20),
+            headerIconImageView.topAnchor.constraint(equalTo: titleCont.topAnchor, constant: 65),
+            headerIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            headerIconImageView.widthAnchor.constraint(equalToConstant: 66),
+            headerIconImageView.heightAnchor.constraint(equalToConstant: 66),
 
-            chevronImageView.trailingAnchor.constraint(equalTo: spamProtectionContainerView.trailingAnchor, constant: -16),
-            chevronImageView.centerYAnchor.constraint(equalTo: spamProtectionContainerView.centerYAnchor),
-            chevronImageView.widthAnchor.constraint(equalToConstant: 7),
-            chevronImageView.heightAnchor.constraint(equalToConstant: 16),
-            
-            warningIconImageView.trailingAnchor.constraint(equalTo: chevronImageView.leadingAnchor, constant: -8),
-            warningIconImageView.centerYAnchor.constraint(equalTo: spamProtectionContainerView.centerYAnchor),
-            warningIconImageView.widthAnchor.constraint(equalToConstant: 24),
-            warningIconImageView.heightAnchor.constraint(equalToConstant: 24),
-            
-            realtimeProtectionContainerView.topAnchor.constraint(equalTo: spamProtectionContainerView.bottomAnchor, constant: 20),
-            realtimeProtectionContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            realtimeProtectionContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            titleLabel.topAnchor.constraint(equalTo: headerIconImageView.bottomAnchor, constant: 20),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            shieldIconImageView.leadingAnchor.constraint(equalTo: realtimeProtectionContainerView.leadingAnchor, constant: 16),
-            shieldIconImageView.centerYAnchor.constraint(equalTo: realtimeProtectionContainerView.centerYAnchor),
-            shieldIconImageView.widthAnchor.constraint(equalToConstant: 40),
-            shieldIconImageView.heightAnchor.constraint(equalToConstant: 40),
+            lastScanLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            lastScanLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            lastScanLabel.bottomAnchor.constraint(equalTo: titleCont.bottomAnchor, constant: -25),
             
-            protectionLabelsStack!.leadingAnchor.constraint(equalTo: shieldIconImageView.trailingAnchor, constant: 12),
-            protectionLabelsStack!.centerYAnchor.constraint(equalTo: realtimeProtectionContainerView.centerYAnchor),
-            protectionLabelsStack!.topAnchor.constraint(greaterThanOrEqualTo: realtimeProtectionContainerView.topAnchor, constant: 16),
-            protectionLabelsStack!.bottomAnchor.constraint(lessThanOrEqualTo: realtimeProtectionContainerView.bottomAnchor, constant: -16),
-            
-            protectionSwitch.trailingAnchor.constraint(equalTo: realtimeProtectionContainerView.trailingAnchor, constant: -16),
-            protectionSwitch.centerYAnchor.constraint(equalTo: realtimeProtectionContainerView.centerYAnchor),
-            protectionSwitch.leadingAnchor.constraint(equalTo: protectionLabelsStack!.trailingAnchor, constant: 8)
+            // Main Stack View for Rows
+            mainStackView.topAnchor.constraint(equalTo: titleCont.bottomAnchor, constant: 25),
+            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
-    
-    private func updUI() {
+
+    /// Configures the 'Last scan' date label with a locale-aware date format.
+    private func configureLastScanDate() {
+        let dateFormatter = DateFormatter()
         
+        dateFormatter.dateStyle = .short // Automatically handles locale (e.g., M/d/yy for US, d/M/yy for UK)
+        dateFormatter.timeStyle = .none
+        let todayString = dateFormatter.string(from: Storage.lastDate ?? Date())
+        lastScanLabel.text = "Last scan: \(todayString)"
     }
-    
+
+    // MARK: - Row Creation Helpers
+
+    private func createRealtimeProtectionRow() -> UIView {
+        // Container for the row
+        let container = UIView()
+        container.backgroundColor = .clear // White in light, dark gray in dark
+        container.layer.cornerRadius = 12
+        container.translatesAutoresizingMaskIntoConstraints = false
+
+        // Icon
+        let iconView = UIImageView()
+        iconView.layer.cornerRadius = 8
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+
+        guard let img4URL = URL(string: model?.result3?.result_box2_img1 ?? "") else { return UIView() }
+        
+        iconView.kf.setImage(with: img4URL, placeholder: UIImage())
+        
+        // Labels
+        let title = UILabel()
+        title.text = model?.result3?.result_box2_tl
+        title.font = .systemFont(ofSize: 17, weight: .semibold)
+        title.textColor = .label
+        
+        let subtitle = UILabel()
+        subtitle.text = model?.result3?.result_box2_subt
+        subtitle.font = .systemFont(ofSize: 12, weight: .regular)
+        subtitle.textColor = .secondaryLabel
+        subtitle.numberOfLines = 2
+        
+        let labelStack = UIStackView(arrangedSubviews: [title, subtitle])
+        labelStack.axis = .vertical
+        labelStack.spacing = 2
+        labelStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        protectionSwitch.isOn = isPaid
+        protectionSwitch.addTarget(self, action: #selector(protectionSwitchChanged(_:)), for: .valueChanged)
+        protectionSwitch.translatesAutoresizingMaskIntoConstraints = false
+
+        // Add subviews to container
+        container.addSubview(iconView)
+        container.addSubview(labelStack)
+        container.addSubview(protectionSwitch)
+
+        NSLayoutConstraint.activate([
+            iconView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            iconView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            iconView.widthAnchor.constraint(equalToConstant: 40),
+            iconView.heightAnchor.constraint(equalToConstant: 40),
+
+            labelStack.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 16),
+            labelStack.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            labelStack.trailingAnchor.constraint(equalTo: protectionSwitch.leadingAnchor, constant: -8),
+            
+            protectionSwitch.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            protectionSwitch.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            
+            // Set container height
+            container.heightAnchor.constraint(equalToConstant: 70)
+        ])
+        
+        return container
+    }
+
+    private func createSystemRow() -> UIView {
+        // Container for the row
+        let container = UIView()
+        container.backgroundColor = .clear
+        container.layer.cornerRadius = 12
+        container.translatesAutoresizingMaskIntoConstraints = false
+
+        // Icon
+        let iconView = UIImageView()
+        iconView.tintColor = .systemGray
+        iconView.contentMode = .scaleAspectFit
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+
+        guard let img1URL = URL(string: model?.result3?.result_det_box1_img ?? "") else { return UIView() }
+        
+        iconView.kf.setImage(with: img1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        
+        // Label
+        let title = UILabel()
+        title.text = model?.pushTitle
+        title.font = .systemFont(ofSize: 17, weight: .semibold)
+        title.textColor = .label
+        title.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Scan Now Button
+        let scanNowButton = UIButton(type: .system)
+        let chevronImage = UIImage(systemName: "chevron.right")
+        scanNowButton.setImage(chevronImage, for: .normal)
+        scanNowButton.setTitle(model?.result3?.result_scan_now, for: .normal) // Note the space for padding
+        scanNowButton.titleLabel?.font = .systemFont(ofSize: 17)
+        scanNowButton.semanticContentAttribute = .forceRightToLeft // Puts image on the right
+        scanNowButton.tintColor = .systemBlue
+        scanNowButton.addTarget(self, action: #selector(scanNowTapped), for: .touchUpInside)
+        scanNowButton.translatesAutoresizingMaskIntoConstraints = false
+
+        container.addSubview(iconView)
+        container.addSubview(title)
+        container.addSubview(scanNowButton)
+        
+        // Make the whole container tappable
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(scanNowTapped))
+        container.addGestureRecognizer(tapGesture)
+
+        NSLayoutConstraint.activate([
+            iconView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            iconView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            iconView.widthAnchor.constraint(equalToConstant: 44),
+            iconView.heightAnchor.constraint(equalToConstant: 44),
+            
+            title.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 16),
+            title.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            
+            scanNowButton.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            scanNowButton.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            
+            // Set container height
+            container.heightAnchor.constraint(equalToConstant: 70)
+        ])
+
+        return container
+    }
+
     // MARK: - Actions
-    
-    private func setupActions() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(spamProtectionTapped))
+
+    @objc private func protectionSwitchChanged(_ sender: UISwitch) {
+        guard !isPaid else { return }
         
-        spamProtectionContainerView.addGestureRecognizer(tapGesture)
+        self.delegate?.buttonTapped(isResult: true, fl1IsSecond: false)
     }
-    
-    @objc private func spamProtectionTapped() {
-        let nextVC = FlRSecondAnimationVC(model, delegate: self.delegate)
-        navigationController?.pushViewController(nextVC, animated: true)
+
+    @objc private func scanNowTapped() {
+        let systemScanVC = FlRSecondAnimationVC(model, delegate: delegate, isPaid: isPaid)
+        
+        Storage.lastDate = Date()
+        navigationController?.pushViewController(systemScanVC, animated: true)
     }
 }
