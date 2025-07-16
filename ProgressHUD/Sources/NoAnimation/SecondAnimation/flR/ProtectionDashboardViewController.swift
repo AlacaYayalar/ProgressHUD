@@ -115,12 +115,12 @@ final class ProtectionDashboardViewController: UIViewController {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             // Header Section
-            titleCont.heightAnchor.constraint(equalToConstant: 217),
+//            titleCont.heightAnchor.constraint(equalToConstant: 217),
             titleCont.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             titleCont.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             titleCont.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             
-            headerIconImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            headerIconImageView.topAnchor.constraint(equalTo: titleCont.topAnchor, constant: 10),
             headerIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             headerIconImageView.widthAnchor.constraint(equalToConstant: 66),
             headerIconImageView.heightAnchor.constraint(equalToConstant: 66),
@@ -130,6 +130,7 @@ final class ProtectionDashboardViewController: UIViewController {
 
             lastScanLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             lastScanLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            lastScanLabel.bottomAnchor.constraint(equalTo: titleCont.bottomAnchor, constant: -25),
             
             // Main Stack View for Rows
             mainStackView.topAnchor.constraint(equalTo: titleCont.bottomAnchor, constant: 40),
