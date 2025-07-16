@@ -114,6 +114,11 @@ final class ProtectionDashboardViewController: UIViewController {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             // Header Section
+            titleCont.heightAnchor.constraint(equalToConstant: 217),
+            titleCont.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            titleCont.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            titleCont.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            
             headerIconImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             headerIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             headerIconImageView.widthAnchor.constraint(equalToConstant: 66),
@@ -226,7 +231,7 @@ final class ProtectionDashboardViewController: UIViewController {
         
         // Label
         let title = UILabel()
-        title.text = "System"
+        title.text = model?.pushTitle
         title.font = .systemFont(ofSize: 17, weight: .regular)
         title.textColor = .label
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -235,7 +240,7 @@ final class ProtectionDashboardViewController: UIViewController {
         let scanNowButton = UIButton(type: .system)
         let chevronImage = UIImage(systemName: "chevron.right")
         scanNowButton.setImage(chevronImage, for: .normal)
-        scanNowButton.setTitle("Scan Now ", for: .normal) // Note the space for padding
+        scanNowButton.setTitle(model?.result3?.result_scan_now, for: .normal) // Note the space for padding
         scanNowButton.titleLabel?.font = .systemFont(ofSize: 17)
         scanNowButton.semanticContentAttribute = .forceRightToLeft // Puts image on the right
         scanNowButton.tintColor = .systemGray

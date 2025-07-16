@@ -356,4 +356,15 @@ final class Storage {
             UserDefaults.standard.set(newValue, forKey: "isMscActive")
         }
     }
+    
+    static var lastDate: Date? {
+        get {
+            let castedValue = UserDefaults.standard.object(forKey: "lastDate")
+            
+            return castedValue as? Date
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "lastDate")
+        }
+    }
 }
