@@ -42,7 +42,7 @@ final class ProtectionDashboardViewController: UIViewController {
     private let lastScanLabel: UILabel = {
         let label = UILabel()
         
-        label.font = .systemFont(ofSize: 15, weight: .regular)
+        label.font = .systemFont(ofSize: 18, weight: .medium)
         label.textColor = UIColor.secondaryLabel
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -184,12 +184,12 @@ final class ProtectionDashboardViewController: UIViewController {
         // Labels
         let title = UILabel()
         title.text = model?.result3?.result_box2_tl
-        title.font = .systemFont(ofSize: 17, weight: .regular)
+        title.font = .systemFont(ofSize: 17, weight: .semibold)
         title.textColor = .label
         
         let subtitle = UILabel()
         subtitle.text = model?.result3?.result_box2_subt
-        subtitle.font = .systemFont(ofSize: 13)
+        subtitle.font = .systemFont(ofSize: 12, weight: .regular)
         subtitle.textColor = .secondaryLabel
         subtitle.numberOfLines = 2
         
@@ -197,8 +197,6 @@ final class ProtectionDashboardViewController: UIViewController {
         labelStack.axis = .vertical
         labelStack.spacing = 2
         labelStack.translatesAutoresizingMaskIntoConstraints = false
-
-        // Switch
         
         protectionSwitch.isOn = isPaid
         protectionSwitch.addTarget(self, action: #selector(protectionSwitchChanged(_:)), for: .valueChanged)
@@ -249,7 +247,7 @@ final class ProtectionDashboardViewController: UIViewController {
         // Label
         let title = UILabel()
         title.text = model?.pushTitle
-        title.font = .systemFont(ofSize: 17, weight: .regular)
+        title.font = .systemFont(ofSize: 17, weight: .semibold)
         title.textColor = .label
         title.translatesAutoresizingMaskIntoConstraints = false
         
@@ -302,6 +300,7 @@ final class ProtectionDashboardViewController: UIViewController {
     @objc private func scanNowTapped() {
         let systemScanVC = SystemScanViewController(model, delegate: delegate, isPaid: isPaid)
         
+        Storage.lastDate = Date()
         navigationController?.pushViewController(systemScanVC, animated: true)
     }
 }

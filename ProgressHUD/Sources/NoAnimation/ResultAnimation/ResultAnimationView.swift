@@ -160,7 +160,6 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
         }
         
         circularProgress.configureProgressViewToBeCircular()
-//        inactiveImageView.image = UIImage(named: "inActiveSub")
         inactiveImageView.backgroundColor = .clear
         inactiveImageView.image = UIImage(resource: .inActiveSub)
         

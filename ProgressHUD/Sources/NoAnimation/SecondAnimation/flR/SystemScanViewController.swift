@@ -28,17 +28,28 @@ final class SystemScanViewController: UIViewController {
         }
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.isHidden = true // Initially hidden
+        imageView.isHidden = true
         imageView.alpha = 0
-        imageView.backgroundColor = UIColor.systemBackground // To punch out the circle from the gear icon
-        imageView.layer.cornerRadius = 10 // Adjust to fit the icon size
+        imageView.backgroundColor = UIColor.systemBackground
+        imageView.layer.cornerRadius = 10
+        
+        return imageView
+    }()
+    
+    private let circlesImageView: UIImageView = {
+        let imageView = UIImageView()
+
+        imageView.image = UIImage(systemName: "checkmark.circle.fill")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         return imageView
     }()
 
     private let titleLabel: UILabel = {
         let label = UILabel()
         
-        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.font = .systemFont(ofSize: 28, weight: .bold)
         label.textColor = UIColor.label
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +61,7 @@ final class SystemScanViewController: UIViewController {
     private let statusLabel: UILabel = {
         let label = UILabel()
         
-        label.font = .systemFont(ofSize: 15, weight: .regular)
+        label.font = .systemFont(ofSize: 18, weight: .regular)
         label.textColor = UIColor.secondaryLabel
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +87,7 @@ final class SystemScanViewController: UIViewController {
         let button = UIButton(type: .system)
         
         button.setTitle(model?.result3?.result_fixing, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
         button.backgroundColor = UIColor.systemGray5
         button.setTitleColor(UIColor.secondaryLabel, for: .normal)
         button.layer.cornerRadius = 30
@@ -133,6 +144,7 @@ final class SystemScanViewController: UIViewController {
 
     // MARK: - UI Setup
     private func setupUI() {
+        view.addSubview(circlesImageView)
         view.addSubview(iconContainerView)
         iconContainerView.addSubview(iconImageView)
         iconContainerView.addSubview(checkmarkImageView)
@@ -161,6 +173,9 @@ final class SystemScanViewController: UIViewController {
             iconContainerView.widthAnchor.constraint(equalToConstant: iconSize),
             iconContainerView.heightAnchor.constraint(equalToConstant: iconSize),
 
+            circlesImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            circlesImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
             // Main Icon
             iconImageView.centerXAnchor.constraint(equalTo: iconContainerView.centerXAnchor),
             iconImageView.centerYAnchor.constraint(equalTo: iconContainerView.centerYAnchor),
