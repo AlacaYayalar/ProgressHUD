@@ -9,7 +9,7 @@ final class ProtectionDashboardViewController: UIViewController {
         let titleCont = UIView()
         
         titleCont.backgroundColor = UIColor(resource: .localRContainer)
-        titleCont.layer.cornerRadius = 30
+        titleCont.layer.cornerRadius = 40
         titleCont.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         titleCont.backgroundColor = UIColor(resource: .resultContainerNew)
         titleCont.translatesAutoresizingMaskIntoConstraints = false
@@ -120,7 +120,7 @@ final class ProtectionDashboardViewController: UIViewController {
             titleCont.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             titleCont.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             
-            headerIconImageView.topAnchor.constraint(equalTo: titleCont.topAnchor, constant: 10),
+            headerIconImageView.topAnchor.constraint(equalTo: titleCont.topAnchor, constant: 45),
             headerIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             headerIconImageView.widthAnchor.constraint(equalToConstant: 66),
             headerIconImageView.heightAnchor.constraint(equalToConstant: 66),
