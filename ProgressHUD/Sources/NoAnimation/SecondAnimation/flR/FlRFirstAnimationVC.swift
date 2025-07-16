@@ -291,7 +291,11 @@ public final class FlRFirstAnimationVC: UIViewController {
     // MARK: - Actions
 
     @objc private func protectionSwitchChanged(_ sender: UISwitch) {
-        guard !isPaid else { return }
+        guard !isPaid else {
+            protectionSwitch.isOn = false
+            
+            return
+        }
         
         self.delegate?.buttonTapped(isResult: true, fl1IsSecond: false)
     }
