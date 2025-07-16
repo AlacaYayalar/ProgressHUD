@@ -98,8 +98,16 @@ final class ProtectionDashboardViewController: UIViewController {
 
         let protectionRow = createRealtimeProtectionRow()
         let systemRow = createSystemRow()
+        let sepereatorView = UIView()
+        
+        sepereatorView.backgroundColor = .red
+        
+        NSLayoutConstraint.activate([
+            sepereatorView.heightAnchor.constraint(equalToConstant: 1),
+        ])
         
         mainStackView.addArrangedSubview(protectionRow)
+        mainStackView.addArrangedSubview(sepereatorView)
         mainStackView.addArrangedSubview(systemRow)
 
         setupConstraints()
@@ -115,12 +123,11 @@ final class ProtectionDashboardViewController: UIViewController {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             // Header Section
-//            titleCont.heightAnchor.constraint(equalToConstant: 217),
             titleCont.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             titleCont.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             titleCont.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             
-            headerIconImageView.topAnchor.constraint(equalTo: titleCont.topAnchor, constant: 45),
+            headerIconImageView.topAnchor.constraint(equalTo: titleCont.topAnchor, constant: 55),
             headerIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             headerIconImageView.widthAnchor.constraint(equalToConstant: 66),
             headerIconImageView.heightAnchor.constraint(equalToConstant: 66),

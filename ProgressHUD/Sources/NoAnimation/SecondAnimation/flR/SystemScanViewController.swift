@@ -81,7 +81,8 @@ final class SystemScanViewController: UIViewController {
         button.setTitleColor(UIColor.secondaryLabel, for: .normal)
         button.layer.cornerRadius = 30
         button.translatesAutoresizingMaskIntoConstraints = false
-
+        button.isUserInteractionEnabled = false
+        
         return button
     }()
 
