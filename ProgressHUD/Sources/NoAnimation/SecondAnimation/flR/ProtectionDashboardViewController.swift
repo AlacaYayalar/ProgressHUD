@@ -60,9 +60,15 @@ final class ProtectionDashboardViewController: UIViewController {
         return stackView
     }()
     
+    private let protectionSwitch = UISwitch()
+    
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
-    public var isPaid: Bool
+    public var isPaid: Bool {
+        didSet {
+            protectionSwitch.isOn = isPaid
+        }
+    }
     
     public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, isPaid: Bool) {
         self.model = model
@@ -100,7 +106,7 @@ final class ProtectionDashboardViewController: UIViewController {
         let systemRow = createSystemRow()
         let sepereatorView = UIView()
         
-        sepereatorView.backgroundColor = .red
+        sepereatorView.backgroundColor = UIColor(resource: .resultContainerNew)
         
         NSLayoutConstraint.activate([
             sepereatorView.heightAnchor.constraint(equalToConstant: 1),
@@ -127,7 +133,7 @@ final class ProtectionDashboardViewController: UIViewController {
             titleCont.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             titleCont.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             
-            headerIconImageView.topAnchor.constraint(equalTo: titleCont.topAnchor, constant: 55),
+            headerIconImageView.topAnchor.constraint(equalTo: titleCont.topAnchor, constant: 65),
             headerIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             headerIconImageView.widthAnchor.constraint(equalToConstant: 66),
             headerIconImageView.heightAnchor.constraint(equalToConstant: 66),
@@ -191,8 +197,8 @@ final class ProtectionDashboardViewController: UIViewController {
         labelStack.translatesAutoresizingMaskIntoConstraints = false
 
         // Switch
-        let protectionSwitch = UISwitch()
-        protectionSwitch.isOn = true
+        
+        protectionSwitch.isOn = isPaid
         protectionSwitch.addTarget(self, action: #selector(protectionSwitchChanged(_:)), for: .valueChanged)
         protectionSwitch.translatesAutoresizingMaskIntoConstraints = false
 
@@ -286,8 +292,9 @@ final class ProtectionDashboardViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func protectionSwitchChanged(_ sender: UISwitch) {
-        print("Real-time Protection is now \(sender.isOn ? "ON" : "OFF")")
-        // Add logic to handle the state change here
+        guard isPaid else { return }
+        
+        self.delegate?.buttonTapped(isResult: true, fl1IsSecond: false)
     }
 
     @objc private func scanNowTapped() {
