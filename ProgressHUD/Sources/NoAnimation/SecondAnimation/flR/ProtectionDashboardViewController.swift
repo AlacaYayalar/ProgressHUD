@@ -5,6 +5,17 @@ final class ProtectionDashboardViewController: UIViewController {
 
     // MARK: - UI Elements
 
+    private let titleCont: UIView = {
+        let titleCont = UIView()
+        
+        titleCont.backgroundColor = UIColor(resource: .localRContainer)
+        titleCont.layer.cornerRadius = 15
+        titleCont.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        titleCont.backgroundColor = .white
+        
+        return titleCont
+    }()
+            
     private let headerIconImageView: UIImageView = {
         let imageView = UIImageView()
         
@@ -78,9 +89,10 @@ final class ProtectionDashboardViewController: UIViewController {
     // MARK: - UI Setup
 
     private func setupUI() {
-        view.addSubview(headerIconImageView)
-        view.addSubview(titleLabel)
-        view.addSubview(lastScanLabel)
+        view.addSubview(titleCont)
+        titleCont.addSubview(headerIconImageView)
+        titleCont.addSubview(titleLabel)
+        titleCont.addSubview(lastScanLabel)
         view.addSubview(mainStackView)
 
         let protectionRow = createRealtimeProtectionRow()
@@ -102,7 +114,7 @@ final class ProtectionDashboardViewController: UIViewController {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             // Header Section
-            headerIconImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            headerIconImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             headerIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             headerIconImageView.widthAnchor.constraint(equalToConstant: 66),
             headerIconImageView.heightAnchor.constraint(equalToConstant: 66),
@@ -114,7 +126,7 @@ final class ProtectionDashboardViewController: UIViewController {
             lastScanLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             // Main Stack View for Rows
-            mainStackView.topAnchor.constraint(equalTo: lastScanLabel.bottomAnchor, constant: 40),
+            mainStackView.topAnchor.constraint(equalTo: titleCont.bottomAnchor, constant: 40),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])

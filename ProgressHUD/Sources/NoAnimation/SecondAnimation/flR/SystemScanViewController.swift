@@ -187,8 +187,8 @@ final class SystemScanViewController: UIViewController {
             progressView.heightAnchor.constraint(equalToConstant: 8),
 
             // Fixing Button
-            fixingButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            fixingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            fixingButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            fixingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             fixingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             fixingButton.heightAnchor.constraint(equalToConstant: 60)
         ])
