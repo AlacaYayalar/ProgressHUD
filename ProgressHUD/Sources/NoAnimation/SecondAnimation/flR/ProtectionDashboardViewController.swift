@@ -7,42 +7,44 @@ final class ProtectionDashboardViewController: UIViewController {
 
     private let headerIconImageView: UIImageView = {
         let imageView = UIImageView()
-        if #available(iOS 13.0, *) {
-            imageView.image = UIImage(systemName: "hand.raised.fill")
-        }
-        imageView.tintColor = .white
-        imageView.backgroundColor = .systemBlue
+        
         imageView.contentMode = .center
-        imageView.layer.cornerRadius = 20 // Adjust for desired roundness
+        imageView.layer.cornerRadius = 20
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         return imageView
     }()
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "You are Protected"
+
         label.font = .systemFont(ofSize: 28, weight: .bold)
         label.textColor = UIColor.label
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
 
     private let lastScanLabel: UILabel = {
         let label = UILabel()
+        
         label.font = .systemFont(ofSize: 15, weight: .regular)
         label.textColor = UIColor.secondaryLabel
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
 
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
+        
         stackView.axis = .vertical
         stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         return stackView
     }()
     
@@ -66,7 +68,7 @@ final class ProtectionDashboardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Use systemGroupedBackground for the main view for a settings-like feel
+
         view.backgroundColor = UIColor.systemGroupedBackground
 
         setupUI()
@@ -81,14 +83,20 @@ final class ProtectionDashboardViewController: UIViewController {
         view.addSubview(lastScanLabel)
         view.addSubview(mainStackView)
 
-        // Create and add the rows to the stack view
         let protectionRow = createRealtimeProtectionRow()
         let systemRow = createSystemRow()
+        
         mainStackView.addArrangedSubview(protectionRow)
         mainStackView.addArrangedSubview(systemRow)
 
-        // Set constraints
         setupConstraints()
+        
+        guard let img1URL = URL(string:  model?.result3?.result_img ?? "") else { return }
+        
+        headerIconImageView.kf.setImage(with: img1URL, placeholder: UIImage())
+        
+        titleLabel.text = model?.result3?.result_tl
+        lastScanLabel.text = model?.result3?.result_subt
     }
 
     private func setupConstraints() {
@@ -96,8 +104,8 @@ final class ProtectionDashboardViewController: UIViewController {
             // Header Section
             headerIconImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             headerIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            headerIconImageView.widthAnchor.constraint(equalToConstant: 80),
-            headerIconImageView.heightAnchor.constraint(equalToConstant: 80),
+            headerIconImageView.widthAnchor.constraint(equalToConstant: 66),
+            headerIconImageView.heightAnchor.constraint(equalToConstant: 66),
 
             titleLabel.topAnchor.constraint(equalTo: headerIconImageView.bottomAnchor, constant: 20),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -131,19 +139,22 @@ final class ProtectionDashboardViewController: UIViewController {
         container.translatesAutoresizingMaskIntoConstraints = false
 
         // Icon
-        let iconView = UIView()
-        iconView.backgroundColor = .black
+        let iconView = UIImageView()
         iconView.layer.cornerRadius = 8
         iconView.translatesAutoresizingMaskIntoConstraints = false
 
+        guard let img4URL = URL(string: model?.result3?.result_box2_img1 ?? "") else { return UIView() }
+        
+        iconView.kf.setImage(with: img4URL, placeholder: UIImage())
+        
         // Labels
         let title = UILabel()
-        title.text = "Real-time Protection"
+        title.text = model?.result3?.result_box2_tl
         title.font = .systemFont(ofSize: 17, weight: .regular)
         title.textColor = .label
         
         let subtitle = UILabel()
-        subtitle.text = "Auto-detect and remove viruses, avoid security breaches"
+        subtitle.text = model?.result3?.result_box2_subt
         subtitle.font = .systemFont(ofSize: 13)
         subtitle.textColor = .secondaryLabel
         subtitle.numberOfLines = 2
@@ -250,9 +261,8 @@ final class ProtectionDashboardViewController: UIViewController {
     }
 
     @objc private func scanNowTapped() {
-        print("Scan Now tapped, presenting SystemScanViewController.")
         let systemScanVC = SystemScanViewController(model, delegate: delegate, isPaid: isPaid)
-        systemScanVC.modalPresentationStyle = .fullScreen
-        present(systemScanVC, animated: true, completion: nil)
+        
+        navigationController?.pushViewController(systemScanVC, animated: true)
     }
 }

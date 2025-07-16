@@ -13,12 +13,10 @@ final class SystemScanViewController: UIViewController {
 
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
-        if #available(iOS 13.0, *) {
-            imageView.image = UIImage(systemName: "gearshape.fill")
-            imageView.tintColor = .systemGray // A neutral color for the icon
-        }
+        
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         return imageView
     }()
 
@@ -39,11 +37,12 @@ final class SystemScanViewController: UIViewController {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Scanning System"
+        
         label.font = .systemFont(ofSize: 22, weight: .bold)
         label.textColor = UIColor.label
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
 
@@ -83,7 +82,7 @@ final class SystemScanViewController: UIViewController {
     private var timer: Timer?
     private var currentProgress: Float = 0.0
     private let totalDuration: TimeInterval = 4.5 // Total time for the scan
-    private let scanStatuses = ["Checking Settings...", "Verifying Apps...", "Scanning System Files..."]
+    private lazy var scanStatuses = [model?.flow1?.loading_subt_1, model?.flow1?.loading_subt_2, model?.flow1?.loading_subt_3]
     private var lastStatusIndex = -1
 
     public var model: AuthorizationOfferModel?
@@ -134,6 +133,12 @@ final class SystemScanViewController: UIViewController {
         view.addSubview(statusLabel)
         view.addSubview(progressView)
         view.addSubview(fixingButton)
+        
+        titleLabel.text = model?.flow1?.loading_tl
+        
+        guard let img1URL = URL(string: model?.result3?.result_det_box1_img ?? "") else { return }
+        
+        iconImageView.kf.setImage(with: img1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
     }
 
     private func setupConstraints() {
@@ -227,7 +232,7 @@ final class SystemScanViewController: UIViewController {
         
         // Animate the transition to the "secure" state
         UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseInOut, animations: {
-            self.titleLabel.text = "Your device is now secure"
+            self.titleLabel.text = model?.flow1?.scr4_tl
             
             // Fade out the progress elements and the button
             self.statusLabel.alpha = 0
@@ -239,6 +244,9 @@ final class SystemScanViewController: UIViewController {
             self.checkmarkImageView.alpha = 1
             self.checkmarkImageView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3) // Pop effect
             
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                let vc = ProtectionDashboardViewController(self.model, delegate: self.delegate, isPaid: self.isPaid)
+            }
         }) { _ in
             // Clean up the hidden views from the hierarchy
             self.statusLabel.isHidden = true
