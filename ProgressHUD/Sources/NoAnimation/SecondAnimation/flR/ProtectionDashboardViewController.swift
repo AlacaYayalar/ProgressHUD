@@ -154,12 +154,11 @@ final class ProtectionDashboardViewController: UIViewController {
 
     /// Configures the 'Last scan' date label with a locale-aware date format.
     private func configureLastScanDate() {
-        guard let date = Storage.lastDate else { return }
-        
         let dateFormatter = DateFormatter()
+        
         dateFormatter.dateStyle = .short // Automatically handles locale (e.g., M/d/yy for US, d/M/yy for UK)
         dateFormatter.timeStyle = .none
-        let todayString = dateFormatter.string(from: date)
+        let todayString = dateFormatter.string(from: Storage.lastDate ?? Date())
         lastScanLabel.text = "Last scan: \(todayString)"
     }
 

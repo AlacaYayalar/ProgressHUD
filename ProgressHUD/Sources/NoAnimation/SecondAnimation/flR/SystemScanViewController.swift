@@ -39,7 +39,7 @@ final class SystemScanViewController: UIViewController {
     private let circlesImageView: UIImageView = {
         let imageView = UIImageView()
 
-        imageView.image = UIImage(systemName: "checkmark.circle.fill")
+        imageView.image = UIImage(resource: .circlesLoading)
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
