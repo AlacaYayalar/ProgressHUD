@@ -232,7 +232,7 @@ final class SystemScanViewController: UIViewController {
         
         // Animate the transition to the "secure" state
         UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseInOut, animations: {
-            self.titleLabel.text = model?.flow1?.scr4_tl
+            self.titleLabel.text = self.model?.flow1?.scr4_tl
             
             // Fade out the progress elements and the button
             self.statusLabel.alpha = 0
@@ -246,6 +246,8 @@ final class SystemScanViewController: UIViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 let vc = ProtectionDashboardViewController(self.model, delegate: self.delegate, isPaid: self.isPaid)
+                
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }) { _ in
             // Clean up the hidden views from the hierarchy
