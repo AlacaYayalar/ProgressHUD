@@ -12,6 +12,7 @@ final class ProtectionDashboardViewController: UIViewController {
         titleCont.layer.cornerRadius = 15
         titleCont.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         titleCont.backgroundColor = .white
+        titleCont.translatesAutoresizingMaskIntoConstraints = false
         
         return titleCont
     }()
