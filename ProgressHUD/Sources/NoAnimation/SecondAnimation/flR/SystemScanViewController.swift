@@ -72,10 +72,10 @@ final class SystemScanViewController: UIViewController {
         return pv
     }()
 
-    private let fixingButton: UIButton = {
+    private lazy var fixingButton: UIButton = {
         let button = UIButton(type: .system)
         
-        button.setTitle("Fixing", for: .normal)
+        button.setTitle(model?.result3?.result_fixing, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
         button.backgroundColor = UIColor.systemGray5
         button.setTitleColor(UIColor.secondaryLabel, for: .normal)

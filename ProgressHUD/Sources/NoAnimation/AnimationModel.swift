@@ -275,4 +275,5 @@ struct Result3: Codable {
     let result_box1_img2, result_det_subt, result_box1_tl, result_subt, result_box2_tl: String?
     let result_box2_subt: String?
     let result_scan_now: String?
+    let result_fixing: String?
 }

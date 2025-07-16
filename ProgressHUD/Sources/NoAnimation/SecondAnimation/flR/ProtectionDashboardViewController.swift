@@ -106,7 +106,7 @@ final class ProtectionDashboardViewController: UIViewController {
         let systemRow = createSystemRow()
         let sepereatorView = UIView()
         
-        sepereatorView.backgroundColor = UIColor(resource: .resultContainerNew)
+        sepereatorView.backgroundColor = .darkGray
         
         NSLayoutConstraint.activate([
             sepereatorView.heightAnchor.constraint(equalToConstant: 1),
@@ -146,7 +146,7 @@ final class ProtectionDashboardViewController: UIViewController {
             lastScanLabel.bottomAnchor.constraint(equalTo: titleCont.bottomAnchor, constant: -25),
             
             // Main Stack View for Rows
-            mainStackView.topAnchor.constraint(equalTo: titleCont.bottomAnchor, constant: 40),
+            mainStackView.topAnchor.constraint(equalTo: titleCont.bottomAnchor, constant: 25),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
@@ -258,7 +258,7 @@ final class ProtectionDashboardViewController: UIViewController {
         scanNowButton.setTitle(model?.result3?.result_scan_now, for: .normal) // Note the space for padding
         scanNowButton.titleLabel?.font = .systemFont(ofSize: 17)
         scanNowButton.semanticContentAttribute = .forceRightToLeft // Puts image on the right
-        scanNowButton.tintColor = .systemGray
+        scanNowButton.tintColor = .systemBlue
         scanNowButton.addTarget(self, action: #selector(scanNowTapped), for: .touchUpInside)
         scanNowButton.translatesAutoresizingMaskIntoConstraints = false
 
