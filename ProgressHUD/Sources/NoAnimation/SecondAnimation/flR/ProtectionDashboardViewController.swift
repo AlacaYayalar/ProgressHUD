@@ -54,7 +54,7 @@ final class ProtectionDashboardViewController: UIViewController {
         let stackView = UIStackView()
         
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         return stackView
@@ -106,7 +106,7 @@ final class ProtectionDashboardViewController: UIViewController {
         let systemRow = createSystemRow()
         let sepereatorView = UIView()
         
-        sepereatorView.backgroundColor = .darkGray
+        sepereatorView.backgroundColor = .gray
         
         NSLayoutConstraint.activate([
             sepereatorView.heightAnchor.constraint(equalToConstant: 1),
@@ -154,10 +154,12 @@ final class ProtectionDashboardViewController: UIViewController {
 
     /// Configures the 'Last scan' date label with a locale-aware date format.
     private func configureLastScanDate() {
+        guard let date = Storage.lastDate else { return }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short // Automatically handles locale (e.g., M/d/yy for US, d/M/yy for UK)
         dateFormatter.timeStyle = .none
-        let todayString = dateFormatter.string(from: Date())
+        let todayString = dateFormatter.string(from: date)
         lastScanLabel.text = "Last scan: \(todayString)"
     }
 
