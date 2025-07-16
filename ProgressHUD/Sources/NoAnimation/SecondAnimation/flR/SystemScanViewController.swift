@@ -175,7 +175,8 @@ final class SystemScanViewController: UIViewController {
 
             circlesImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             circlesImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
+            circlesImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            circlesImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             // Main Icon
             iconImageView.centerXAnchor.constraint(equalTo: iconContainerView.centerXAnchor),
             iconImageView.centerYAnchor.constraint(equalTo: iconContainerView.centerYAnchor),
@@ -190,7 +191,7 @@ final class SystemScanViewController: UIViewController {
             
             // Title Label
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40), // Slightly above center
+            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -25), // Slightly above center
 
             // Status Label
             statusLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
