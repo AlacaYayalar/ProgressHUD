@@ -8,7 +8,7 @@ final class ProtectionDashboardViewController: UIViewController {
     private let headerIconImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 20
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +91,7 @@ final class ProtectionDashboardViewController: UIViewController {
 
         setupConstraints()
         
-        guard let img1URL = URL(string:  model?.result3?.result_img ?? "") else { return }
+        guard let img1URL = URL(string: model?.result3?.result_img ?? "") else { return }
         
         headerIconImageView.kf.setImage(with: img1URL, placeholder: UIImage())
         
@@ -203,11 +203,15 @@ final class ProtectionDashboardViewController: UIViewController {
         container.translatesAutoresizingMaskIntoConstraints = false
 
         // Icon
-        let iconView = UIImageView(image: UIImage(systemName: "gearshape.fill"))
+        let iconView = UIImageView()
         iconView.tintColor = .systemGray
         iconView.contentMode = .scaleAspectFit
         iconView.translatesAutoresizingMaskIntoConstraints = false
 
+        guard let img1URL = URL(string: model?.result3?.result_det_box1_img ?? "") else { return UIView() }
+        
+        iconView.kf.setImage(with: img1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        
         // Label
         let title = UILabel()
         title.text = "System"
@@ -237,8 +241,8 @@ final class ProtectionDashboardViewController: UIViewController {
         NSLayoutConstraint.activate([
             iconView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16),
             iconView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
-            iconView.widthAnchor.constraint(equalToConstant: 40),
-            iconView.heightAnchor.constraint(equalToConstant: 40),
+            iconView.widthAnchor.constraint(equalToConstant: 44),
+            iconView.heightAnchor.constraint(equalToConstant: 44),
             
             title.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 16),
             title.centerYAnchor.constraint(equalTo: container.centerYAnchor),

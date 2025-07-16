@@ -42,39 +42,46 @@ final class SystemScanViewController: UIViewController {
         label.textColor = UIColor.label
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         
         return label
     }()
 
     private let statusLabel: UILabel = {
         let label = UILabel()
+        
         label.font = .systemFont(ofSize: 15, weight: .regular)
         label.textColor = UIColor.secondaryLabel
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        
         return label
     }()
     
     private let progressView: UIProgressView = {
         let pv = UIProgressView(progressViewStyle: .default)
+        
         pv.progress = 0.0
         pv.progressTintColor = .systemBlue
         pv.trackTintColor = UIColor.systemGray4
         pv.layer.cornerRadius = 4
         pv.clipsToBounds = true
         pv.translatesAutoresizingMaskIntoConstraints = false
+        
         return pv
     }()
 
     private let fixingButton: UIButton = {
         let button = UIButton(type: .system)
+        
         button.setTitle("Fixing", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
-        button.backgroundColor = UIColor.systemGray5 // Adapts to light/dark
-        button.setTitleColor(UIColor.secondaryLabel, for: .normal) // Adapts
-        button.layer.cornerRadius = 14
+        button.backgroundColor = UIColor.systemGray5
+        button.setTitleColor(UIColor.secondaryLabel, for: .normal)
+        button.layer.cornerRadius = 30
         button.translatesAutoresizingMaskIntoConstraints = false
-        // The button is for visual purposes in this design, so no action is added.
+
         return button
     }()
 
@@ -182,8 +189,8 @@ final class SystemScanViewController: UIViewController {
             // Fixing Button
             fixingButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             fixingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            fixingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            fixingButton.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1, constant: -20) // Dynamic height based on safe area
+            fixingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            fixingButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
     
