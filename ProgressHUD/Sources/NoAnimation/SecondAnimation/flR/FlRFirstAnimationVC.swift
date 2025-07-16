@@ -292,7 +292,7 @@ public final class FlRFirstAnimationVC: UIViewController {
 
     @objc private func protectionSwitchChanged(_ sender: UISwitch) {
         guard !isPaid else {
-            protectionSwitch.isOn = false
+            sender.isOn = false
             
             return
         }
