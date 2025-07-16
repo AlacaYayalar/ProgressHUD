@@ -1,7 +1,7 @@
 
 import UIKit
 
-final class FlRFirstAnimationVC: UIViewController {
+public final class FlRFirstAnimationVC: UIViewController {
 
     // MARK: - UI Elements
 
@@ -84,7 +84,7 @@ final class FlRFirstAnimationVC: UIViewController {
 
     // MARK: - Lifecycle
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.systemGroupedBackground
