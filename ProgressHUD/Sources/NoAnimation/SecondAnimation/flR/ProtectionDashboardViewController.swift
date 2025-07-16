@@ -134,7 +134,7 @@ final class ProtectionDashboardViewController: UIViewController {
     private func createRealtimeProtectionRow() -> UIView {
         // Container for the row
         let container = UIView()
-        container.backgroundColor = .secondarySystemGroupedBackground // White in light, dark gray in dark
+        container.backgroundColor = .clear // White in light, dark gray in dark
         container.layer.cornerRadius = 12
         container.translatesAutoresizingMaskIntoConstraints = false
 
@@ -176,7 +176,7 @@ final class ProtectionDashboardViewController: UIViewController {
         container.addSubview(protectionSwitch)
 
         NSLayoutConstraint.activate([
-            iconView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16),
+            iconView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             iconView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
             iconView.widthAnchor.constraint(equalToConstant: 40),
             iconView.heightAnchor.constraint(equalToConstant: 40),
@@ -185,7 +185,7 @@ final class ProtectionDashboardViewController: UIViewController {
             labelStack.centerYAnchor.constraint(equalTo: container.centerYAnchor),
             labelStack.trailingAnchor.constraint(equalTo: protectionSwitch.leadingAnchor, constant: -8),
             
-            protectionSwitch.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16),
+            protectionSwitch.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             protectionSwitch.centerYAnchor.constraint(equalTo: container.centerYAnchor),
             
             // Set container height
@@ -198,7 +198,7 @@ final class ProtectionDashboardViewController: UIViewController {
     private func createSystemRow() -> UIView {
         // Container for the row
         let container = UIView()
-        container.backgroundColor = .secondarySystemGroupedBackground
+        container.backgroundColor = .clear
         container.layer.cornerRadius = 12
         container.translatesAutoresizingMaskIntoConstraints = false
 
@@ -239,7 +239,7 @@ final class ProtectionDashboardViewController: UIViewController {
         container.addGestureRecognizer(tapGesture)
 
         NSLayoutConstraint.activate([
-            iconView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16),
+            iconView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             iconView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
             iconView.widthAnchor.constraint(equalToConstant: 44),
             iconView.heightAnchor.constraint(equalToConstant: 44),
@@ -247,7 +247,7 @@ final class ProtectionDashboardViewController: UIViewController {
             title.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 16),
             title.centerYAnchor.constraint(equalTo: container.centerYAnchor),
             
-            scanNowButton.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16),
+            scanNowButton.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             scanNowButton.centerYAnchor.constraint(equalTo: container.centerYAnchor),
             
             // Set container height
