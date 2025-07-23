@@ -343,7 +343,7 @@
                                                                     <rect key="frame" x="0.0" y="1.6666666666666572" width="84" height="14"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="good" translatesAutoresizingMaskIntoConstraints="NO" id="bP3-oH-e6U">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="10" height="14"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="12" height="14"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="12" id="7a5-j4-2VT">
                                                                                     <variation key="heightClass=regular-widthClass=regular" constant="18"/>
@@ -354,7 +354,7 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7V1-XG-5Pe">
-                                                                            <rect key="frame" x="15" y="0.0" width="69" height="14"/>
+                                                                            <rect key="frame" x="17" y="0.0" width="67" height="14"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                                             <color key="textColor" red="0.39607843139999999" green="0.83921568629999999" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -505,7 +505,7 @@
                                                                     <rect key="frame" x="0.0" y="1.6666666666666572" width="84" height="14"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="good" translatesAutoresizingMaskIntoConstraints="NO" id="5v7-dV-kZh">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="12" height="14"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="10" height="14"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="14" id="C19-6H-BoL">
                                                                                     <variation key="heightClass=regular-widthClass=regular" constant="18"/>
@@ -516,7 +516,7 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZG-Ld-a0a">
-                                                                            <rect key="frame" x="17" y="0.0" width="67" height="14"/>
+                                                                            <rect key="frame" x="15" y="0.0" width="69" height="14"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                                             <color key="textColor" red="0.39607843139999999" green="0.83921568629999999" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -640,7 +640,7 @@
         <image name="good" width="12" height="13"/>
         <image name="lock" width="10" height="12"/>
         <namedColor name="localRContainer2Color">
-            <color red="0.99999994039535522" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="localRContainerColor">
             <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
