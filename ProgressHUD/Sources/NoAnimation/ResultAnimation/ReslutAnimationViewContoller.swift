@@ -68,7 +68,7 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
 //                if isVerySmallDevice {
                     let scrollView = UIScrollView()
                     
-                    scrollView.backgroundColor = .white
+                    scrollView.backgroundColor = UIColor(resource: .localBG)
                     scrollView.isScrollEnabled = true
                     scrollView.showsVerticalScrollIndicator = false
                     view.addSubview(scrollView)
@@ -115,7 +115,7 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
 //                if isVerySmallDevice {
                     let scrollView = UIScrollView()
                     
-                    scrollView.backgroundColor = .white
+                    scrollView.backgroundColor = UIColor(resource: .localBG)
                     scrollView.isScrollEnabled = true
                     scrollView.showsVerticalScrollIndicator = false
                     view.addSubview(scrollView)
