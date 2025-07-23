@@ -100,7 +100,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
             layoutIfNeeded()
         } else {
             
-            bannerHeight.constant = 390
+            bannerHeight.constant = 380
             stackheigt.constant = 130
             stackWidth.constant = 130
 //            topConst.constant = 15
