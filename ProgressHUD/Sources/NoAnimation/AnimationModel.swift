@@ -124,7 +124,7 @@ public struct ScnModel: Codable {
         case rr_title = "rr_title "
         case rr_subtitle = "rr_subtitle "
         case title_proc, subtitle_proc, title_anim_proc, subtitle_anim_proc, title_compl, subtitle_compl
-        case title_anim_compl, subtitle_anim_compl, title_unp, subtitle_unp, title_anim_unp, subtitle_anim_unp
+        case title_anim_compl, subtitle_anim_compl, title_unp, subtitle_unp, subtitle_unp_paid, title_anim_unp, subtitle_anim_unp
         case banner_title, banner_subtitle, banner_icon, banner_icon_unp, btn, anim_scn, anim_done
         case anim_scn_unp, anim_done_unp, push_title, push_content, stats, features
         case title_res_unp
