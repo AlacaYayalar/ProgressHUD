@@ -9,7 +9,6 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
     @IBOutlet weak private var iconImageView: UIImageView!
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var subtitleLabel: UILabel!
-    
     @IBOutlet private var featuresNameLabels: [UILabel]!
     @IBOutlet private var featuresIcons: [UIImageView]!
     @IBOutlet private var featuresStatusLabels: [UILabel]!
@@ -17,7 +16,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
     @IBOutlet private var containersViews: [UIView]!
     @IBOutlet private var switchViews: [UISwitch]!
     @IBOutlet weak private var iconContainerView: UIView!
-    @IBOutlet weak var subsLockImageView: UIImageView!
+//    @IBOutlet weak var subsLockImageView: UIImageView!
     @IBOutlet var stackViews: [UIStackView]!
     @IBOutlet var heights: [NSLayoutConstraint]!
     @IBOutlet weak var iconWidth: NSLayoutConstraint!
