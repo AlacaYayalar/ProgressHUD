@@ -65,7 +65,7 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
                     make.leading.trailing.equalToSuperview().inset(100)
                 }
             } else {
-                if isVerySmallDevice {
+//                if isVerySmallDevice {
                     let scrollView = UIScrollView()
                     
                     scrollView.backgroundColor = .white
@@ -87,12 +87,12 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
                         make.edges.equalToSuperview()
                         make.width.equalTo(scrollView)
                     }
-                } else {
-                    secureView.addSubview(resultView)
-                    resultView.snp.makeConstraints({$0.edges.equalToSuperview()})
-                    self.view.addSubview(secureView)
-                    secureView.snp.makeConstraints({$0.edges.equalToSuperview()})
-                }
+//                } else {
+//                    secureView.addSubview(resultView)
+//                    resultView.snp.makeConstraints({$0.edges.equalToSuperview()})
+//                    self.view.addSubview(secureView)
+//                    secureView.snp.makeConstraints({$0.edges.equalToSuperview()})
+//                }
             }
         } else {
             if UIDevice.current.userInterfaceIdiom == .pad {
@@ -112,7 +112,7 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
                     make.leading.trailing.equalToSuperview().inset(100)
                 }
             } else {
-                if isVerySmallDevice {
+//                if isVerySmallDevice {
                     let scrollView = UIScrollView()
                     
                     scrollView.backgroundColor = .white
@@ -129,11 +129,11 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
                         make.edges.equalToSuperview()
                         make.width.equalTo(scrollView)
                     }
-                } else {
-                    self.view.addSubview(resultView)
-                    
-                    resultView.snp.makeConstraints({$0.edges.equalToSuperview()})
-                }
+//                } else {
+//                    self.view.addSubview(resultView)
+//                    
+//                    resultView.snp.makeConstraints({$0.edges.equalToSuperview()})
+//                }
             }
         }
         navigationController?.isNavigationBarHidden = true
