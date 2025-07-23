@@ -60,6 +60,15 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
                 height.constant = 83
             }
         } else {
+            
+            featuresNameLabels.forEach { label in
+                label.font = .systemFont(ofSize: isVerySmallDevice ? 12 : 14, weight: .medium)
+            }
+            
+            featuresStatusLabels.forEach { label in
+                label.font = .systemFont(ofSize: isVerySmallDevice ? 12 : 14, weight: .medium)
+            }
+            
             stackViews.forEach { stackview in
                 stackview.axis = .vertical
             }
