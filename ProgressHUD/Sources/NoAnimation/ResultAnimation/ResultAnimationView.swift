@@ -103,10 +103,10 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
             bannerHeight.constant = 500
             stackheigt.constant = 130
             stackWidth.constant = 130
-            topConst.constant = 15
-            subTop.constant = 5
-            animTop.constant = 0
-            bannerTop.constant = 0
+//            topConst.constant = 15
+//            subTop.constant = 5
+//            animTop.constant = 0
+//            bannerTop.constant = 0
             lhConst.constant = 250
             lwConst.constant = 250
             
