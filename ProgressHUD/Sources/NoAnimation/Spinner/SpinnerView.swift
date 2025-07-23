@@ -88,8 +88,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         iconImageView.kf.setImage(with: mainIcon, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
         
         if isPaid {
-            subsLockImageView.isHidden = false
-            switchViews.first?.isUserInteractionEnabled = false
+//            switchViews.first?.isUserInteractionEnabled = false
             
             switchViews.forEach({
                 $0.setOn(Storage.featuresStates[$0.tag] ?? false, animated: true)
