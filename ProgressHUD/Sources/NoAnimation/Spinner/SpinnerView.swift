@@ -82,7 +82,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
             $0.text = model?.scn?.features?[$0.tag].name
         })
         
-        Storage.featuresStates[0] = isPaid
+//        Storage.featuresStates[0] = isPaid
         
         guard let mainIcon = URL(string: model?.scn?.banner_icon_unp ?? "") else { return }
         
@@ -226,15 +226,15 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         
         goEvent?(.specialOffer5T2)
         if isPaid {
-            Storage.featuresStates[2] = sender.isOn
+            Storage.featuresStates[0] = sender.isOn
             progressSwitchTapped?(sender.isOn)
-            if sender.isOn {
-                showProgressAction()
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.showSuccessAction()
-                }
-            }
+//            if sender.isOn {
+//                showProgressAction()
+//                
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                    self.showSuccessAction()
+//                }
+//            }
         } else {
             sender.setOn(false, animated: true)
             tariffButtonTapped?()
@@ -248,16 +248,16 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         
         goEvent?(.specialOffer5T3)
         if isPaid {
-            Storage.featuresStates[3] = sender.isOn
+            Storage.featuresStates[1] = sender.isOn
             progressSwitchTapped?(sender.isOn)
-            if sender.isOn {
-                ProgressHUD.animate(alertText, interaction: false)
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.showSuccessAction()
-                    self.goPrivacy()
-                }
-            }
+//            if sender.isOn {
+//                ProgressHUD.animate(alertText, interaction: false)
+//                
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                    self.showSuccessAction()
+//                    self.goPrivacy()
+//                }
+//            }
         } else {
             sender.setOn(false, animated: true)
             tariffButtonTapped?()
@@ -271,16 +271,16 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         
         goEvent?(.specialOffer5T5)
         if isPaid {
-            Storage.featuresStates[4] = sender.isOn
+            Storage.featuresStates[2] = sender.isOn
             progressSwitchTapped?(sender.isOn)
-            if sender.isOn {
-                ProgressHUD.animate(alertText, interaction: false)
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.showSuccessAction()
-                    self.goPass()
-                }
-            }
+//            if sender.isOn {
+//                ProgressHUD.animate(alertText, interaction: false)
+//                
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                    self.showSuccessAction()
+//                    self.goPass()
+//                }
+//            }
         } else {
             sender.setOn(false, animated: true)
             tariffButtonTapped?()
@@ -294,16 +294,16 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         
         goEvent?(.specialOffer5T4)
         if isPaid {
-            Storage.featuresStates[5] = sender.isOn
+            Storage.featuresStates[3] = sender.isOn
             progressSwitchTapped?(sender.isOn)
-            if sender.isOn {
-                ProgressHUD.animate(alertText, interaction: false)
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.showSuccessAction()
-                    self.goSafari()
-                }
-            }
+//            if sender.isOn {
+//                ProgressHUD.animate(alertText, interaction: false)
+//                
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                    self.showSuccessAction()
+//                    self.goSafari()
+//                }
+//            }
         } else {
             sender.setOn(false, animated: true)
             tariffButtonTapped?()
