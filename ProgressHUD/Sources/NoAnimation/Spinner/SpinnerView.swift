@@ -67,7 +67,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
             
             heights.forEach { height in
                 height.constant = 110
-            }
+            } 
         }
     }
     
