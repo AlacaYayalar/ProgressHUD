@@ -97,7 +97,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
                 featuresStatusLabels[$0.tag].textColor = UIColor().hexStringToUIColor(hex: $0.isOn ? "#65D65C" : "#E74444")
             })
             
-            for i in 0...5 {
+            for i in 0...3 {
                 if let item = Storage.featuresStates[i], item {
                     featuresStatusLabels[i].text = model?.scn?.features?[i].g_status
                 } else {
