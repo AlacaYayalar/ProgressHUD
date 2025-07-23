@@ -208,6 +208,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
         self.isTarifPaidAndActive = isTarifPaidAndActive
         self.model = model
 //        bannerView.setup(with: model, isPaid: isTarifPaidAndActive)
+        bannerView.setup(with: model, isPaid: isTarifPaidAndActive, isFullActive: Storage.isAllFeaturesEnabled)
         backgroundColor = UIColor(resource: .localBG)
 //        animationView.backgroundColor = .white
         animationView.backgroundColor = UIColor(resource: .localBG)
@@ -291,7 +292,6 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                     progress += 1 / 4
                     
                     circularProgress.setProgressWithAnimation(duration: 1.0, value: progress)
-                    bannerView.setup(with: model, isPaid: isTarifPaidAndActive, isFullActive: progress >= 1)
                 }
             }
         } else {

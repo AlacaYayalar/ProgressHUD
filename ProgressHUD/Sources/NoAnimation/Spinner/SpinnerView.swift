@@ -67,7 +67,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
             
             heights.forEach { height in
                 height.constant = 110
-            } 
+            }
         }
     }
     
@@ -221,6 +221,10 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
     }
     
     @IBAction func twoAction(_ sender: UISwitch) {
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        feedbackGenerator.prepare()
+        feedbackGenerator.impactOccurred()
+        
         goEvent?(.specialOffer5T2)
         if isPaid {
             Storage.featuresStates[2] = sender.isOn
@@ -239,6 +243,10 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
     }
     
     @IBAction func threeAction(_ sender: UISwitch) {
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        feedbackGenerator.prepare()
+        feedbackGenerator.impactOccurred()
+        
         goEvent?(.specialOffer5T3)
         if isPaid {
             Storage.featuresStates[3] = sender.isOn
@@ -258,6 +266,10 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
     }
     
     @IBAction func fourAction(_ sender: UISwitch) {
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        feedbackGenerator.prepare()
+        feedbackGenerator.impactOccurred()
+        
         goEvent?(.specialOffer5T5)
         if isPaid {
             Storage.featuresStates[4] = sender.isOn
@@ -277,6 +289,10 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
     }
     
     @IBAction func fiveAction(_ sender: UISwitch) {
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        feedbackGenerator.prepare()
+        feedbackGenerator.impactOccurred()
+        
         goEvent?(.specialOffer5T4)
         if isPaid {
             Storage.featuresStates[5] = sender.isOn
