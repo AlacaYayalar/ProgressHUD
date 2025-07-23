@@ -151,11 +151,11 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 bringSubviewToFront(subtitleLabel)
                 layoutIfNeeded()
             } else if isMiniScreen {
-                topConst.constant = 15
+                topConst.constant = 0
                 subTop.constant = 3
                 layoutIfNeeded()
             } else {
-                topConst.constant = 15
+                topConst.constant = 10
                 subTop.constant = 7
                 layoutIfNeeded()
             }
