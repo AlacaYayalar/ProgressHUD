@@ -77,7 +77,8 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         self.isPaid = isPaid
         self.alertText = model?.scn?.alert_settings_text ?? localizeText(forKey: .alertText)
         titleLabel.text = model?.scn?.banner_title
-        subtitleLabel.text = model?.scn?.banner_subtitle
+//        subtitleLabel.text = model?.scn?.banner_subtitle
+        subtitleLabel.text = model?.scn?.subtitle_compl
         
         featuresNameLabels.forEach({
             $0.text = model?.scn?.features?[$0.tag].name
