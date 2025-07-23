@@ -107,8 +107,8 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
 //            subTop.constant = 5
 //            animTop.constant = 0
 //            bannerTop.constant = 0
-            lhConst.constant = 250
-            lwConst.constant = 250
+//            lhConst.constant = 250
+//            lwConst.constant = 250
             
             
             if isVerySmallDevice {
