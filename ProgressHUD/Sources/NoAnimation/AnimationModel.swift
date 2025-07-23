@@ -97,6 +97,7 @@ public struct ScnModel: Codable {
     var subtitle_anim_compl: String?
     var title_unp: String?
     var subtitle_unp: String?
+    var subtitle_unp_paid: String?
     var title_anim_unp: String?
     var subtitle_anim_unp: String?
     var banner_title: String?

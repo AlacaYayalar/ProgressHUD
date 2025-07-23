@@ -73,12 +73,12 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         }
     }
     
-    func setup(with model: AuthorizationOfferModel?, isPaid: Bool) {
+    func setup(with model: AuthorizationOfferModel?, isPaid: Bool, isFullActive: Bool) {
         self.isPaid = isPaid
         self.alertText = model?.scn?.alert_settings_text ?? localizeText(forKey: .alertText)
         titleLabel.text = model?.scn?.banner_title
 //        subtitleLabel.text = model?.scn?.banner_subtitle
-        subtitleLabel.text = model?.scn?.subtitle_compl
+        subtitleLabel.text = isFullActive ? model?.scn?.subtitle_unp_paid : model?.scn?.subtitle_compl
         
         featuresNameLabels.forEach({
             $0.text = model?.scn?.features?[$0.tag].name

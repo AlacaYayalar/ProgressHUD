@@ -207,8 +207,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
     func setup(with model: AuthorizationOfferModel?, isTarifPaidAndActive: Bool) {
         self.isTarifPaidAndActive = isTarifPaidAndActive
         self.model = model
-        bannerView.setup(with: model, isPaid: isTarifPaidAndActive)
-//        backgroundColor = .white
+//        bannerView.setup(with: model, isPaid: isTarifPaidAndActive)
         backgroundColor = UIColor(resource: .localBG)
 //        animationView.backgroundColor = .white
         animationView.backgroundColor = UIColor(resource: .localBG)
@@ -289,12 +288,14 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
             
             Storage.featuresStates.forEach { state in
                 if state.value {
-                    progress += 1 / 6
+                    progress += 1 / 4
                     
                     circularProgress.setProgressWithAnimation(duration: 1.0, value: progress)
+                    bannerView.setup(with: model, isPaid: isTarifPaidAndActive, isFullActive: progress >= 1)
                 }
             }
         } else {
+            bannerView.setup(with: model, isPaid: isTarifPaidAndActive, isFullActive: false)
             let attributedStrOne = NSMutableAttributedString(string: String(model?.scn?.subtitle_anim_compl?.dropLast(2) ?? ""), attributes: [
                 NSAttributedString.Key.foregroundColor: UIColor().hexStringToUIColor(hex: "#000000"),
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: (isSmallDevice ? (isVerySmallDevice ? 10 : 11) : 12), weight: .medium)
