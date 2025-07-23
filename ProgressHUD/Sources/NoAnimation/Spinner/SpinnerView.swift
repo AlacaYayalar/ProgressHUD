@@ -78,7 +78,6 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         subtitleLabel.text = isFullActive ? model?.scn?.subtitle_unp_paid : model?.scn?.subtitle_unp
         
         featuresNameLabels.forEach({
-            print("featuresNameLabels.tag = \($0.tag)")
             $0.text = model?.scn?.features?[$0.tag].name
         })
         
