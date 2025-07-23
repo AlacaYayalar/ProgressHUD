@@ -81,7 +81,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
         super.awakeFromNib()
         
         if UIDevice.current.userInterfaceIdiom == .pad {
-            titleLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
+            titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
             subtitleLabel.font = UIFont.systemFont(ofSize: 24, weight: .medium)
             animationTitle.font = UIFont.systemFont(ofSize: 30, weight: .bold)
             lhConst.constant = 420
@@ -116,7 +116,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 circularBottomConstraint.constant = -42
                 circularTrailingConstraint.constant = -42
                 inactiveImageView.contentMode = .scaleAspectFit
-                titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+                titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
                 subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
                 animationTitle.font = UIFont.systemFont(ofSize: 18, weight: .bold)
                 
@@ -136,7 +136,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 circularTrailingConstraint.constant = -41
                 inactiveImageView.contentMode = .scaleAspectFit
                 
-                titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+                titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
                 subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
                 bringSubviewToFront(subtitleLabel)
                 animationTitle.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -146,7 +146,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 topConst.constant = 13
                 subTop.constant = -2
                 
-                titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+                titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
                 subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
                 bringSubviewToFront(subtitleLabel)
                 layoutIfNeeded()
