@@ -189,36 +189,36 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
     }
     
     @IBAction func zeroAction(_ sender: UISwitch) {
-        goEvent?(.specialOffer5T0)
-        if !isPaid {
-            sender.setOn(false, animated: true)
-            tariffButtonTapped?()
-        }
+//        goEvent?(.specialOffer5T0)
+//        if !isPaid {
+//            sender.setOn(false, animated: true)
+//            tariffButtonTapped?()
+//        }
     }
     
     @IBAction func oneAction(_ sender: UISwitch) {
-        goEvent?(.specialOffer5T1)
-        if isPaid {
-            if sender.isOn {
-                if ProgressHUD.shared.isSheet {
-                    openSheetVCTapped?()
-                } else {
-                    showProgressAction()
-                    
-                    Storage.featuresStates[1] = sender.isOn
-                    progressSwitchTapped?(sender.isOn)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        self.showSuccessAction()
-                    }
-                }
-            } else {
-                Storage.featuresStates[1] = sender.isOn
-                progressSwitchTapped?(sender.isOn)
-            }
-        } else {
-            sender.setOn(false, animated: true)
-            tariffButtonTapped?()
-        }
+//        goEvent?(.specialOffer5T1)
+//        if isPaid {
+//            if sender.isOn {
+//                if ProgressHUD.shared.isSheet {
+//                    openSheetVCTapped?()
+//                } else {
+//                    showProgressAction()
+//                    
+//                    Storage.featuresStates[1] = sender.isOn
+//                    progressSwitchTapped?(sender.isOn)
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                        self.showSuccessAction()
+//                    }
+//                }
+//            } else {
+//                Storage.featuresStates[1] = sender.isOn
+//                progressSwitchTapped?(sender.isOn)
+//            }
+//        } else {
+//            sender.setOn(false, animated: true)
+//            tariffButtonTapped?()
+//        }
     }
     
     @IBAction func twoAction(_ sender: UISwitch) {
