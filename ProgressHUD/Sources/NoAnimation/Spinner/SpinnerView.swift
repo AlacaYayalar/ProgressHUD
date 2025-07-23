@@ -61,15 +61,13 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
                 height.constant = 83
             }
         } else {
-//            if isVerySmallDevice {
-                stackViews.forEach { stackview in
-                    stackview.axis = .vertical
-                }
-                
-                heights.forEach { height in
-                    height.constant = 110
-                }
-//            }
+            stackViews.forEach { stackview in
+                stackview.axis = .vertical
+            }
+            
+            heights.forEach { height in
+                height.constant = 110
+            }
         }
     }
     
