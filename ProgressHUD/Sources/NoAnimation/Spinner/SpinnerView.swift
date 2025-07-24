@@ -101,11 +101,19 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
             })
             
             for i in 0...3 {
+                guard let label = featuresStatusLabels.first(where: { $0.tag == i }) else { continue }
+                
                 if let item = Storage.featuresStates[i], item {
-                    featuresStatusLabels[i].text = model?.scn?.features?[i].g_status
+                    label.text = model?.scn?.features?[i].g_status
                 } else {
-                    featuresStatusLabels[i].text = model?.scn?.features?[i].b_status
+                    label.text = model?.scn?.features?[i].b_status
                 }
+                
+//                if let item = Storage.featuresStates[i], item {
+//                    featuresStatusLabels[i].text = model?.scn?.features?[i].g_status
+//                } else {
+//                    featuresStatusLabels[i].text = model?.scn?.features?[i].b_status
+//                }
             }
         } else {
             featuresStatusLabels.forEach({
