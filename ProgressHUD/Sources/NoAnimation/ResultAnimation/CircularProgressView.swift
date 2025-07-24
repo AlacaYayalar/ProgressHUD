@@ -55,16 +55,30 @@ class CircularProgressView: UIView {
         self.layer.addSublayer(shape)
     }
     
+//    func setProgressWithAnimation(duration: TimeInterval, value: Float) {
+//        let animation = CABasicAnimation(keyPath: "strokeEnd")
+//        animation.duration = duration
+//        
+//        animation.fromValue = 0
+//        animation.toValue = value
+//        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+//        progressLayer.strokeEnd = CGFloat(value)
+//        progressLayer.add(animation, forKey: "animateCircle")
+//    }
+    
     func setProgressWithAnimation(duration: TimeInterval, value: Float) {
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.duration = duration
-        
-        animation.fromValue = 0
-        animation.toValue = value
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        progressLayer.strokeEnd = CGFloat(value)
-        progressLayer.add(animation, forKey: "animateCircle")
-    }
+            let fromValue = progressLayer.presentation()?.strokeEnd ?? progressLayer.strokeEnd
+            let toValue = CGFloat(value)
+            
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            animation.fromValue = fromValue
+            animation.toValue = toValue
+            animation.duration = duration
+            animation.timingFunction = CAMediaTimingFunction(name: .linear)
+
+            progressLayer.strokeEnd = toValue
+            progressLayer.add(animation, forKey: "animateCircle")
+        }
     
     func updateLayers() {
         tracklayer.path = viewCGPath
