@@ -49,7 +49,7 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
             if UIDevice.current.userInterfaceIdiom == .pad {
                 let containerView = UIView()
                 
-                containerView.backgroundColor = .white
+                containerView.backgroundColor = UIColor(resource: .localBG)
                 containerView.addSubview(secureView)
                 secureView.addSubview(resultView)
                 secureView.snp.makeConstraints({$0.edges.equalToSuperview()})
