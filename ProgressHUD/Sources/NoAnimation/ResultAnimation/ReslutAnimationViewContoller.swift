@@ -175,6 +175,9 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
         resultView.scanButtonTaped = { [weak self] in
             guard let self, let gap = model?.gap else { return }
             
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+            
             if isPaid {
                 let vc = NewAnimationOneViewController(model: gap.objecs[1],
                                                        title: gap.titleDeep,
