@@ -287,13 +287,19 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
             circularProgress.isHidden = false
             progress = 0
             
-            Storage.featuresStates.forEach { state in
-                if state.value {
-                    progress += 1 / 4
-                    
-                    circularProgress.setProgressWithAnimation(duration: 1.0, value: progress)
-                }
-            }
+            let totalFeatures = 4
+            let trueCount = Storage.featuresStates.values.filter { $0 }.count
+            let progress = Float(trueCount) / Float(totalFeatures)
+
+            circularProgress.setProgressWithAnimation(duration: 1.0, value: progress)
+            
+//            Storage.featuresStates.forEach { state in
+//                if state.value {
+//                    progress += 1 / 4
+//                    
+//                    circularProgress.setProgressWithAnimation(duration: 1.0, value: progress)
+//                }
+//            }
         } else {
             bannerView.setup(with: model, isPaid: isTarifPaidAndActive, isFullActive: false)
             let attributedStrOne = NSMutableAttributedString(string: String(model?.scn?.subtitle_anim_compl?.dropLast(2) ?? ""), attributes: [
