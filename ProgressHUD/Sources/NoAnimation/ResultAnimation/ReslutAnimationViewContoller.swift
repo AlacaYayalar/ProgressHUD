@@ -43,6 +43,8 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor(resource: .localBG)
+        
         if !ProgressHUD.shared.isShow {
             guard let secureView = SecureField().secureContainer else { return }
             
