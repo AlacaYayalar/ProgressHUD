@@ -100,7 +100,7 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
             if UIDevice.current.userInterfaceIdiom == .pad {
                 let containerView = UIView()
                 
-                containerView.backgroundColor = .white
+                containerView.backgroundColor = UIColor(resource: .localBG)
                 self.view.addSubview(containerView)
                 containerView.addSubview(resultView)
                 
