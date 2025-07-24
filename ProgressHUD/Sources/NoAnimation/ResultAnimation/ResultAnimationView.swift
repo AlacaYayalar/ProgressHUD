@@ -143,7 +143,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
                 
                 layoutIfNeeded()
             } else if isPlusScreenDevice {
-                topConst.constant = 13
+                topConst.constant = 5
                 subTop.constant = -2
                 
                 titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
