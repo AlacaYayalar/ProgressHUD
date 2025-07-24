@@ -96,9 +96,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         
         iconImageView.kf.setImage(with: mainIcon, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
         
-        if isPaid {
-//            switchViews.first?.isUserInteractionEnabled = false
-            
+        if isPaid {            
             switchViews.forEach({
                 $0.setOn(Storage.featuresStates[$0.tag] ?? false, animated: true)
                 featuresIcons[$0.tag].image = UIImage(resource: $0.isOn ? .good : .bad)
@@ -227,7 +225,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
 //        }
     }
     
-    @IBAction func twoAction(_ sender: UISwitch) {
+    @IBAction func twoAction(_ sender: UISwitch) { // 1
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         
@@ -248,7 +246,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         }
     }
     
-    @IBAction func threeAction(_ sender: UISwitch) {
+    @IBAction func threeAction(_ sender: UISwitch) { //2
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         
@@ -270,7 +268,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         }
     }
     
-    @IBAction func fourAction(_ sender: UISwitch) {
+    @IBAction func fourAction(_ sender: UISwitch) { //3
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         
@@ -292,7 +290,7 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         }
     }
     
-    @IBAction func fiveAction(_ sender: UISwitch) {
+    @IBAction func fiveAction(_ sender: UISwitch) { //4
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         
