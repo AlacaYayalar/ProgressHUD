@@ -95,9 +95,19 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         
         if isPaid {
             switchViews.forEach({
+                let swithcTag = $0.tag
                 $0.setOn(Storage.featuresStates[$0.tag] ?? false, animated: true)
-                featuresIcons[$0.tag].image = UIImage(resource: $0.isOn ? .good : .bad)
-                featuresStatusLabels[$0.tag].textColor = UIColor().hexStringToUIColor(hex: $0.isOn ? "#65D65C" : "#E74444")
+                
+//                featuresIcons[$0.tag].image = UIImage(resource: $0.isOn ? .good : .bad)
+                
+                guard let icon = featuresIcons.first(where: { $0.tag == swithcTag}) else { return }
+                icon.image = UIImage(resource: $0.isOn ? .good : .bad)
+                
+//                featuresStatusLabels[$0.tag].textColor = UIColor().hexStringToUIColor(hex: $0.isOn ? "#65D65C" : "#E74444")
+                
+                guard let label = featuresStatusLabels.first(where: { $0.tag == swithcTag}) else { return }
+                label.textColor = UIColor().hexStringToUIColor(hex: $0.isOn ? "#65D65C" : "#E74444")
+                
             })
             
             for i in 0...3 {
