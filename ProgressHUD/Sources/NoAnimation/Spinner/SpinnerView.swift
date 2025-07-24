@@ -83,20 +83,17 @@ final class SpinnerView: UIView, InstanceFromNibProtocol {
         self.isPaid = isPaid
         self.alertText = model?.scn?.alert_settings_text ?? localizeText(forKey: .alertText)
         titleLabel.text = model?.scn?.banner_title
-//        subtitleLabel.text = model?.scn?.banner_subtitle
         subtitleLabel.text = isFullActive ? model?.scn?.subtitle_unp_paid : model?.scn?.subtitle_unp
         
         featuresNameLabels.forEach({
             $0.text = model?.scn?.features?[$0.tag].name
         })
-        
-//        Storage.featuresStates[0] = isPaid
-        
+            
         guard let mainIcon = URL(string: model?.scn?.banner_icon_unp ?? "") else { return }
         
         iconImageView.kf.setImage(with: mainIcon, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
         
-        if isPaid {            
+        if isPaid {
             switchViews.forEach({
                 $0.setOn(Storage.featuresStates[$0.tag] ?? false, animated: true)
                 featuresIcons[$0.tag].image = UIImage(resource: $0.isOn ? .good : .bad)
