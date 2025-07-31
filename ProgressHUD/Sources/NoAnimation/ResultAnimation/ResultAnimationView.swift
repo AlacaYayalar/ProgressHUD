@@ -212,6 +212,7 @@ class ResultAnimationView: UIView, InstanceFromNibProtocol {
         backgroundColor = UIColor(resource: .localBG)
 //        animationView.backgroundColor = .white
         animationView.backgroundColor = UIColor(resource: .localBG)
+        bringSubviewToFront(titleLabel)
         
         statsViewButton.setup(with: model) { [weak self] in
             self?.showStatistView?()
