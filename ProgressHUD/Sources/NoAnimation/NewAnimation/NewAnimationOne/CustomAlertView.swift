@@ -15,7 +15,8 @@ final class CustomAlertView: UIView {
         
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(closeButtonAction), for: .touchUpInside)
-        button.setBackgroundImage(.init(systemName: "xmark"), for: .normal)
+        button.setBackgroundImage(.init(systemName: "xmark")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .gray
         
         return button
     }()
@@ -151,7 +152,7 @@ final class CustomAlertView: UIView {
         goButton.setTitle(goButtonText, for: .normal)
 
         closeButton.snp.makeConstraints { make in
-            make.height.width.equalTo(15)
+            make.height.width.equalTo(30)
             make.top.trailing.equalToSuperview().inset(10)
         }
         
