@@ -153,7 +153,7 @@ final class CustomAlertView: UIView {
         goButton.setTitle(goButtonText, for: .normal)
 
         closeButton.snp.makeConstraints { make in
-            make.height.width.equalTo(20)
+            make.height.width.equalTo(25)
             make.top.trailing.equalToSuperview().inset(10)
         }
         
