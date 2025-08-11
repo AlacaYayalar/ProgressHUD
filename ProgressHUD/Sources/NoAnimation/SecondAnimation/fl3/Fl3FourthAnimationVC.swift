@@ -172,7 +172,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
                                                  description: model?.flow3?.fl3_purch_box1_subt ?? "",
                                                  isSelected: true,
                                                  model,
-                                                 premium: premiums.first(where: { $0.description?.lowercased().contains("year") == true }))
+                                                 premium: premiums.first(where: { $0.description?.lowercased().contains("week") == true }))
         
         option1View.translatesAutoresizingMaskIntoConstraints = false
         
@@ -184,7 +184,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
         option2View = Fl3FourthAnimationHelpView(title: model?.flow3?.fl3_purch_box2_tl ?? "",
                                                  description: model?.flow3?.fl3_purch_box2_subt ?? "",
                                                  model,
-                                                 premium: premiums.first(where: { $0.description?.lowercased().contains("week") == true }))
+                                                 premium: premiums.first(where: { $0.description?.lowercased().contains("year") == true }))
         
         option2View.translatesAutoresizingMaskIntoConstraints = false
         
