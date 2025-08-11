@@ -56,6 +56,7 @@ public final class Fl3FirstAnimationVC: UIViewController {
     private let totalDuration: TimeInterval = 3
     
     public var model: AuthorizationOfferModel?
+    public var premiums: [SubscriptionModel] = []
     weak var delegate: SpecialAnimationDelegate?
     public var rScreen: Int
 
@@ -172,7 +173,7 @@ public final class Fl3FirstAnimationVC: UIViewController {
 
     private func navigateToNextScreen() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            let alertVC = Fl3SecondAnimationVC(self.model, delegate: self.delegate, rScreen: self.rScreen)
+            let alertVC = Fl3SecondAnimationVC(self.model, delegate: self.delegate, rScreen: self.rScreen, premiums: self.premiums)
             
             if let navController = self.navigationController {
                 navController.pushViewController(alertVC, animated: true)

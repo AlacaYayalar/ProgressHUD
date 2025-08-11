@@ -90,12 +90,14 @@ public final class Fl3SecondAnimationVC: UIViewController {
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
     public var rScreen: Int
-
+    public var premiums: [SubscriptionModel] = []
+    
     // MARK: - Lifecycle
-    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, rScreen: Int) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, rScreen: Int, premiums: [SubscriptionModel]) {
         self.model = model
         self.delegate = delegate
         self.rScreen = rScreen
+        self.premiums = premiums
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -219,7 +221,7 @@ public final class Fl3SecondAnimationVC: UIViewController {
     // MARK: - Actions
 
     @objc private func viewDetailsButtonTapped() {
-        let detailVC = Fl3ThirdAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen)
+        let detailVC = Fl3ThirdAnimationVC(model, delegate: self.delegate, rScreen: self.rScreen, premiums: premiums)
 
         navigationController?.pushViewController(detailVC, animated: true)
     }

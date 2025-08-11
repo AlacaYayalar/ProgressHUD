@@ -284,7 +284,7 @@ public final class Fl1SecondAnimationVC: UIViewController {
     // MARK: - Actions
 
     @objc private func activateButtonTapped() {
-        self.delegate?.buttonTapped(isResult: false, fl1IsSecond: true)
+        self.delegate?.buttonTapped(isResult: false, fl1IsSecond: true, premium: nil)
     }
     
     public func goToNext(isPaid: Bool) {

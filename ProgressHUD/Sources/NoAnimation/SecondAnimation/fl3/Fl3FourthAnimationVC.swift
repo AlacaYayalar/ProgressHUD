@@ -37,8 +37,8 @@ public final class Fl3FourthAnimationVC: UIViewController {
         return imageView
     }()
 
-    private var option1View = Fl3FourthAnimationHelpView(title: "", description: "")
-    private var option2View = Fl3FourthAnimationHelpView(title: "", description: "")
+    private var option1View = Fl3FourthAnimationHelpView(title: "", description: "", premium: nil)
+    private var option2View = Fl3FourthAnimationHelpView(title: "", description: "", premium: nil)
     
     private var purchaseOptions: [Fl3FourthAnimationHelpView] = []
 
@@ -103,12 +103,14 @@ public final class Fl3FourthAnimationVC: UIViewController {
     public var model: AuthorizationOfferModel?
     weak var delegate: SpecialAnimationDelegate?
     public var rScreen: Int
-
+    public var premiums: [SubscriptionModel] = []
+    
     // MARK: - Lifecycle
-    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, rScreen: Int) {
+    public init(_ model: AuthorizationOfferModel? = nil, delegate: SpecialAnimationDelegate?, rScreen: Int, premiums: [SubscriptionModel]) {
         self.model = model
         self.delegate = delegate
         self.rScreen = rScreen
+        self.premiums = premiums
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -169,7 +171,8 @@ public final class Fl3FourthAnimationVC: UIViewController {
         option1View = Fl3FourthAnimationHelpView(title: model?.flow3?.fl3_purch_box1_tl ?? "",
                                                  description: model?.flow3?.fl3_purch_box1_subt ?? "",
                                                  isSelected: true,
-                                                 model)
+                                                 model,
+                                                 premium: premiums.first(where: { $0.description?.lowercased().contains("year") == true }))
         
         option1View.translatesAutoresizingMaskIntoConstraints = false
         
@@ -180,7 +183,8 @@ public final class Fl3FourthAnimationVC: UIViewController {
         
         option2View = Fl3FourthAnimationHelpView(title: model?.flow3?.fl3_purch_box2_tl ?? "",
                                                  description: model?.flow3?.fl3_purch_box2_subt ?? "",
-                                                 model)
+                                                 model,
+                                                 premium: premiums.first(where: { $0.description?.lowercased().contains("week") == true }))
         
         option2View.translatesAutoresizingMaskIntoConstraints = false
         
@@ -267,7 +271,7 @@ public final class Fl3FourthAnimationVC: UIViewController {
 //
 //        navigationController?.pushViewController(successVC, animated: true)
         
-        self.delegate?.buttonTapped(isResult: false, fl1IsSecond: nil)
+        self.delegate?.buttonTapped(isResult: false, fl1IsSecond: nil, premium: selected.premium)
     }
 
     @objc private func cancelTapped() {

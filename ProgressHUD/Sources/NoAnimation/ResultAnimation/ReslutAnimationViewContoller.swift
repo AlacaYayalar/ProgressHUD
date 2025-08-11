@@ -2,8 +2,8 @@
 import UIKit
 
 public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDelegate {
-    public func buttonTapped(isResult: Bool, fl1IsSecond: Bool?) {
-        delegate?.buttonTapped(isResult: isResult, fl1IsSecond: nil)
+    public func buttonTapped(isResult: Bool, fl1IsSecond: Bool?, premium: SubscriptionModel?) {
+        delegate?.buttonTapped(isResult: isResult, fl1IsSecond: nil, premium: nil)
     }
     
     private let isVerySmallDevice = UIScreen.main.nativeBounds.height <= 1136
@@ -148,7 +148,7 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
             //            vc.modalPresentationStyle = .fullScreen
             //
             //            self.navigationController?.present(vc, animated: true)
-            self.delegate?.buttonTapped(isResult: true, fl1IsSecond: nil)
+            self.delegate?.buttonTapped(isResult: true, fl1IsSecond: nil, premium: nil)
         }
         
         resultView.openSheetVCTapped = { [weak self] in
@@ -190,7 +190,7 @@ public class ReslutAnimationViewContoller: UIViewController, SpecialAnimationDel
             } else {
                 switch gap.orderIndex {
                 case 0:
-                    self.delegate?.buttonTapped(isResult: true, fl1IsSecond: nil)
+                    self.delegate?.buttonTapped(isResult: true, fl1IsSecond: nil, premium: nil)
                     return
 //                case 2:
 //                    let vc = NewAnimationTwoViewController(model: gap.objecs[1], alertModel: gap.objecs[0], title: gap.title, delegate: self.delegate)

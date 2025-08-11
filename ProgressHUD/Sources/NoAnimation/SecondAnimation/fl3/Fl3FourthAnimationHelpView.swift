@@ -49,14 +49,16 @@ public final class Fl3FourthAnimationHelpView: UIView {
     var onTap: (() -> Void)?
     
     public var model: AuthorizationOfferModel?
+    public var premium: SubscriptionModel?
     
-    init(title: String, description: String, isSelected: Bool = false, _ model: AuthorizationOfferModel? = nil) {
+    init(title: String, description: String, isSelected: Bool = false, _ model: AuthorizationOfferModel? = nil, premium: SubscriptionModel?) {
         super.init(frame: .zero)
         
         self.titleLabel.text = title
         self.descriptionLabel.text = description
         self.isOptionSelected = isSelected
         self.model = model
+        self.premium = premium
         setupView()
         updateSelectionState()
         

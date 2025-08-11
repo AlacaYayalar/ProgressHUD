@@ -55,7 +55,7 @@ final class NewAnimationOneViewController: UIViewController {
                 self.navigationController?.popViewController(animated: true)
             } else {
                 self.delegate?.eventsFunc(event: .scan1Action)
-                self.delegate?.buttonTapped(isResult: false, fl1IsSecond: nil)
+                self.delegate?.buttonTapped(isResult: false, fl1IsSecond: nil, premium: nil)
             }
         }
         

@@ -202,7 +202,7 @@ public final class Fl1ThirdAnimationVC: UIViewController {
     // MARK: - Actions
 
     @objc private func activateButtonTapped() {
-        self.delegate?.buttonTapped(isResult: false, fl1IsSecond: false)
+        self.delegate?.buttonTapped(isResult: false, fl1IsSecond: false, premium: nil)
     }
     
     public func goToNext(isPaid: Bool) {

@@ -3,7 +3,7 @@ import UIKit
 import ScreenShield
 
 public protocol SpecialAnimationDelegate: AnyObject {
-    func buttonTapped(isResult: Bool, fl1IsSecond: Bool?)
+    func buttonTapped(isResult: Bool, fl1IsSecond: Bool?, premium: SubscriptionModel?)
     func eventsFunc(event: EventsName)
     func scanButtonTapped()
 }
@@ -188,7 +188,7 @@ public class SpecialAnimationFourViewController: UIViewController {
             
             switch gap.orderIndex {
             case 0:
-                self.delegate?.buttonTapped(isResult: false, fl1IsSecond: nil)
+                self.delegate?.buttonTapped(isResult: false, fl1IsSecond: nil, premium: nil)
                 return
                 
             case 1:
@@ -205,7 +205,7 @@ public class SpecialAnimationFourViewController: UIViewController {
             
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            self.delegate?.buttonTapped(isResult: false, fl1IsSecond: nil)
+            self.delegate?.buttonTapped(isResult: false, fl1IsSecond: nil, premium: nil)
         }
     }
 }

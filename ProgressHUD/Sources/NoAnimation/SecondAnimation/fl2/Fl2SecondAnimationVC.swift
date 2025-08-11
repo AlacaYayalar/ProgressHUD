@@ -222,7 +222,7 @@ public final class Fl2SecondAnimationVC: UIViewController {
 //            self.present(alert, animated: true, completion: nil)
 //        }
         
-        self.delegate?.buttonTapped(isResult: false, fl1IsSecond: nil)
+        self.delegate?.buttonTapped(isResult: false, fl1IsSecond: nil, premium: nil)
     }
     
     public func goToNext(isPaid: Bool) {
