@@ -60,7 +60,13 @@ final class NewAnimationOneViewController: UIViewController {
         }
         
         alert.closeButtonCompletion = { [weak self] in
-            self?.goToResult()
+            guard let self else { return }
+            
+            if isFromRsult {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                self.goToResult()
+            }
         }
         
         self.delegate?.eventsFunc(event: .scan1Show)
