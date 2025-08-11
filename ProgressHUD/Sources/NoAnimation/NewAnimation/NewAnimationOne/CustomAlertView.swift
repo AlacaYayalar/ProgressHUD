@@ -106,6 +106,7 @@ final class CustomAlertView: UIView {
     private var goButtonText = ""
     
     var goButtonCompletion: (() -> ())?
+    var closeButtonCompletion: (() -> ())?
     
     init(iconName: String, titleLabelText: String, descriptionFirstLabelText: String, descriptionSecondLabelText: String, descriptionLowLabelText: String, goButtonText: String) {
         self.iconName = iconName
@@ -152,7 +153,7 @@ final class CustomAlertView: UIView {
         goButton.setTitle(goButtonText, for: .normal)
 
         closeButton.snp.makeConstraints { make in
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(20)
             make.top.trailing.equalToSuperview().inset(10)
         }
         
@@ -207,6 +208,6 @@ final class CustomAlertView: UIView {
     }
     
     @objc private func closeButtonAction() {
-        goButtonCompletion?()
+        closeButtonCompletion?()
     }
 }

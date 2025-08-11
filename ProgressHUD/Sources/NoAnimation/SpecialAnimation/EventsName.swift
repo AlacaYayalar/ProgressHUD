@@ -55,4 +55,6 @@ public enum EventsName: String {
     
     case antivirusActive = "antivirus_active"
     case featureAction = "feature_action"
+    
+    case closeTapped
 }

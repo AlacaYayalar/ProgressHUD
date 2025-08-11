@@ -59,6 +59,10 @@ final class NewAnimationOneViewController: UIViewController {
             }
         }
         
+        alert.closeButtonCompletion = { [weak self] in
+            self?.goToResult()
+        }
+        
         self.delegate?.eventsFunc(event: .scan1Show)
     }
     
@@ -212,6 +216,10 @@ final class NewAnimationOneViewController: UIViewController {
             self.dimmView.alpha = 1
             self.alert.alpha = 1
         }
+    }
+    
+    private func goToResult() {
+        delegate?.eventsFunc(event: .closeTapped)
     }
 }
 
