@@ -10,6 +10,16 @@ final class CustomAlertView: UIView {
         return imageView
     }()
     
+    private lazy var closeButton: UIButton = {
+        let button = UIButton()
+        
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(closeButtonAction), for: .touchUpInside)
+        button.setBackgroundImage(.init(systemName: "xmark"), for: .normal)
+        
+        return button
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         
@@ -121,6 +131,7 @@ final class CustomAlertView: UIView {
 //        descriptionBackView.backgroundColor = Constants.isDarkMode ? UIColor(red: 75/255, green: 75/255, blue: 75/255, alpha: 0.7) : .black.withAlphaComponent(0.06)
         descriptionBackView.backgroundColor = Constants.isDarkMode ? UIColor(resource: .localRContainer2) : .black.withAlphaComponent(0.06)
 
+        addSubview(closeButton)
         addSubview(icon)
         addSubview(titleLabel)
         addSubview(descriptionBackView)
@@ -139,6 +150,11 @@ final class CustomAlertView: UIView {
         descriptionLowLabel.text = descriptionLowLabelText
         goButton.setTitle(goButtonText, for: .normal)
 
+        closeButton.snp.makeConstraints { make in
+            make.height.width.equalTo(15)
+            make.top.trailing.equalToSuperview().inset(10)
+        }
+        
         icon.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.centerX.equalToSuperview()
@@ -186,6 +202,10 @@ final class CustomAlertView: UIView {
     }
 
     @objc private func goButtonAction() {
+        goButtonCompletion?()
+    }
+    
+    @objc private func closeButtonAction() {
         goButtonCompletion?()
     }
 }
