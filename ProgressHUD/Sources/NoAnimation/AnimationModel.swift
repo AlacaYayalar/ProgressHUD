@@ -1,6 +1,128 @@
 
 import Foundation
 
+public struct SubscriptionModelWrapper: Codable {
+    public let data: SubscriptionModel?
+}
+
+public struct SubscriptionModel {
+    public var tarifId: UInt
+    public var title: String
+    public var storeIdentifier: String
+    public var price: Double
+    public var description: String?
+    public var descWoutPrice: String?
+    public var days: UInt
+    public var discount: UInt
+    public var isDefault: Bool
+    public var isActive: Bool
+    public var paidUntil: Date?
+    public var isTrial: Bool?
+    public var paid: Bool?
+    public var sort: Int?
+    public var localizedPrice: String?
+    public var promoPrice: String?
+    public var isSpecial: Int?
+}
+
+extension SubscriptionModel {
+    public var isFree: Bool {
+        price == 0
+    }
+    
+    public var isPaid: Bool  {
+        guard let pu = paidUntil else {
+            return false
+        }
+        return pu > Date()
+    }
+}
+
+extension SubscriptionModel: Codable {
+    public init(from decoder: Decoder) throws {
+        let container   = try decoder.container(keyedBy: CodingKeys.self)
+        
+        tarifId         = try container.decode(UInt.self, forKey: .tarifId)
+        storeIdentifier = try container.decode(String.self, forKey: .storeIdentifier)
+        title           = try container.decode(String.self, forKey: .title)
+        price           = try container.decode(Double.self, forKey: .price)
+        description     = try? container.decode(String.self, forKey: .description)
+        days            = try container.decode(UInt.self, forKey: .days)
+        isActive        = try container.decode(Bool.self, forKey: .isActive)
+        paidUntil       = try? container.decodeIfPresent(Date.self, forKey: .paidUntil)
+        sort            = try? container.decode(Int.self, forKey: .sort)
+        isSpecial       = try container.decodeIfPresent(Int.self, forKey: .isSpecial)
+        localizedPrice  = try? container.decode(String.self, forKey: .localizedPrice)
+        promoPrice  = try? container.decode(String.self, forKey: .promoPrice)
+        
+        if let paidUntilInt = try? container.decodeIfPresent(Int.self, forKey: .paidUntil) {
+            let timeInterval = TimeInterval(paidUntilInt)
+            
+            paidUntil       =  Date(timeIntervalSince1970: timeInterval)
+        }
+        
+        if let paidUntilStringt = try? container.decodeIfPresent(String.self, forKey: .paidUntil) {
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let date = dateFormatter.date(from:paidUntilStringt)
+            paidUntil       =  date
+        }
+        
+        if let description = self.description, let index = description.firstIndex(of: "/") {
+            descWoutPrice = String(description[description.index(after: index)...])
+        }
+        
+        if let discountStringValue = try? container.decode(String.self, forKey: .discount) {
+            discount = UInt(discountStringValue) ?? 0
+        }
+        else {
+            discount = try container.decode(UInt.self, forKey: .discount)
+        }
+        
+        if let defaultNumberValue = try? container.decode(UInt.self, forKey: .isDefault) {
+            isDefault = defaultNumberValue > 0
+        }
+        else {
+            isDefault = try container.decode(Bool.self, forKey: .isDefault)
+        }
+        
+        if let isTrialNumberValue = try? container.decode(UInt.self, forKey: .isTrial) {
+            isTrial = isTrialNumberValue > 0
+        }
+        else {
+            isTrial = try? container.decode(Bool.self, forKey: .isTrial)
+        }
+        
+        if let paidNumberValue = try? container.decode(UInt.self, forKey: .paid) {
+            paid = paidNumberValue > 0
+        }
+        else {
+            paid = try? container.decode(Bool.self,       forKey: .paid)
+        }
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case tarifId = "id"
+        case days
+        case description
+        case discount
+        case isActive = "is_active"
+        case isDefault = "by_default"
+        case paidUntil = "paid_until"
+        case price
+        case storeIdentifier = "apple_id"
+        case title
+        case isTrial = "is_trial"
+        case paid = "is_paid"
+        case sort
+        case isSpecial = "is_special"
+        case localizedPrice
+        case promoPrice
+    }
+}
+
 // MARK: - Top Level Models
 public struct EnterModel: Codable {
     public var token: String
