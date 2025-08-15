@@ -167,12 +167,13 @@ public final class Fl3FourthAnimationVC: UIViewController {
         
         infoTextLabel.text = model?.flow3?.fl3_purch_text
         
+        guard let premium1 = premiums.first(where: { $0.description?.lowercased().contains("week") == true }), let premium2 = premiums.first(where: { $0.description?.lowercased().contains("year") == true }) else { return }
         
-        option1View = Fl3FourthAnimationHelpView(title: model?.flow3?.fl3_purch_box1_tl ?? "",
+        option1View = Fl3FourthAnimationHelpView(title: formattedPriceString(template: model?.flow3?.fl3_purch_box1_tl ?? "", price: premium1.price),
                                                  description: model?.flow3?.fl3_purch_box1_subt ?? "",
                                                  isSelected: true,
                                                  model,
-                                                 premium: premiums.first(where: { $0.description?.lowercased().contains("week") == true }))
+                                                 premium: premium1)
         
         option1View.translatesAutoresizingMaskIntoConstraints = false
         
@@ -181,10 +182,10 @@ public final class Fl3FourthAnimationVC: UIViewController {
             self.selectOption(self.option1View)
         }
         
-        option2View = Fl3FourthAnimationHelpView(title: model?.flow3?.fl3_purch_box2_tl ?? "",
+        option2View = Fl3FourthAnimationHelpView(title: formattedPriceString(template: model?.flow3?.fl3_purch_box2_tl ?? "", price: premium2.price),
                                                  description: model?.flow3?.fl3_purch_box2_subt ?? "",
                                                  model,
-                                                 premium: premiums.first(where: { $0.description?.lowercased().contains("year") == true }))
+                                                 premium: premium2)
         
         option2View.translatesAutoresizingMaskIntoConstraints = false
         
@@ -197,6 +198,17 @@ public final class Fl3FourthAnimationVC: UIViewController {
         
         shieldIconImageView.kf.setImage(with: iconURL, placeholder: UIImage())
     }
+    
+    private func formattedPriceString(template: String, price: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        
+        let priceString = formatter.string(from: NSNumber(value: price)) ?? "\(price)"
+        return String(format: template, "$\(priceString)")
+    }
+
     
     private func setupUI() {
         infoTextLabel.font = .systemFont(ofSize: Constants.se3Screen ? 13 : 15, weight: .medium)
