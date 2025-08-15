@@ -88,7 +88,7 @@ final class FlRSecondAnimationVC: UIViewController {
         
         button.setTitle(model?.result3?.result_fixing, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
-        button.backgroundColor = UIColor.systemGray5
+        button.backgroundColor = UIColor.clear
         button.setTitleColor(UIColor.secondaryLabel, for: .normal)
         button.layer.cornerRadius = 30
         button.translatesAutoresizingMaskIntoConstraints = false
