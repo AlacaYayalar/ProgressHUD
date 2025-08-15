@@ -241,7 +241,8 @@ public final class FlRFirstAnimationVC: UIViewController {
 
         guard let img1URL = URL(string: model?.result3?.result_det_box1_img ?? "") else { return UIView() }
         
-        iconView.kf.setImage(with: img1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        iconView.kf.setImage(with: img1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        iconView.kf.setImage(with: img1URL, placeholder: UIImage())
         
         // Label
         let title = UILabel()
