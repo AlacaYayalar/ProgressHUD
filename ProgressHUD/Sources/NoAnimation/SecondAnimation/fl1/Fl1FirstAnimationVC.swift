@@ -54,7 +54,7 @@ public final class Fl1FirstAnimationVC: UIViewController {
     
     private let waitButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor(resource: .localButton)
+        button.backgroundColor = UIColor.clear
         button.setTitleColor(UIColor(resource: .localButtonText), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: Constants.se3Screen ? (Constants.se1Screen ? 20 : 22) : 24, weight: .medium)
         button.isUserInteractionEnabled = false
