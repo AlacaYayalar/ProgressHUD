@@ -158,7 +158,8 @@ final class FlRSecondAnimationVC: UIViewController {
         
         guard let img1URL = URL(string: model?.result3?.result_det_box1_img ?? "") else { return }
         
-        iconImageView.kf.setImage(with: img1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+//        iconImageView.kf.setImage(with: img1URL, placeholder: UIImage(), options: [.processor(SVGImgProcessor())])
+        iconImageView.kf.setImage(with: img1URL, placeholder: UIImage())
     }
 
     private func setupConstraints() {
