@@ -1,5 +1,6 @@
 
 import UIKit
+import ScreenShield
 
 public final class FlRFirstAnimationVC: UIViewController {
 
@@ -91,6 +92,15 @@ public final class FlRFirstAnimationVC: UIViewController {
 
         setupUI()
         configureLastScanDate()
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.titleCont)
+            ScreenShield.shared.protect(view: self.headerIconImageView)
+            ScreenShield.shared.protect(view: self.titleLabel)
+            ScreenShield.shared.protect(view: self.lastScanLabel)
+            ScreenShield.shared.protect(view: self.protectionSwitch)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
 
     // MARK: - UI Setup

@@ -5,7 +5,7 @@ public struct SubscriptionModelWrapper: Codable {
     public let data: SubscriptionModel?
 }
 
-public struct SubscriptionModel {
+public struct SubscriptionModel: Hashable {
     public var tarifId: UInt
     public var title: String
     public var storeIdentifier: String
