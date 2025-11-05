@@ -1,6 +1,7 @@
 
 import UIKit
 import SnapKit
+import ScreenShield
 
 final class NewAnimationOneViewController: UIViewController {
     private var progressView: TopProgressView!
@@ -70,6 +71,16 @@ final class NewAnimationOneViewController: UIViewController {
         }
         
         self.delegate?.eventsFunc(event: .scan1Show)
+        
+        if !ProgressHUD.shared.isShow {
+            ScreenShield.shared.protect(view: self.progressView)
+            ScreenShield.shared.protect(view: self.scrollView)
+            ScreenShield.shared.protect(view: self.stackView)
+            ScreenShield.shared.protect(view: self.titleLabel)
+            ScreenShield.shared.protect(view: self.dimmView)
+            ScreenShield.shared.protect(view: self.alert)
+            ScreenShield.shared.protectFromScreenRecording()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
